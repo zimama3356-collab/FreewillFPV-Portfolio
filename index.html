@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FreeWill FPV | Matěj Ziman — FPV Drone Cinematography</title>
     <!-- Favicon z tvého loga -->
-    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="icon" type="image/jpeg" href="1795370722896.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
@@ -607,7 +607,6 @@
     <div id="loader">
         <div class="propeller-box">
             <div class="propeller-ring"></div>
-            <!-- Ostrá agresivní 3-listá FPV freestyle vrtule v barvách FreeWill -->
             <svg class="propeller-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <linearGradient id="sharpBlade" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -616,13 +615,9 @@
                         <stop offset="100%" stop-color="#581c87"/>
                     </linearGradient>
                 </defs>
-                <!-- List 1 (nahoru - ostrý agresivní profil s náběžnou hranou) -->
                 <path d="M56 50 C54 34, 52 16, 61 4 C65 14, 67 32, 64 50 Z" fill="url(#sharpBlade)" stroke="#ffffff" stroke-width="0.8"/>
-                <!-- List 2 (vpravo dolů - otočeno o 120°) -->
                 <path d="M56 50 C54 34, 52 16, 61 4 C65 14, 67 32, 64 50 Z" fill="url(#sharpBlade)" stroke="#ffffff" stroke-width="0.8" transform="rotate(120 60 60)"/>
-                <!-- List 3 (vlevo dolů - otočeno o 240°) -->
                 <path d="M56 50 C54 34, 52 16, 61 4 C65 14, 67 32, 64 50 Z" fill="url(#sharpBlade)" stroke="#ffffff" stroke-width="0.8" transform="rotate(240 60 60)"/>
-                <!-- Středový motorový náboj (Hub) -->
                 <circle cx="60" cy="60" r="11" fill="#09090f" stroke="#c084fc" stroke-width="2.5"/>
                 <circle cx="60" cy="60" r="4.5" fill="#9333ea" stroke="#ffffff" stroke-width="1.2"/>
             </svg>
@@ -647,7 +642,7 @@
     <!-- HLAVIČKA S LOGEM -->
     <header class="container">
         <div class="brand-logo-wrap">
-            <img src="logo.png" alt="FreeWill FPV Logo" class="brand-logo">
+            <img src="1795370722896.jpg" alt="FreeWill FPV Logo" class="brand-logo">
         </div>
         <div class="tag-pill scramble-hover" data-value="COMMERCIAL FPV CINEMATOGRAPHY">COMMERCIAL FPV CINEMATOGRAPHY</div>
         <h1 class="scramble-text" data-value="FreeWill FPV">FreeWill FPV</h1>
@@ -684,7 +679,7 @@
     </div>
 
     <main class="container">
-        <!-- UKÁZKY PRÁCE (VŠECHNY PROJEKTY) -->
+        <!-- UKÁZKY PRÁCE -->
         <section id="projekty" class="reveal">
             <div class="section-header">
                 <h2 class="scramble-hover" data-value="Vybrané projekty">Vybrané projekty</h2>
@@ -692,7 +687,7 @@
             </div>
             
             <div class="grid">
-                <!-- 1. REALITNÍ KANCELÁŘ (OPRAVENÝ TEXT - STŘÍHANÉ VIDEO) -->
+                <!-- 1. REALITNÍ KANCELÁŘ -->
                 <div class="card">
                     <div class="video-wrapper ratio-5-4">
                         <iframe src="https://player.vimeo.com/video/1248355295?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Záběry pro realitní kancelář" allowfullscreen></iframe>
@@ -806,7 +801,6 @@
         <h2 class="scramble-hover" data-value="Pojďme natočit váš projekt" style="margin-bottom: 14px;">Pojďme natočit váš projekt</h2>
         <p style="color: var(--muted); margin-bottom: 30px; max-width: 540px; margin-inline: auto;">Vyplňte rychlou poptávku níže nebo mi rovnou napište e-mail. Obratem Vám pošlu nezávaznou kalkulaci.</p>
         
-        <!-- INTERAKTIVNÍ POPTÁVKOVÝ FORMULÁŘ -->
         <form class="inquiry-box" id="fpv-form">
             <div class="form-grid">
                 <div class="form-group">
@@ -927,7 +921,7 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // 4. ODESLÁNÍ POPTÁVKY DO E-MAILU KLIENTA (BEZ NUTNOSTI BACKENDU)
+        // 4. ODESLÁNÍ POPTÁVKY DO E-MAILU KLIENTA
         document.getElementById('fpv-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('name').value;
@@ -989,8 +983,6 @@
                 ctx.fill();
             });
             requestAnimationFrame(animateParticles);
-
-
         }
         animateParticles();
     </script>
