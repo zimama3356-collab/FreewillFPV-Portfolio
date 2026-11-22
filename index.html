@@ -6,21 +6,21 @@
     <title>FreeWill FPV | Matěj Ziman — FPV Drone Cinematography</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #060609;
-            --card: rgba(18, 18, 26, 0.75);
+            --bg: #050508;
+            --card: rgba(16, 16, 24, 0.8);
             --text: #ffffff;
             --muted: #9ca3af;
             --accent: #9333ea;
             --accent-bright: #c084fc;
-            --accent-glow: rgba(147, 51, 234, 0.45);
-            --border: rgba(168, 85, 247, 0.22);
+            --accent-neon: #a855f7;
+            --accent-glow: rgba(168, 85, 247, 0.5);
+            --border: rgba(168, 85, 247, 0.25);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
         html { scroll-behavior: smooth; }
 
         body {
@@ -32,30 +32,24 @@
             position: relative;
         }
 
-        /* --- FUTURISTICKÉ POZADÍ (MŘÍŽKA + NEON ZÁŘE) --- */
-        .bg-grid {
+        /* --- INTERAKTIVNÍ ČÁSTICOVÉ POZADÍ + MŘÍŽKA --- */
+        #bg-canvas {
             position: fixed;
             inset: 0;
-            background-image: 
-                linear-gradient(to right, rgba(147, 51, 234, 0.07) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(147, 51, 234, 0.07) 1px, transparent 1px);
-            background-size: 45px 45px;
-            mask-image: radial-gradient(circle at 50% 30%, black 35%, transparent 85%);
-            -webkit-mask-image: radial-gradient(circle at 50% 30%, black 35%, transparent 85%);
             z-index: -2;
             pointer-events: none;
         }
 
-        .bg-glow {
+        .bg-grid {
             position: fixed;
-            top: -150px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 700px;
-            height: 450px;
-            background: radial-gradient(circle, rgba(147, 51, 234, 0.22) 0%, transparent 70%);
-            filter: blur(60px);
-            z-index: -1;
+            inset: 0;
+            background-image: 
+                linear-gradient(to right, rgba(147, 51, 234, 0.06) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(147, 51, 234, 0.06) 1px, transparent 1px);
+            background-size: 40px 40px;
+            mask-image: radial-gradient(circle at 50% 40%, black 30%, transparent 85%);
+            -webkit-mask-image: radial-gradient(circle at 50% 40%, black 30%, transparent 85%);
+            z-index: -3;
             pointer-events: none;
         }
 
@@ -63,7 +57,7 @@
         #loader {
             position: fixed;
             inset: 0;
-            background: #050507;
+            background: #040406;
             z-index: 9999;
             display: flex;
             flex-direction: column;
@@ -90,15 +84,15 @@
             position: absolute;
             inset: 0;
             border-radius: 50%;
-            border: 2px dashed rgba(168, 85, 247, 0.4);
+            border: 2px dashed rgba(168, 85, 247, 0.45);
             animation: spinSlow 6s linear infinite;
         }
 
         .propeller-svg {
             width: 82px;
             height: 82px;
-            filter: drop-shadow(0 0 14px var(--accent));
-            animation: spinProp 0.35s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            filter: drop-shadow(0 0 16px var(--accent-neon));
+            animation: spinProp 0.32s linear infinite;
         }
 
         .osd-status {
@@ -123,29 +117,19 @@
             height: 100%;
             width: 0%;
             background: linear-gradient(90deg, var(--accent), #fff);
-            box-shadow: 0 0 10px var(--accent);
+            box-shadow: 0 0 12px var(--accent-neon);
             animation: loadProgress 1.3s ease-out forwards;
         }
 
-        @keyframes spinProp {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        @keyframes spinSlow {
-            0% { transform: rotate(360deg); }
-            100% { transform: rotate(0deg); }
-        }
-        @keyframes loadProgress {
-            0% { width: 0%; }
-            60% { width: 75%; }
-            100% { width: 100%; }
-        }
+        @keyframes spinProp { 100% { transform: rotate(360deg); } }
+        @keyframes spinSlow { 100% { transform: rotate(-360deg); } }
+        @keyframes loadProgress { 0% { width: 0%; } 60% { width: 78%; } 100% { width: 100%; } }
 
         /* --- LAYOUT & KONTEJNER --- */
         .container {
             max-width: 1120px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 22px;
         }
 
         /* --- HORNÍ HUD LIŠTA --- */
@@ -153,10 +137,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(168, 85, 247, 0.15);
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             color: var(--muted);
         }
 
@@ -176,86 +160,115 @@
             animation: blink 1.2s infinite;
         }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.25; }
-        }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
 
         /* --- HERO SEKCE --- */
         header {
-            padding: 75px 0 55px;
+            padding: 65px 0 45px;
             text-align: center;
         }
 
         .tag-pill {
             display: inline-block;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
             color: var(--accent-bright);
-            background: rgba(147, 51, 234, 0.12);
+            background: rgba(147, 51, 234, 0.14);
             border: 1px solid var(--border);
             padding: 6px 16px;
             border-radius: 999px;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
+            box-shadow: 0 0 15px rgba(147, 51, 234, 0.2);
         }
 
         h1 {
-            font-size: clamp(2.4rem, 6vw, 4rem);
+            font-size: clamp(2.5rem, 7vw, 4.2rem);
             font-weight: 700;
             letter-spacing: -1.5px;
-            line-height: 1.1;
+            line-height: 1.08;
             margin-bottom: 16px;
-            background: linear-gradient(135deg, #ffffff 40%, var(--accent-bright) 100%);
+            background: linear-gradient(135deg, #ffffff 35%, var(--accent-bright) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            cursor: default;
+            text-shadow: 0 0 40px rgba(168, 85, 247, 0.25);
         }
 
         .subtitle {
             color: var(--muted);
-            font-size: 1.15rem;
-            max-width: 640px;
-            margin: 0 auto 32px;
+            font-size: 1.1rem;
+            max-width: 620px;
+            margin: 0 auto 30px;
         }
 
         .btn {
             position: relative;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
-            background: var(--accent);
+            background: linear-gradient(135deg, #9333ea, #7e22ce);
             color: #fff;
             padding: 14px 32px;
-            border-radius: 8px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: 600;
             letter-spacing: 0.3px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             box-shadow: 0 0 25px var(--accent-glow);
             transition: all 0.25s ease;
-            overflow: hidden;
         }
 
         .btn:hover {
-            background: #a855f7;
+            background: linear-gradient(135deg, #a855f7, #9333ea);
             transform: translateY(-2px);
-            box-shadow: 0 0 38px rgba(168, 85, 247, 0.75);
+            box-shadow: 0 0 38px rgba(168, 85, 247, 0.8);
+        }
+
+        /* --- BĚŽÍCÍ TELEMETRICKÝ PÁS (TICKER) --- */
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            background: rgba(147, 51, 234, 0.08);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 10px 0;
+            margin: 15px 0;
+        }
+
+        .ticker {
+            display: flex;
+            width: max-content;
+            animation: tickerScroll 22s linear infinite;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            color: var(--accent-bright);
+            letter-spacing: 1.5px;
+        }
+
+        .ticker span {
+            padding: 0 24px;
+            white-space: nowrap;
+        }
+
+        @keyframes tickerScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         /* --- SEKCE & NADPISY --- */
-        section { padding: 55px 0; }
+        section { padding: 50px 0; }
 
         .section-header {
             display: flex;
             align-items: center;
             gap: 14px;
-            margin-bottom: 30px;
+            margin-bottom: 28px;
         }
 
         h2 {
-            font-size: 1.9rem;
+            font-size: 1.85rem;
             font-weight: 700;
             letter-spacing: -0.5px;
         }
@@ -263,14 +276,14 @@
         .section-line {
             flex: 1;
             height: 1px;
-            background: linear-gradient(90deg, var(--accent), transparent);
+            background: linear-gradient(90deg, var(--accent-neon), transparent);
         }
 
-        /* --- KARTY VIDEÍ (HUD / GLASSMORPHISM) --- */
+        /* --- KARTY VIDEÍ --- */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-            gap: 32px;
+            grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+            gap: 28px;
             align-items: start;
         }
 
@@ -279,42 +292,16 @@
             background: var(--card);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            padding: 22px;
+            padding: 20px;
             border-radius: 14px;
             border: 1px solid var(--border);
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s, box-shadow 0.35s;
+            transition: transform 0.35s ease, border-color 0.35s, box-shadow 0.35s;
         }
 
         .card:hover {
-            transform: translateY(-6px);
+            transform: translateY(-5px);
             border-color: var(--accent-bright);
-            box-shadow: 0 15px 40px -10px rgba(147, 51, 234, 0.35);
-        }
-
-        /* Zaměřovací rohy na kartách */
-        .card::before, .card::after {
-            content: "";
-            position: absolute;
-            width: 14px;
-            height: 14px;
-            border-color: var(--accent-bright);
-            border-style: solid;
-            opacity: 0;
-            transition: opacity 0.3s, transform 0.3s;
-            pointer-events: none;
-        }
-        .card::before {
-            top: -1px; left: -1px;
-            border-width: 2px 0 0 2px;
-            border-top-left-radius: 14px;
-        }
-        .card::after {
-            bottom: -1px; right: -1px;
-            border-width: 0 2px 2px 0;
-            border-bottom-right-radius: 14px;
-        }
-        .card:hover::before, .card:hover::after {
-            opacity: 1;
+            box-shadow: 0 12px 35px -8px rgba(168, 85, 247, 0.4);
         }
 
         .video-wrapper {
@@ -328,7 +315,7 @@
         .ratio-5-4 { padding-bottom: 80%; }
         .ratio-9-16 {
             padding-bottom: 177.78%;
-            max-width: 360px;
+            max-width: 350px;
             margin: 0 auto;
         }
         .video-wrapper iframe {
@@ -342,106 +329,189 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.75rem;
             color: var(--accent-bright);
-            margin-top: 18px;
+            margin-top: 16px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .card h3 {
-            margin: 6px 0 8px;
-            font-size: 1.3rem;
-            color: #fff;
+        .card h3 { margin: 6px 0 8px; font-size: 1.25rem; color: #fff; }
+        .card p { color: var(--muted); font-size: 0.94rem; }
+
+        /* --- INTERAKTIVNÍ HANGÁR (TECHNIKA A ZÁZEMÍ) --- */
+        .tech-intro {
+            color: #d1d5db;
+            font-size: 1.02rem;
+            margin-bottom: 26px;
+            max-width: 760px;
         }
 
-        .card p {
-            color: var(--muted);
-            font-size: 0.95rem;
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
         }
 
-        /* --- TECHNIKA & BADGES --- */
-        .tech-box {
-            background: var(--card);
+        .fleet-card {
+            position: relative;
+            background: linear-gradient(160deg, rgba(24, 22, 36, 0.9), rgba(12, 12, 18, 0.95));
             border: 1px solid var(--border);
             border-radius: 14px;
-            padding: 28px;
-            backdrop-filter: blur(10px);
+            padding: 22px;
+            overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        .specs {
+        .fleet-card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-neon), transparent);
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        .fleet-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-bright);
+            box-shadow: 0 10px 30px -5px rgba(147, 51, 234, 0.35);
+        }
+
+        .fleet-card:hover::before { opacity: 1; }
+
+        .fleet-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: rgba(147, 51, 234, 0.16);
+            border: 1px solid rgba(168, 85, 247, 0.4);
             display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 22px;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-bright);
+            margin-bottom: 14px;
+            box-shadow: 0 0 15px rgba(147, 51, 234, 0.25);
         }
 
-        .badge {
+        .fleet-tag {
             font-family: 'JetBrains Mono', monospace;
-            background: rgba(147, 51, 234, 0.1);
-            border: 1px solid rgba(168, 85, 247, 0.3);
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            color: #e9d5ff;
-            transition: all 0.25s ease;
+            font-size: 0.72rem;
+            color: var(--accent-bright);
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        .badge:hover {
-            background: rgba(147, 51, 234, 0.25);
-            border-color: #fff;
-            transform: translateY(-2px);
+        .fleet-card h3 {
+            font-size: 1.15rem;
+            margin: 4px 0 8px;
+            color: #fff;
         }
 
-        /* --- SCROLL REVEAL ANIMACE --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(28px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .fleet-card p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            margin-bottom: 14px;
         }
 
-        /* --- FOOTER --- */
+        /* Animovaný ukazatel výkonu / parametrů */
+        .stat-bar-wrap {
+            margin-top: auto;
+        }
+        .stat-label {
+            display: flex;
+            justify-content: space-between;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: #d8b4fe;
+            margin-bottom: 5px;
+        }
+        .stat-track {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .stat-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #fff);
+            box-shadow: 0 0 8px var(--accent-neon);
+            border-radius: 4px;
+        }
+
+        /* --- FOOTER & NEONOVÉ FIALOVÉ IKONY --- */
         footer {
             text-align: center;
-            padding: 70px 0 50px;
-            border-top: 1px solid rgba(168, 85, 247, 0.18);
-            margin-top: 40px;
+            padding: 65px 0 50px;
+            border-top: 1px solid rgba(168, 85, 247, 0.2);
+            margin-top: 35px;
+            background: radial-gradient(circle at 50% 100%, rgba(147, 51, 234, 0.14), transparent 70%);
         }
 
-        .socials {
+        .neon-socials {
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin: 30px 0;
+            align-items: center;
+            gap: 20px;
+            margin: 34px 0 24px;
         }
 
-        .socials a {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            color: var(--text);
+        .neon-icon-btn {
+            position: relative;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(147, 51, 234, 0.12);
+            border: 1.5px solid var(--accent-neon);
+            color: #e9d5ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
-            padding: 10px 18px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            transition: all 0.25s ease;
+            box-shadow: 
+                0 0 15px rgba(168, 85, 247, 0.45),
+                inset 0 0 10px rgba(168, 85, 247, 0.25);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .socials a:hover {
-            color: #fff;
-            border-color: var(--accent-bright);
-            background: rgba(147, 51, 234, 0.2);
-            transform: translateY(-2px);
+        .neon-icon-btn svg {
+            width: 24px;
+            height: 24px;
+            filter: drop-shadow(0 0 6px rgba(192, 132, 252, 0.8));
+            transition: transform 0.3s ease;
+        }
+
+        .neon-icon-btn:hover {
+            transform: translateY(-5px) scale(1.08);
+            background: rgba(168, 85, 247, 0.28);
+            border-color: #ffffff;
+            color: #ffffff;
+            box-shadow: 
+                0 0 28px rgba(168, 85, 247, 0.9),
+                0 0 50px rgba(147, 51, 234, 0.6),
+                inset 0 0 14px rgba(255, 255, 255, 0.35);
+        }
+
+        .neon-icon-btn:hover svg {
+            transform: scale(1.1);
         }
 
         .copyright {
             font-family: 'JetBrains Mono', monospace;
             color: #6b7280;
-            font-size: 0.8rem;
-            margin-top: 25px;
+            font-size: 0.78rem;
+            margin-top: 22px;
+        }
+
+        /* --- SCROLL REVEAL --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -451,15 +521,10 @@
     <div id="loader">
         <div class="propeller-box">
             <div class="propeller-ring"></div>
-            <!-- Vektorová 3-listá FPV vrtule ve fialovo-bílé -->
             <svg class="propeller-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- List 1 (nahoru) -->
                 <path d="M50 42 C43 24, 41 8, 50 5 C59 8, 57 24, 50 42 Z" fill="url(#bladeGrad)"/>
-                <!-- List 2 (vpravo dolů) -->
                 <path d="M57 54 C76 58, 91 66, 89 75 C82 81, 69 70, 57 54 Z" fill="url(#bladeGrad)"/>
-                <!-- List 3 (vlevo dolů) -->
                 <path d="M43 54 C31 70, 18 81, 11 75 C9 66, 24 58, 43 54 Z" fill="url(#bladeGrad)"/>
-                <!-- Středový náboj (Hub) -->
                 <circle cx="50" cy="50" r="10" fill="#0b0c10" stroke="#c084fc" stroke-width="2.5"/>
                 <circle cx="50" cy="50" r="3.5" fill="#ffffff"/>
                 <defs>
@@ -475,9 +540,9 @@
         <div class="osd-bar"><div class="osd-bar-fill"></div></div>
     </div>
 
-    <!-- POZADÍ -->
+    <!-- ŽIVÉ POZADÍ -->
     <div class="bg-grid"></div>
-    <div class="bg-glow"></div>
+    <canvas id="bg-canvas"></canvas>
 
     <!-- HORNÍ HUD TELEMETRIE -->
     <div class="container">
@@ -499,6 +564,29 @@
         </a>
     </header>
 
+    <!-- BĚŽÍCÍ TELEMETRICKÝ PÁS -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <span>// 4K 60–120 FPS</span>
+            <span>// 10-BIT D-LOG</span>
+            <span>// CINEWHOOP INDOOR</span>
+            <span>// 5" FREESTYLE</span>
+            <span>// DJI MINI 5 PRO</span>
+            <span>// GYROFLOW STABILIZATION</span>
+            <span>// REGISTRACE ÚCL (A1/A3)</span>
+            <span>// POJIŠTĚNÍ ODPOVĚDNOSTI</span>
+            <!-- Duplikát pro nekonečnou smyčku -->
+            <span>// 4K 60–120 FPS</span>
+            <span>// 10-BIT D-LOG</span>
+            <span>// CINEWHOOP INDOOR</span>
+            <span>// 5" FREESTYLE</span>
+            <span>// DJI MINI 5 PRO</span>
+            <span>// GYROFLOW STABILIZATION</span>
+            <span>// REGISTRACE ÚCL (A1/A3)</span>
+            <span>// POJIŠTĚNÍ ODPOVĚDNOSTI</span>
+        </div>
+    </div>
+
     <main class="container">
         <!-- UKÁZKY PRÁCE -->
         <section class="reveal">
@@ -508,7 +596,6 @@
             </div>
             
             <div class="grid">
-                <!-- VIDEO 1: Realitní kancelář -->
                 <div class="card">
                     <div class="video-wrapper ratio-5-4">
                         <iframe src="https://player.vimeo.com/video/1248355295?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Záběry pro realitní kancelář" allowfullscreen></iframe>
@@ -518,7 +605,6 @@
                     <p>Plynulý průlet nemovitostí na jeden zátah bez střihu. Ideální pro moderní prezentaci realit a komerčních prostor.</p>
                 </div>
 
-                <!-- VIDEO 2: Hasičské závody -->
                 <div class="card">
                     <div class="video-wrapper ratio-9-16">
                         <iframe src="https://player.vimeo.com/video/1249086864?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Hasičské závody SPŠD Plzeň 2026" allowfullscreen></iframe>
@@ -530,40 +616,114 @@
             </div>
         </section>
 
-        <!-- TECHNIKA A LEGISLATIVA -->
+        <!-- INTERAKTIVNÍ HANGÁR (TECHNIKA A ZÁZEMÍ) -->
         <section class="reveal">
             <div class="section-header">
                 <h2 class="scramble-hover" data-value="Technika a zázemí">Technika a zázemí</h2>
                 <div class="section-line"></div>
             </div>
 
-            <div class="tech-box">
-                <p style="color: #d1d5db; font-size: 1.05rem;">Létám na zakázku jako OSVČ. Dodávám surový materiál (D-Log) pro vaše střihače i kompletně sestříhaná videa včetně stabilizace (Gyroflow), color gradingu a zvukového designu.</p>
-                <div class="specs">
-                    <span class="badge">4K / 60–120 fps výstup</span>
-                    <span class="badge">10-bit barevná hloubka</span>
-                    <span class="badge">Cinewhoop (interiéry)</span>
-                    <span class="badge">5" OpenProp (exteriéry)</span>
-                    <span class="badge">DJI Mini 5 Pro</span>
-                    <span class="badge">Registrace UAS (A1/A3)</span>
-                    <span class="badge">Pojištění odpovědnosti</span>
+            <p class="tech-intro">Létám na zakázku jako OSVČ. Dodávám surový materiál (D-Log) pro vaše střihače i kompletně sestříhaná videa včetně stabilizace (Gyroflow), color gradingu a zvukového designu.</p>
+
+            <div class="fleet-grid">
+                <!-- Karta 1: Cinewhoop -->
+                <div class="fleet-card">
+                    <div class="fleet-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
+                    </div>
+                    <div class="fleet-tag">// INDOOR & PROXIMITY</div>
+                    <h3>Cinewhoop</h3>
+                    <p>Chráněné vrtule pro bezpečné průlety interiéry, kancelářemi a v těsné blízkosti osob.</p>
+                    <div class="stat-bar-wrap">
+                        <div class="stat-label"><span>PRECISION & SAFETY</span><span>100%</span></div>
+                        <div class="stat-track"><div class="stat-fill" style="width: 100%;"></div></div>
+                    </div>
+                </div>
+
+                <!-- Karta 2: 5" OpenProp -->
+                <div class="fleet-card">
+                    <div class="fleet-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    </div>
+                    <div class="fleet-tag">// HIGH-SPEED EXTERIOR</div>
+                    <h3>5" OpenProp FPV</h3>
+                    <p>Maximální akcelerace a obratnost pro sledování aut, sportovních akcí a dynamické exteriéry.</p>
+                    <div class="stat-bar-wrap">
+                        <div class="stat-label"><span>SPEED & AGILITY</span><span>95%</span></div>
+                        <div class="stat-track"><div class="stat-fill" style="width: 95%;"></div></div>
+                    </div>
+                </div>
+
+                <!-- Karta 3: DJI Mini 5 Pro -->
+                <div class="fleet-card">
+                    <div class="fleet-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 7V4M18 7V4"/></svg>
+                    </div>
+                    <div class="fleet-tag">// CINEMATIC STABILIZED</div>
+                    <h3>DJI Mini 5 Pro</h3>
+                    <p>Stabilizované letecké záběry, přehledové pohledy na nemovitosti a precizní kompozice.</p>
+                    <div class="stat-bar-wrap">
+                        <div class="stat-label"><span>4K / 10-BIT D-LOG</span><span>100%</span></div>
+                        <div class="stat-track"><div class="stat-fill" style="width: 100%;"></div></div>
+                    </div>
+                </div>
+
+                <!-- Karta 4: Legislativa & Výstup -->
+                <div class="fleet-card">
+                    <div class="fleet-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                    </div>
+                    <div class="fleet-tag">// LEGAL & POST-PROD</div>
+                    <h3>Licence & Grading</h3>
+                    <p>Registrace provozovatele UAS (A1/A3), pojištění odpovědnosti, 60–120 fps a Gyroflow.</p>
+                    <div class="stat-bar-wrap">
+                        <div class="stat-label"><span>COMMERCIAL READY</span><span>VERIFIED</span></div>
+                        <div class="stat-track"><div class="stat-fill" style="width: 100%;"></div></div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- KONTAKT -->
+    <!-- KONTAKT + NEONOVÉ FIALOVÉ IKONY -->
     <footer id="kontakt" class="container reveal">
         <h2 class="scramble-hover" data-value="Pojďme natočit váš projekt" style="margin-bottom: 14px;">Pojďme natočit váš projekt</h2>
         <p style="color: var(--muted); margin-bottom: 28px; max-width: 520px; margin-inline: auto;">Napište mi svou představu a obratem Vám pošlu nezávaznou kalkulaci.</p>
         
         <a href="mailto:dronyziman@gmail.com" class="btn">dronyziman@gmail.com</a>
         
-        <div class="socials">
-            <a href="https://www.instagram.com/freewill_fpv/" target="_blank">INSTAGRAM</a>
-            <a href="https://www.youtube.com/@freewill_FPV" target="_blank">YOUTUBE</a>
-            <a href="https://www.tiktok.com/@freewill_fpv" target="_blank">TIKTOK</a>
-            <a href="tel:+420607010207">+420 607 010 207</a>
+        <!-- NEONOVÉ IKONY SOCIÁLNÍCH SÍTÍ A TELEFONU -->
+        <div class="neon-socials">
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/freewill_fpv/" target="_blank" class="neon-icon-btn" aria-label="Instagram" title="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+            </a>
+
+            <!-- YouTube -->
+            <a href="https://www.youtube.com/@freewill_FPV" target="_blank" class="neon-icon-btn" aria-label="YouTube" title="YouTube">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                </svg>
+            </a>
+
+            <!-- TikTok -->
+            <a href="https://www.tiktok.com/@freewill_fpv" target="_blank" class="neon-icon-btn" aria-label="TikTok" title="TikTok">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+                </svg>
+            </a>
+
+            <!-- Telefon -->
+            <a href="tel:+420607010207" class="neon-icon-btn" aria-label="Zavolat" title="+420 607 010 207">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+            </a>
         </div>
         
         <p class="copyright">© 2026 FREEWILL FPV — MATĚJ ZIMAN | IČO: 24901547</p>
@@ -571,18 +731,17 @@
 
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script>
-        // 1. LOADING SCREEN LOGIKA
+        // 1. LOADING SCREEN
         window.addEventListener('load', () => {
             const osdText = document.getElementById('osd-text');
             setTimeout(() => { osdText.textContent = 'LINK ESTABLISHED // 100%'; }, 650);
             setTimeout(() => {
                 document.getElementById('loader').classList.add('hidden');
-                // Spustit dekódování hlavního nadpisu po zmizení loaderu
                 document.querySelectorAll('.scramble-text').forEach(el => scrambleEffect(el));
-            }, 1350);
+            }, 1300);
         });
 
-        // 2. INTERAKTIVNÍ DEKÓDOVÁNÍ TEXTU (CYBER SCRAMBLE)
+        // 2. INTERAKTIVNÍ DEKÓDOVÁNÍ TEXTU
         const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/#*+';
         function scrambleEffect(element) {
             const originalText = element.dataset.value;
@@ -599,28 +758,67 @@
                     })
                     .join('');
 
-                if (iteration >= originalText.length) {
-                    clearInterval(element.interval);
-                }
+                if (iteration >= originalText.length) clearInterval(element.interval);
                 iteration += 1 / 2;
-            }, 28);
+            }, 26);
         }
 
-        // Aktivace efektu při najetí myší na nadpisy
         document.querySelectorAll('.scramble-text, .scramble-hover').forEach(el => {
             el.addEventListener('mouseenter', () => scrambleEffect(el));
+            el.addEventListener('click', () => scrambleEffect(el));
         });
 
-        // 3. PLYNULÉ ZOBRAZENÍ SEKCÍ PŘI SCROLLOVÁNÍ
+        // 3. SCROLL REVEAL
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('visible');
             });
-        }, { threshold: 0.12 });
+        }, { threshold: 0.1 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // 4. ŽIVÉ ČÁSTICE NA POZADÍ (CANVAS)
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        for (let i = 0; i < 45; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                r: Math.random() * 1.8 + 0.6,
+                dx: (Math.random() - 0.5) * 0.45,
+                dy: (Math.random() - 0.5) * 0.45,
+                purple: Math.random() > 0.35
+            });
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.x += p.dx;
+                p.y += p.dy;
+
+                if (p.x < 0) p.x = canvas.width;
+                if (p.x > canvas.width) p.x = 0;
+                if (p.y < 0) p.y = canvas.height;
+                if (p.y > canvas.height) p.y = 0;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = p.purple ? 'rgba(168, 85, 247, 0.55)' : 'rgba(255, 255, 255, 0.35)';
+                ctx.fill();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
     </script>
 </body>
 </html>
