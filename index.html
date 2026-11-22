@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FreeWill FPV | Matěj Ziman — FPV Drone Cinematography</title>
+    <!-- Favicon z tvého loga -->
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #050508;
-            --card: rgba(16, 16, 24, 0.8);
+            --card: rgba(16, 16, 24, 0.82);
             --text: #ffffff;
             --muted: #9ca3af;
             --accent: #9333ea;
@@ -32,7 +34,7 @@
             position: relative;
         }
 
-        /* --- INTERAKTIVNÍ ČÁSTICOVÉ POZADÍ + MŘÍŽKA --- */
+        /* --- POZADÍ --- */
         #bg-canvas {
             position: fixed;
             inset: 0;
@@ -53,7 +55,7 @@
             pointer-events: none;
         }
 
-        /* --- LOADING SCREEN S 3-LISTOU VRTULÍ --- */
+        /* --- LOADING SCREEN S OSTROU 3-LISTOU FREESTYLE VRTULÍ --- */
         #loader {
             position: fixed;
             inset: 0;
@@ -73,8 +75,8 @@
 
         .propeller-box {
             position: relative;
-            width: 110px;
-            height: 110px;
+            width: 130px;
+            height: 130px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -84,15 +86,15 @@
             position: absolute;
             inset: 0;
             border-radius: 50%;
-            border: 2px dashed rgba(168, 85, 247, 0.45);
+            border: 2px dashed rgba(168, 85, 247, 0.5);
             animation: spinSlow 6s linear infinite;
         }
 
         .propeller-svg {
-            width: 82px;
-            height: 82px;
-            filter: drop-shadow(0 0 16px var(--accent-neon));
-            animation: spinProp 0.32s linear infinite;
+            width: 112px;
+            height: 112px;
+            filter: drop-shadow(0 0 18px var(--accent-neon));
+            animation: spinProp 0.28s linear infinite;
         }
 
         .osd-status {
@@ -105,7 +107,7 @@
         }
 
         .osd-bar {
-            width: 180px;
+            width: 190px;
             height: 3px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 3px;
@@ -127,7 +129,7 @@
 
         /* --- LAYOUT & KONTEJNER --- */
         .container {
-            max-width: 1120px;
+            max-width: 1140px;
             margin: 0 auto;
             padding: 0 22px;
         }
@@ -138,7 +140,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 16px 0;
-            border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+            border-bottom: 1px solid rgba(168, 85, 247, 0.18);
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.75rem;
             color: var(--muted);
@@ -162,10 +164,40 @@
 
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
 
-        /* --- HERO SEKCE --- */
+        /* --- HERO SEKCE & LOGO --- */
         header {
-            padding: 65px 0 45px;
+            padding: 50px 0 45px;
             text-align: center;
+        }
+
+        .brand-logo-wrap {
+            position: relative;
+            width: 138px;
+            height: 138px;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            padding: 4px;
+            background: linear-gradient(135deg, #ffffff, var(--accent-neon), #4c1d95);
+            box-shadow: 
+                0 0 30px rgba(147, 51, 234, 0.65),
+                0 0 60px rgba(147, 51, 234, 0.3);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
+        }
+
+        .brand-logo-wrap:hover {
+            transform: scale(1.06) rotate(3deg);
+            box-shadow: 
+                0 0 40px rgba(192, 132, 252, 0.9),
+                0 0 80px rgba(147, 51, 234, 0.55);
+        }
+
+        .brand-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            display: block;
+            background: #050508;
         }
 
         .tag-pill {
@@ -179,7 +211,7 @@
             border: 1px solid var(--border);
             padding: 6px 16px;
             border-radius: 999px;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             box-shadow: 0 0 15px rgba(147, 51, 234, 0.2);
         }
 
@@ -198,8 +230,15 @@
         .subtitle {
             color: var(--muted);
             font-size: 1.1rem;
-            max-width: 620px;
+            max-width: 630px;
             margin: 0 auto 30px;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
         }
 
         .btn {
@@ -210,7 +249,7 @@
             gap: 10px;
             background: linear-gradient(135deg, #9333ea, #7e22ce);
             color: #fff;
-            padding: 14px 32px;
+            padding: 14px 30px;
             border-radius: 10px;
             text-decoration: none;
             font-weight: 600;
@@ -218,6 +257,9 @@
             border: 1px solid rgba(255, 255, 255, 0.25);
             box-shadow: 0 0 25px var(--accent-glow);
             transition: all 0.25s ease;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
         }
 
         .btn:hover {
@@ -226,7 +268,17 @@
             box-shadow: 0 0 38px rgba(168, 85, 247, 0.8);
         }
 
-        /* --- BĚŽÍCÍ TELEMETRICKÝ PÁS (TICKER) --- */
+        .btn-outline {
+            background: rgba(147, 51, 234, 0.1);
+            border: 1px solid var(--accent-neon);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: rgba(147, 51, 234, 0.25);
+        }
+
+        /* --- BĚŽÍCÍ TELEMETRICKÝ PÁS --- */
         .ticker-wrap {
             width: 100%;
             overflow: hidden;
@@ -240,17 +292,14 @@
         .ticker {
             display: flex;
             width: max-content;
-            animation: tickerScroll 22s linear infinite;
+            animation: tickerScroll 24s linear infinite;
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.82rem;
             color: var(--accent-bright);
             letter-spacing: 1.5px;
         }
 
-        .ticker span {
-            padding: 0 24px;
-            white-space: nowrap;
-        }
+        .ticker span { padding: 0 24px; white-space: nowrap; }
 
         @keyframes tickerScroll {
             0% { transform: translateX(0); }
@@ -279,7 +328,7 @@
             background: linear-gradient(90deg, var(--accent-neon), transparent);
         }
 
-        /* --- KARTY VIDEÍ --- */
+        /* --- MŘÍŽKA PROJEKTŮ --- */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
@@ -315,7 +364,7 @@
         .ratio-5-4 { padding-bottom: 80%; }
         .ratio-9-16 {
             padding-bottom: 177.78%;
-            max-width: 350px;
+            max-width: 340px;
             margin: 0 auto;
         }
         .video-wrapper iframe {
@@ -327,22 +376,22 @@
 
         .card-meta {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
+            font-size: 0.74rem;
             color: var(--accent-bright);
             margin-top: 16px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        .card h3 { margin: 6px 0 8px; font-size: 1.25rem; color: #fff; }
-        .card p { color: var(--muted); font-size: 0.94rem; }
+        .card h3 { margin: 6px 0 8px; font-size: 1.22rem; color: #fff; }
+        .card p { color: var(--muted); font-size: 0.93rem; }
 
-        /* --- INTERAKTIVNÍ HANGÁR (TECHNIKA A ZÁZEMÍ) --- */
+        /* --- INTERAKTIVNÍ HANGÁR --- */
         .tech-intro {
             color: #d1d5db;
             font-size: 1.02rem;
             margin-bottom: 26px;
-            max-width: 760px;
+            max-width: 780px;
         }
 
         .fleet-grid {
@@ -401,22 +450,9 @@
             text-transform: uppercase;
         }
 
-        .fleet-card h3 {
-            font-size: 1.15rem;
-            margin: 4px 0 8px;
-            color: #fff;
-        }
+        .fleet-card h3 { font-size: 1.15rem; margin: 4px 0 8px; color: #fff; }
+        .fleet-card p { font-size: 0.88rem; color: var(--muted); margin-bottom: 14px; }
 
-        .fleet-card p {
-            font-size: 0.88rem;
-            color: var(--muted);
-            margin-bottom: 14px;
-        }
-
-        /* Animovaný ukazatel výkonu / parametrů */
-        .stat-bar-wrap {
-            margin-top: auto;
-        }
         .stat-label {
             display: flex;
             justify-content: space-between;
@@ -438,6 +474,61 @@
             box-shadow: 0 0 8px var(--accent-neon);
             border-radius: 4px;
         }
+
+        /* --- FUTURISTICKÝ POPTÁVKOVÝ FORMULÁŘ --- */
+        .inquiry-box {
+            max-width: 680px;
+            margin: 0 auto 35px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: left;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 600px) {
+            .form-grid { grid-template-columns: 1fr; }
+        }
+
+        .form-group { margin-bottom: 16px; }
+
+        .form-group label {
+            display: block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.76rem;
+            color: var(--accent-bright);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-control {
+            width: 100%;
+            background: rgba(8, 8, 14, 0.9);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            border-radius: 8px;
+            padding: 12px 14px;
+            color: #fff;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.25s, box-shadow 0.25s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-bright);
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.35);
+        }
+
+        textarea.form-control { resize: vertical; min-height: 95px; }
 
         /* --- FOOTER & NEONOVÉ FIALOVÉ IKONY --- */
         footer {
@@ -492,10 +583,6 @@
                 inset 0 0 14px rgba(255, 255, 255, 0.35);
         }
 
-        .neon-icon-btn:hover svg {
-            transform: scale(1.1);
-        }
-
         .copyright {
             font-family: 'JetBrains Mono', monospace;
             color: #6b7280;
@@ -503,7 +590,6 @@
             margin-top: 22px;
         }
 
-        /* --- SCROLL REVEAL --- */
         .reveal {
             opacity: 0;
             transform: translateY(25px);
@@ -517,23 +603,28 @@
 </head>
 <body>
 
-    <!-- LOADING SCREEN S 3-LISTOU VRTULÍ -->
+    <!-- LOADING SCREEN S OSTROU 3-LISTOU FREESTYLE VRTULÍ -->
     <div id="loader">
         <div class="propeller-box">
             <div class="propeller-ring"></div>
-            <svg class="propeller-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M50 42 C43 24, 41 8, 50 5 C59 8, 57 24, 50 42 Z" fill="url(#bladeGrad)"/>
-                <path d="M57 54 C76 58, 91 66, 89 75 C82 81, 69 70, 57 54 Z" fill="url(#bladeGrad)"/>
-                <path d="M43 54 C31 70, 18 81, 11 75 C9 66, 24 58, 43 54 Z" fill="url(#bladeGrad)"/>
-                <circle cx="50" cy="50" r="10" fill="#0b0c10" stroke="#c084fc" stroke-width="2.5"/>
-                <circle cx="50" cy="50" r="3.5" fill="#ffffff"/>
+            <!-- Ostrá agresivní 3-listá FPV freestyle vrtule v barvách FreeWill -->
+            <svg class="propeller-svg" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                    <linearGradient id="bladeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <linearGradient id="sharpBlade" x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" stop-color="#ffffff"/>
-                        <stop offset="55%" stop-color="#a855f7"/>
-                        <stop offset="100%" stop-color="#6b21a8"/>
+                        <stop offset="45%" stop-color="#a855f7"/>
+                        <stop offset="100%" stop-color="#581c87"/>
                     </linearGradient>
                 </defs>
+                <!-- List 1 (nahoru - ostrý agresivní profil s náběžnou hranou) -->
+                <path d="M56 50 C54 34, 52 16, 61 4 C65 14, 67 32, 64 50 Z" fill="url(#sharpBlade)" stroke="#ffffff" stroke-width="0.8"/>
+                <!-- List 2 (vpravo dolů - otočeno o 120°) -->
+                <path d="M56 50 C54 34, 52 16, 61 4 C65 14, 67 32, 64 50 Z" fill="url(#sharpBlade)" stroke="#ffffff" stroke-width="0.8" transform="rotate(120 60 60)"/>
+                <!-- List 3 (vlevo dolů - otočeno o 240°) -->
+                <path d="M56 50 C54 34, 52 16, 61 4 C65 14, 67 32, 64 50 Z" fill="url(#sharpBlade)" stroke="#ffffff" stroke-width="0.8" transform="rotate(240 60 60)"/>
+                <!-- Středový motorový náboj (Hub) -->
+                <circle cx="60" cy="60" r="11" fill="#09090f" stroke="#c084fc" stroke-width="2.5"/>
+                <circle cx="60" cy="60" r="4.5" fill="#9333ea" stroke="#ffffff" stroke-width="1.2"/>
             </svg>
         </div>
         <div class="osd-status" id="osd-text">ARMING MOTORS...</div>
@@ -553,15 +644,21 @@
         </div>
     </div>
 
-    <!-- HLAVIČKA -->
+    <!-- HLAVIČKA S LOGEM -->
     <header class="container">
+        <div class="brand-logo-wrap">
+            <img src="logo.png" alt="FreeWill FPV Logo" class="brand-logo">
+        </div>
         <div class="tag-pill scramble-hover" data-value="COMMERCIAL FPV CINEMATOGRAPHY">COMMERCIAL FPV CINEMATOGRAPHY</div>
         <h1 class="scramble-text" data-value="FreeWill FPV">FreeWill FPV</h1>
         <p class="subtitle">Dynamické záběry z pohledu první osoby pro firmy, reality, eventy a sociální sítě. Legální komerční provoz s registrací ÚCL.</p>
-        <a href="#kontakt" class="btn">
-            <span>Poptat natáčení</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
+        <div class="hero-actions">
+            <a href="#kontakt" class="btn">
+                <span>Poptat natáčení</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#projekty" class="btn btn-outline">Ukázky práce</a>
+        </div>
     </header>
 
     <!-- BĚŽÍCÍ TELEMETRICKÝ PÁS -->
@@ -570,16 +667,15 @@
             <span>// 4K 60–120 FPS</span>
             <span>// 10-BIT D-LOG</span>
             <span>// CINEWHOOP INDOOR</span>
-            <span>// 5" FREESTYLE</span>
+            <span>// 5" OPENPROP FREESTYLE</span>
             <span>// DJI MINI 5 PRO</span>
             <span>// GYROFLOW STABILIZATION</span>
             <span>// REGISTRACE ÚCL (A1/A3)</span>
             <span>// POJIŠTĚNÍ ODPOVĚDNOSTI</span>
-            <!-- Duplikát pro nekonečnou smyčku -->
             <span>// 4K 60–120 FPS</span>
             <span>// 10-BIT D-LOG</span>
             <span>// CINEWHOOP INDOOR</span>
-            <span>// 5" FREESTYLE</span>
+            <span>// 5" OPENPROP FREESTYLE</span>
             <span>// DJI MINI 5 PRO</span>
             <span>// GYROFLOW STABILIZATION</span>
             <span>// REGISTRACE ÚCL (A1/A3)</span>
@@ -588,23 +684,25 @@
     </div>
 
     <main class="container">
-        <!-- UKÁZKY PRÁCE -->
-        <section class="reveal">
+        <!-- UKÁZKY PRÁCE (VŠECHNY PROJEKTY) -->
+        <section id="projekty" class="reveal">
             <div class="section-header">
                 <h2 class="scramble-hover" data-value="Vybrané projekty">Vybrané projekty</h2>
                 <div class="section-line"></div>
             </div>
             
             <div class="grid">
+                <!-- 1. REALITNÍ KANCELÁŘ (OPRAVENÝ TEXT - STŘÍHANÉ VIDEO) -->
                 <div class="card">
                     <div class="video-wrapper ratio-5-4">
                         <iframe src="https://player.vimeo.com/video/1248355295?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Záběry pro realitní kancelář" allowfullscreen></iframe>
                     </div>
-                    <div class="card-meta">// 01 — REALITY & INTERIÉR</div>
+                    <div class="card-meta">// 01 — REALITY & ARCHITEKTURA</div>
                     <h3>Záběry pro realitní kancelář</h3>
-                    <p>Plynulý průlet nemovitostí na jeden zátah bez střihu. Ideální pro moderní prezentaci realit a komerčních prostor.</p>
+                    <p>Dynamický sestřih interiérových a exteriérových průletů nemovitostí. Spojení plynulých FPV záběrů a precizního střihu pro moderní prezentaci realit.</p>
                 </div>
 
+                <!-- 2. HASIČSKÉ ZÁVODY -->
                 <div class="card">
                     <div class="video-wrapper ratio-9-16">
                         <iframe src="https://player.vimeo.com/video/1249086864?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Hasičské závody SPŠD Plzeň 2026" allowfullscreen></iframe>
@@ -613,10 +711,40 @@
                     <h3>Hasičské závody SPŠD Plzeň 2026</h3>
                     <p>Dynamický vertikální formát (9:16) navržený přímo pro maximální dosah na Instagram Reels a TikToku.</p>
                 </div>
+
+                <!-- 3. CORVETTE C5 — ONE-TAKE BEZ STŘIHU -->
+                <div class="card">
+                    <div class="video-wrapper ratio-9-16">
+                        <iframe src="https://player.vimeo.com/video/1249129265?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Corvette C5 - klip bez střihu" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-meta">// 03 — AUTOMOTIVE ONE-TAKE</div>
+                    <h3>Corvette C5 — Klip bez střihu</h3>
+                    <p>Celistvý vertikální záběr na jeden zátah bez jediného střihu, natočený na míru pro Instagram Reels.</p>
+                </div>
+
+                <!-- 4. CORVETTE C5 — 6S RYCHLÝ STŘIH V LOOPU -->
+                <div class="card">
+                    <div class="video-wrapper ratio-9-16">
+                        <iframe src="https://player.vimeo.com/video/1249129268?loop=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Corvette C5 - Rychlý střih krátký edit" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-meta">// 04 — HIGH-RETENTION 6S LOOP</div>
+                    <h3>Corvette C5 — Rychlý střih (Loop)</h3>
+                    <p>Intenzivní 6sekundový vertikální edit v nekonečné smyčce. Rychlý sled akčních záběrů navržený pro okamžité upoutání a udržení pozornosti.</p>
+                </div>
+
+                <!-- 5. CORVETTE C5 — CINEMATIC SLOW EDIT (DJI MINI 5 PRO) -->
+                <div class="card">
+                    <div class="video-wrapper ratio-9-16">
+                        <iframe src="https://player.vimeo.com/video/1249129266?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Corvette C5 - cinematic slow edit" allowfullscreen></iframe>
+                    </div>
+                    <div class="card-meta">// 05 — DJI MINI 5 PRO DETAIL</div>
+                    <h3>Corvette C5 — Cinematic Slow Edit</h3>
+                    <p>Maximálně stabilizovaný vertikální edit zaměřený na detaily karoserie a linií vozu zblízka. Kompletně natočeno pomocí DJI Mini 5 Pro.</p>
+                </div>
             </div>
         </section>
 
-        <!-- INTERAKTIVNÍ HANGÁR (TECHNIKA A ZÁZEMÍ) -->
+        <!-- INTERAKTIVNÍ HANGÁR -->
         <section class="reveal">
             <div class="section-header">
                 <h2 class="scramble-hover" data-value="Technika a zázemí">Technika a zázemí</h2>
@@ -626,7 +754,6 @@
             <p class="tech-intro">Létám na zakázku jako OSVČ. Dodávám surový materiál (D-Log) pro vaše střihače i kompletně sestříhaná videa včetně stabilizace (Gyroflow), color gradingu a zvukového designu.</p>
 
             <div class="fleet-grid">
-                <!-- Karta 1: Cinewhoop -->
                 <div class="fleet-card">
                     <div class="fleet-icon">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>
@@ -634,13 +761,10 @@
                     <div class="fleet-tag">// INDOOR & PROXIMITY</div>
                     <h3>Cinewhoop</h3>
                     <p>Chráněné vrtule pro bezpečné průlety interiéry, kancelářemi a v těsné blízkosti osob.</p>
-                    <div class="stat-bar-wrap">
-                        <div class="stat-label"><span>PRECISION & SAFETY</span><span>100%</span></div>
-                        <div class="stat-track"><div class="stat-fill" style="width: 100%;"></div></div>
-                    </div>
+                    <div class="stat-label"><span>PRECISION & SAFETY</span><span>100%</span></div>
+                    <div class="stat-track"><div class="stat-fill" style="width: 100%;"></div></div>
                 </div>
 
-                <!-- Karta 2: 5" OpenProp -->
                 <div class="fleet-card">
                     <div class="fleet-icon">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
@@ -648,27 +772,21 @@
                     <div class="fleet-tag">// HIGH-SPEED EXTERIOR</div>
                     <h3>5" OpenProp FPV</h3>
                     <p>Maximální akcelerace a obratnost pro sledování aut, sportovních akcí a dynamické exteriéry.</p>
-                    <div class="stat-bar-wrap">
-                        <div class="stat-label"><span>SPEED & AGILITY</span><span>95%</span></div>
-                        <div class="stat-track"><div class="stat-fill" style="width: 95%;"></div></div>
-                    </div>
+                    <div class="stat-label"><span>SPEED & AGILITY</span><span>95%</span></div>
+                    <div class="stat-track"><div class="stat-fill" style="width: 95%;"></div></div>
                 </div>
 
-                <!-- Karta 3: DJI Mini 5 Pro -->
                 <div class="fleet-card">
                     <div class="fleet-icon">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 7V4M18 7V4"/></svg>
                     </div>
                     <div class="fleet-tag">// CINEMATIC STABILIZED</div>
                     <h3>DJI Mini 5 Pro</h3>
-                    <p>Stabilizované letecké záběry, přehledové pohledy na nemovitosti a precizní kompozice.</p>
-                    <div class="stat-bar-wrap">
-                        <div class="stat-label"><span>4K / 10-BIT D-LOG</span><span>100%</span></div>
-                        <div class="stat-track"><div class="stat-fill" style="width: 100%;"></div></div>
-                    </div>
+                    <p>Stabilizované letecké záběry, detaily zblízka i přehledové pohledy na nemovitosti.</p>
+                    <div class="stat-label"><span>4K / 10-BIT D-LOG</span><span>100%</span></div>
+                    <div class="stat-track"><div class="stat-fill" style="width: 100%;"></div></div>
                 </div>
 
-                <!-- Karta 4: Legislativa & Výstup -->
                 <div class="fleet-card">
                     <div class="fleet-icon">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
@@ -676,25 +794,60 @@
                     <div class="fleet-tag">// LEGAL & POST-PROD</div>
                     <h3>Licence & Grading</h3>
                     <p>Registrace provozovatele UAS (A1/A3), pojištění odpovědnosti, 60–120 fps a Gyroflow.</p>
-                    <div class="stat-bar-wrap">
-                        <div class="stat-label"><span>COMMERCIAL READY</span><span>VERIFIED</span></div>
-                        <div class="stat-track"><div class="stat-fill" style="width: 100%;"></div></div>
-                    </div>
+                    <div class="stat-label"><span>COMMERCIAL READY</span><span>VERIFIED</span></div>
+                    <div class="stat-track"><div class="stat-fill" style="width: 100%;"></div></div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- KONTAKT + NEONOVÉ FIALOVÉ IKONY -->
+    <!-- KONTAKT + POPTÁVKOVÝ FORMULÁŘ + NEONOVÉ IKONY -->
     <footer id="kontakt" class="container reveal">
         <h2 class="scramble-hover" data-value="Pojďme natočit váš projekt" style="margin-bottom: 14px;">Pojďme natočit váš projekt</h2>
-        <p style="color: var(--muted); margin-bottom: 28px; max-width: 520px; margin-inline: auto;">Napište mi svou představu a obratem Vám pošlu nezávaznou kalkulaci.</p>
+        <p style="color: var(--muted); margin-bottom: 30px; max-width: 540px; margin-inline: auto;">Vyplňte rychlou poptávku níže nebo mi rovnou napište e-mail. Obratem Vám pošlu nezávaznou kalkulaci.</p>
         
-        <a href="mailto:dronyziman@gmail.com" class="btn">dronyziman@gmail.com</a>
+        <!-- INTERAKTIVNÍ POPTÁVKOVÝ FORMULÁŘ -->
+        <form class="inquiry-box" id="fpv-form">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="name">Jméno / Firma</label>
+                    <input type="text" id="name" class="form-control" placeholder="Jan Novák" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Váš e-mail</label>
+                    <input type="email" id="email" class="form-control" placeholder="jan@firma.cz" required>
+                </div>
+            </div>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="category">Typ natáčení</label>
+                    <select id="category" class="form-control">
+                        <option value="Reality / Interiér (Cinewhoop)">Reality / Interiér (Cinewhoop)</option>
+                        <option value="Automotive / Auta">Automotive / Auta</option>
+                        <option value="Event / Akce / Závody">Event / Akce / Závody</option>
+                        <option value="Reels / TikTok balíček">Reels / TikTok balíček</option>
+                        <option value="Jiné / Individuální projekt">Jiné / Individuální projekt</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Preferovaný termín</label>
+                    <input type="date" id="date" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="message">Představa o projektu a lokalita</label>
+                <textarea id="message" class="form-control" placeholder="Kde se bude natáčet a jaký výstup si představujete?" required></textarea>
+            </div>
+            <button type="submit" class="btn" style="width: 100%;">
+                <span>Odeslat poptávku</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+        </form>
+
+        <a href="mailto:dronyziman@gmail.com" class="btn btn-outline">dronyziman@gmail.com</a>
         
-        <!-- NEONOVÉ IKONY SOCIÁLNÍCH SÍTÍ A TELEFONU -->
+        <!-- NEONOVÉ FIALOVÉ IKONY -->
         <div class="neon-socials">
-            <!-- Instagram -->
             <a href="https://www.instagram.com/freewill_fpv/" target="_blank" class="neon-icon-btn" aria-label="Instagram" title="Instagram">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -703,7 +856,6 @@
                 </svg>
             </a>
 
-            <!-- YouTube -->
             <a href="https://www.youtube.com/@freewill_FPV" target="_blank" class="neon-icon-btn" aria-label="YouTube" title="YouTube">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
@@ -711,14 +863,12 @@
                 </svg>
             </a>
 
-            <!-- TikTok -->
             <a href="https://www.tiktok.com/@freewill_fpv" target="_blank" class="neon-icon-btn" aria-label="TikTok" title="TikTok">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
                 </svg>
             </a>
 
-            <!-- Telefon -->
             <a href="tel:+420607010207" class="neon-icon-btn" aria-label="Zavolat" title="+420 607 010 207">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
@@ -773,11 +923,33 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('visible');
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.08 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // 4. ŽIVÉ ČÁSTICE NA POZADÍ (CANVAS)
+        // 4. ODESLÁNÍ POPTÁVKY DO E-MAILU KLIENTA (BEZ NUTNOSTI BACKENDU)
+        document.getElementById('fpv-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const category = document.getElementById('category').value;
+            const date = document.getElementById('date').value || 'Dle domluvy';
+            const message = document.getElementById('message').value;
+
+            const subject = encodeURIComponent(`Poptávka FPV natáčení: ${category} (${name})`);
+            const body = encodeURIComponent(
+                `Dobrý den,\n\nmám zájem o FPV natáčení.\n\n` +
+                `Jméno / Firma: ${name}\n` +
+                `E-mail: ${email}\n` +
+                `Typ natáčení: ${category}\n` +
+                `Preferovaný termín: ${date}\n\n` +
+                `Představa a lokalita:\n${message}`
+            );
+
+            window.location.href = `mailto:dronyziman@gmail.com?subject=${subject}&body=${body}`;
+        });
+
+        // 5. ŽIVÉ ČÁSTICE NA POZADÍ
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -817,6 +989,8 @@
                 ctx.fill();
             });
             requestAnimationFrame(animateParticles);
+
+
         }
         animateParticles();
     </script>
