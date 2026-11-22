@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matěj Ziman | FPV Drone Cinematography</title>
+    <title>FreeWill FPV | Matěj Ziman — FPV Drone Cinematography</title>
     <style>
         :root {
-            --bg: #0d0f12;
-            --card: #16191e;
-            --text: #f0f2f5;
-            --muted: #9aa0a6;
-            --accent: #ff4d00;
+            --bg: #0b0c10;
+            --card: #14161d;
+            --text: #f3f4f6;
+            --muted: #9ca3af;
+            --accent: #8b5cf6; /* Fialová akcentní barva FreeWill FPV */
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -28,8 +28,8 @@
             padding: 60px 0 40px;
             text-align: center;
         }
-        h1 { font-size: 2.5rem; letter-spacing: -0.5px; margin-bottom: 10px; }
-        .subtitle { color: var(--muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 25px; }
+        h1 { font-size: 2.6rem; letter-spacing: -0.5px; margin-bottom: 10px; }
+        .subtitle { color: var(--muted); font-size: 1.1rem; max-width: 620px; margin: 0 auto 25px; }
         .btn {
             display: inline-block;
             background: var(--accent);
@@ -38,17 +38,26 @@
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            transition: opacity 0.2s;
+            transition: opacity 0.2s, transform 0.2s;
         }
-        .btn:hover { opacity: 0.9; }
+        .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+        
+        /* Různé poměry stran pro konkrétní videa */
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* Poměr stran 16:9 */
             height: 0;
             overflow: hidden;
             border-radius: 10px;
             background: #000;
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .ratio-5-4 {
+            padding-bottom: 80%; /* Poměr stran 5:4 pro realitní video */
+        }
+        .ratio-9-16 {
+            padding-bottom: 177.78%; /* Vertikální poměr stran 9:16 (Reels/Shorts) */
+            max-width: 380px; /* Omezení šířky, aby vertikální video nebylo obří přes celou obrazovku */
+            margin: 0 auto;
         }
         .video-wrapper iframe {
             position: absolute;
@@ -56,29 +65,34 @@
             width: 100%; height: 100%;
             border: 0;
         }
+
         section { padding: 50px 0; }
         h2 { font-size: 1.8rem; margin-bottom: 25px; border-left: 4px solid var(--accent); padding-left: 15px; }
+        
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
+            gap: 30px;
+            align-items: start;
         }
         .card {
             background: var(--card);
-            padding: 15px;
+            padding: 20px;
             border-radius: 12px;
+            border: 1px solid #1f222e;
         }
-        .card h3 { margin: 15px 0 5px; font-size: 1.2rem; }
+        .card h3 { margin: 18px 0 8px; font-size: 1.25rem; }
         .card p { color: var(--muted); font-size: 0.95rem; }
+        
         .specs {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 12px;
             margin-top: 20px;
         }
         .badge {
             background: var(--card);
-            border: 1px solid #2a2f38;
+            border: 1px solid #262936;
             padding: 8px 16px;
             border-radius: 20px;
             font-size: 0.9rem;
@@ -87,13 +101,13 @@
         footer {
             text-align: center;
             padding: 60px 0;
-            border-top: 1px solid #1f2329;
+            border-top: 1px solid #1f222e;
             margin-top: 40px;
         }
-        .socials { margin: 20px 0; }
+        .socials { margin: 25px 0; }
         .socials a {
             color: var(--text);
-            margin: 0 12px;
+            margin: 0 14px;
             text-decoration: none;
             font-weight: 500;
         }
@@ -103,45 +117,33 @@
 <body>
 
     <header class="container">
-        <h1>Matěj Ziman — FPV Video</h1>
-        <p class="subtitle">Dynamické záběry z pohledu první osoby pro firmy, reality, eventy a reklamu. Legální provoz s registrací ÚCL.</p>
+        <h1>FreeWill FPV</h1>
+        <p class="subtitle">Dynamické FPV záběry pro firmy, reality, eventy a sociální sítě. Legální komerční provoz s registrací ÚCL.</p>
         <a href="#kontakt" class="btn">Poptat natáčení</a>
     </header>
 
-    <!-- HLAVNÍ SHOWREEL -->
     <main class="container">
-        <div class="video-wrapper">
-            <!-- Nahraď ID_TVEHO_SHOWREELU za skutečné ID z Vimeo -->
-            <iframe src="<div style="padding:80% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1248355295?autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Záběry pro realitní kancelář"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>" allowfullscreen></iframe>
-        </div>
-
         <!-- UKÁZKY PRÁCE -->
         <section>
             <h2>Vybrané projekty</h2>
             <div class="grid">
                 
+                <!-- VIDEO 1: Realitní kancelář (poměr stran 5:4) -->
                 <div class="card">
-                    <div class="video-wrapper">
-                        <iframe src="https://vimeo.com/1248355295" allowfullscreen></iframe>
+                    <div class="video-wrapper ratio-5-4">
+                        <iframe src="https://player.vimeo.com/video/1248355295?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Záběry pro realitní kancelář" allowfullscreen></iframe>
                     </div>
-                    <h3>Interiérový průlet (Cinewhoop)</h3>
-                    <p>Plynulý záběr na jeden zátah bez střihu. Chráněné vrtule pro bezpečný let v blízkosti lidí a vybavení.</p>
+                    <h3>Záběry pro realitní kancelář</h3>
+                    <p>Plynulý průlet nemovitostí na jeden zátah bez střihu. Ideální pro moderní prezentaci realit a komerčních prostor.</p>
                 </div>
 
+                <!-- VIDEO 2: Hasičské závody (vertikální 9:16) -->
                 <div class="card">
-                    <div class="video-wrapper">
-                        <iframe src="https://vimeo.com/1248355296" allowfullscreen></iframe>
+                    <div class="video-wrapper ratio-9-16">
+                        <iframe src="https://player.vimeo.com/video/1249086864?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Hasičské závody SPŠD Plzeň 2026" allowfullscreen></iframe>
                     </div>
-                    <h3>Reality a architektura</h3>
-                    <p>Propojení exteriéru a interiéru nemovitosti v jednom dynamickém záběru.</p>
-                </div>
-
-                <div class="card">
-                    <div class="video-wrapper">
-                        <iframe src="https://vimeo.com/1248355297" allowfullscreen></iframe>
-                    </div>
-                    <h3>Akce a eventy</h3>
-                    <p>Rychlé sledování objektů a adrenalinové průlety pro maximální udržení pozornosti na sociálních sítích.</p>
+                    <h3>Hasičské závody SPŠD Plzeň 2026</h3>
+                    <p>Dynamický vertikální formát (9:16) navržený přímo pro maximální dosah na Instagram Reels a TikToku.</p>
                 </div>
 
             </div>
@@ -150,13 +152,13 @@
         <!-- TECHNIKA A LEGISLATIVA -->
         <section>
             <h2>Technika a zázemí</h2>
-            <p style="color: var(--muted);">Létám na zakázku jako OSVČ. Dodávám surový materiál (LOG) pro vaše střihače i kompletně sestříhaná videa včetně color gradingu a zvukového designu.</p>
+            <p style="color: var(--muted);">Létám na zakázku jako OSVČ. Dodávám surový materiál (D-Log) pro vaše střihače i kompletně sestříhaná videa včetně stabilizace (Gyroflow), color gradingu a zvukového designu.</p>
             <div class="specs">
                 <span class="badge">4K / 60–120 fps výstup</span>
-                <span class="badge">10-bit barevná hloubka</span>
-                <span class="badge">Cinewhoop (interiéry) & 5" OpenProp (exteriéry) + DJI Mini 5 pro</span>
+                <span class="badge">10-bit D-Log barvy</span>
+                <span class="badge">Cinewhoop & 5" Freestyle</span>
+                <span class="badge">Formáty 16:9, 4:3 i 9:16 (Reels)</span>
                 <span class="badge">Registrace provozovatele UAS (A1/A3)</span>
-                <span class="badge">Pojištění odpovědnosti</span>
             </div>
         </section>
     </main>
@@ -164,17 +166,18 @@
     <!-- KONTAKT -->
     <footer id="kontakt" class="container">
         <h2>Pojďme natočit váš projekt</h2>
-        <p style="color: var(--muted); margin-bottom: 20px;">Napište mi svou představu a obratem Vám pošlu nezávaznou kalkulaci.</p>
-        <a href="mailto:tvuj@email.cz" class="btn">dronyziman@gmail.com</a>
+        <p style="color: var(--muted); margin-bottom: 20px;">Napište mi svou představu a obratem vám pošlu nezávaznou kalkulaci.</p>
+        <a href="mailto:Dronyziman@gmail.com" class="btn">Dronyziman@gmail.com</a>
         
         <div class="socials">
-            <a href="https://www.instagram.com/freewill_fpv/" target="_blank">Instagram</a>
-            <a href="https://www.youtube.com/@freewill_FPV" target="_blank">YouTube</a>
-            <a href="https://www.tiktok.com/@freewill_fpv" target="_blank">Tiktok</a>
-            <a href="tel:+420 607 010 207">+420 607 010 207</a>
+            <a href="https://instagram.com/" target="_blank">Instagram</a>
+            <a href="https://youtube.com/" target="_blank">YouTube</a>
+            <a href="tel:+420123456789">+420 123 456 789</a>
         </div>
-        <p style="color: #555; font-size: 0.85rem; margin-top: 30px;">© 2026 Matěj Ziman | IČO: 24901547</p>
+        <p style="color: #555; font-size: 0.85rem; margin-top: 30px;">© 2026 FreeWill FPV — Matěj Ziman | IČO: XXXXXXXX</p>
     </footer>
 
+    <!-- Skript Vimea pro správnou komunikaci přehrávačů -->
+    <script src="https://player.vimeo.com/api/player.js"></script>
 </body>
 </html>
