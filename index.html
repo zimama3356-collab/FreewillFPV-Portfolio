@@ -824,9 +824,19 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="date">Preferovaný termín</label>
-                    <input type="date" id="date" class="form-control">
+                    <label for="budget">Předpokládaný rozpočet</label>
+                    <select id="budget" class="form-control">
+                        <option value="Do 3 000 Kč (krátký klip / Reels)">Do 3 000 Kč (krátký klip / Reels)</option>
+                        <option value="3 000 – 7 000 Kč (standardní projekt)" selected>3 000 – 7 000 Kč (standardní projekt)</option>
+                        <option value="7 000 – 15 000 Kč (komplexní produkce)">7 000 – 15 000 Kč (komplexní produkce)</option>
+                        <option value="15 000+ Kč (větší kampaň / více lokací)">15 000+ Kč (větší kampaň / více lokací)</option>
+                        <option value="Zatím nemám představu / Dle nabídky">Zatím nemám představu / Dle nabídky</option>
+                    </select>
                 </div>
+            </div>
+            <div class="form-group">
+                <label for="date">Preferovaný termín</label>
+                <input type="date" id="date" class="form-control">
             </div>
             <div class="form-group">
                 <label for="message">Představa o projektu a lokalita</label>
@@ -927,6 +937,7 @@
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const category = document.getElementById('category').value;
+            const budget = document.getElementById('budget').value;
             const date = document.getElementById('date').value || 'Dle domluvy';
             const message = document.getElementById('message').value;
 
@@ -936,6 +947,7 @@
                 `Jméno / Firma: ${name}\n` +
                 `E-mail: ${email}\n` +
                 `Typ natáčení: ${category}\n` +
+                `Předpokládaný rozpočet: ${budget}\n` +
                 `Preferovaný termín: ${date}\n\n` +
                 `Představa a lokalita:\n${message}`
             );
