@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FreeWill FPV | Matěj Ziman — FPV Drone Cinematography</title>
-    <!-- Favicon z tvého loga -->
     <link rel="icon" type="image/jpeg" href="1795370722896.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,7 +54,7 @@
             pointer-events: none;
         }
 
-        /* --- LOADING SCREEN S OSTROU 3-LISTOU FREESTYLE VRTULÍ --- */
+        /* --- LOADING SCREEN --- */
         #loader {
             position: fixed;
             inset: 0;
@@ -475,6 +474,49 @@
             border-radius: 4px;
         }
 
+        /* --- INTERAKTIVNÍ KALENDÁŘ KONZULTACÍ (CAL.COM) --- */
+        .calendar-container {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 18px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .cal-status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px 14px;
+            margin-bottom: 14px;
+            border-radius: 10px;
+            background: rgba(147, 51, 234, 0.12);
+            border: 1px solid rgba(168, 85, 247, 0.25);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: #e9d5ff;
+        }
+
+        .cal-sync-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 8px #22c55e;
+            margin-right: 8px;
+        }
+
+        #my-cal-inline {
+            width: 100%;
+            min-height: 600px;
+            overflow: auto;
+        }
+
         /* --- FUTURISTICKÝ POPTÁVKOVÝ FORMULÁŘ --- */
         .inquiry-box {
             max-width: 680px;
@@ -648,11 +690,11 @@
         <h1 class="scramble-text" data-value="FreeWill FPV">FreeWill FPV</h1>
         <p class="subtitle">Dynamické záběry z pohledu první osoby pro firmy, reality, eventy a sociální sítě. Legální komerční provoz s registrací ÚCL.</p>
         <div class="hero-actions">
-            <a href="#kontakt" class="btn">
-                <span>Poptat natáčení</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <a href="#konzultace" class="btn">
+                <span>Rezervovat konzultaci</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
             </a>
-            <a href="#projekty" class="btn btn-outline">Ukázky práce</a>
+            <a href="#kontakt" class="btn btn-outline">Nezávazná poptávka</a>
         </div>
     </header>
 
@@ -687,7 +729,6 @@
             </div>
             
             <div class="grid">
-                <!-- 1. REALITNÍ KANCELÁŘ -->
                 <div class="card">
                     <div class="video-wrapper ratio-5-4">
                         <iframe src="https://player.vimeo.com/video/1248355295?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Záběry pro realitní kancelář" allowfullscreen></iframe>
@@ -697,7 +738,6 @@
                     <p>Dynamický sestřih interiérových a exteriérových průletů nemovitostí. Spojení plynulých FPV záběrů a precizního střihu pro moderní prezentaci realit.</p>
                 </div>
 
-                <!-- 2. HASIČSKÉ ZÁVODY -->
                 <div class="card">
                     <div class="video-wrapper ratio-9-16">
                         <iframe src="https://player.vimeo.com/video/1249086864?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Hasičské závody SPŠD Plzeň 2026" allowfullscreen></iframe>
@@ -707,7 +747,6 @@
                     <p>Dynamický vertikální formát (9:16) navržený přímo pro maximální dosah na Instagram Reels a TikToku.</p>
                 </div>
 
-                <!-- 3. CORVETTE C5 — ONE-TAKE BEZ STŘIHU -->
                 <div class="card">
                     <div class="video-wrapper ratio-9-16">
                         <iframe src="https://player.vimeo.com/video/1249129265?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Corvette C5 - klip bez střihu" allowfullscreen></iframe>
@@ -717,7 +756,6 @@
                     <p>Celistvý vertikální záběr na jeden zátah bez jediného střihu, natočený na míru pro Instagram Reels.</p>
                 </div>
 
-                <!-- 4. CORVETTE C5 — 6S RYCHLÝ STŘIH V LOOPU -->
                 <div class="card">
                     <div class="video-wrapper ratio-9-16">
                         <iframe src="https://player.vimeo.com/video/1249129268?loop=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Corvette C5 - Rychlý střih krátký edit" allowfullscreen></iframe>
@@ -727,7 +765,6 @@
                     <p>Intenzivní 6sekundový vertikální edit v nekonečné smyčce. Rychlý sled akčních záběrů navržený pro okamžité upoutání a udržení pozornosti.</p>
                 </div>
 
-                <!-- 5. CORVETTE C5 — CINEMATIC SLOW EDIT (DJI MINI 5 PRO) -->
                 <div class="card">
                     <div class="video-wrapper ratio-9-16">
                         <iframe src="https://player.vimeo.com/video/1249129266?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Corvette C5 - cinematic slow edit" allowfullscreen></iframe>
@@ -794,12 +831,29 @@
                 </div>
             </div>
         </section>
+
+        <!-- INTERAKTIVNÍ KALENDÁŘ PRO KONZULTACI PRÁCE -->
+        <section id="konzultace" class="reveal">
+            <div class="section-header">
+                <h2 class="scramble-hover" data-value="Konzultace práce">Konzultace práce</h2>
+                <div class="section-line"></div>
+            </div>
+            <p class="tech-intro">Vyberte si volný termín pro konzultaci vašeho projektu — probereme představu o záběrech, vhodnou techniku, lokalitu i předběžný rozpočet. Kalendář ukazuje pouze moje aktuálně volné časy.</p>
+            
+            <div class="calendar-container">
+                <div class="cal-status-bar">
+                    <div><span class="cal-sync-dot"></span>LIVE GOOGLE CALENDAR SYNC</div>
+                    <div>TYP: KONZULTACE PROJEKTU</div>
+                </div>
+                <div id="my-cal-inline"></div>
+            </div>
+        </section>
     </main>
 
     <!-- KONTAKT + POPTÁVKOVÝ FORMULÁŘ + NEONOVÉ IKONY -->
     <footer id="kontakt" class="container reveal">
         <h2 class="scramble-hover" data-value="Pojďme natočit váš projekt" style="margin-bottom: 14px;">Pojďme natočit váš projekt</h2>
-        <p style="color: var(--muted); margin-bottom: 30px; max-width: 540px; margin-inline: auto;">Vyplňte rychlou poptávku níže nebo mi rovnou napište e-mail. Obratem Vám pošlu nezávaznou kalkulaci.</p>
+        <p style="color: var(--muted); margin-bottom: 30px; max-width: 540px; margin-inline: auto;">Preferujete písemnou poptávku? Vyplňte krátký formulář níže a obratem Vám pošlu nezávaznou kalkulaci.</p>
         
         <form class="inquiry-box" id="fpv-form">
             <div class="form-grid">
@@ -850,7 +904,6 @@
 
         <a href="mailto:dronyziman@gmail.com" class="btn btn-outline">dronyziman@gmail.com</a>
         
-        <!-- NEONOVÉ FIALOVÉ IKONY -->
         <div class="neon-socials">
             <a href="https://www.instagram.com/freewill_fpv/" target="_blank" class="neon-icon-btn" aria-label="Instagram" title="Instagram">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -884,6 +937,30 @@
     </footer>
 
     <script src="https://player.vimeo.com/api/player.js"></script>
+    
+    <!-- SKRIPT PRO INTERAKTIVNÍ KALENDÁŘ CAL.COM (NAPOJENO NA TVŮJ ÚČET) -->
+    <script type="text/javascript">
+      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+      Cal("init", "konzultace", {origin:"https://cal.com"});
+
+      Cal.ns.konzultace("inline", {
+        elementOrSelector: "#my-cal-inline",
+        config: {"layout":"month_view", "theme":"dark"},
+        calLink: "matej-ziman-ye1mcq"
+      });
+
+      Cal.ns.konzultace("ui", {
+        "theme": "dark",
+        "cssVarsPerTheme": {
+          "dark": {
+            "cal-brand": "#9333ea"
+          }
+        },
+        "hideEventTypeDetails": false,
+        "layout": "month_view"
+      });
+    </script>
+
     <script>
         // 1. LOADING SCREEN
         window.addEventListener('load', () => {
