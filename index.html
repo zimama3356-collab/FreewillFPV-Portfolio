@@ -123,7 +123,7 @@
             width: 0%;
             background: linear-gradient(90deg, var(--accent), #fff);
             box-shadow: 0 0 12px var(--accent-neon);
-            animation: loadProgress 1.2s ease-out forwards;
+            animation: loadProgress 1.15s ease-out forwards;
         }
 
         @keyframes spinProp { 100% { transform: rotate(360deg); } }
@@ -132,97 +132,144 @@
 
         /* --- LAYOUT & KONTEJNER --- */
         .container {
-            max-width: 1180px;
+            max-width: 1200px;
             width: 100%;
             margin: 0 auto;
             padding: 0 22px;
         }
 
-        /* --- STICKY NAVIGACE (PŘEPÍNÁNÍ STRÁNEK) --- */
+        /* --- ODDĚLENÁ NAVIGACE PRO PC A TELEFON + PŘEPÍNAČ CZ / EN --- */
         .top-nav-wrap {
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(5, 5, 8, 0.86);
+            background: rgba(5, 5, 8, 0.88);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
             border-bottom: 1px solid rgba(168, 85, 247, 0.25);
         }
 
-        .top-nav {
-            display: flex;
-            justify-content: space-between;
+        /* DESKTOP ROZHRANÍ (3 sloupce: logo vlevo, 4 karty dokonale na střed, jazyk vpravo) */
+        .desktop-nav {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
             align-items: center;
             padding: 12px 0;
             gap: 16px;
         }
 
         .nav-brand {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 12px;
-            text-decoration: none;
+            gap: 11px;
             color: #fff;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.08rem;
             cursor: pointer;
+            justify-self: start;
         }
 
         .nav-brand img {
-            width: 38px;
-            height: 38px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             border: 1.5px solid var(--accent-neon);
             box-shadow: 0 0 14px rgba(168, 85, 247, 0.5);
         }
 
-        .nav-tabs {
+        .nav-tabs-center {
             display: flex;
             align-items: center;
-            gap: 6px;
-            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
         }
 
         .nav-tab {
-            background: transparent;
-            border: 1px solid transparent;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(168, 85, 247, 0.16);
             color: var(--muted);
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            letter-spacing: 0.6px;
             padding: 8px 14px;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.22s ease;
+            white-space: nowrap;
         }
 
         .nav-tab:hover {
             color: #fff;
             background: rgba(147, 51, 234, 0.14);
+            border-color: rgba(168, 85, 247, 0.4);
         }
 
         .nav-tab.active {
             color: #fff;
-            background: rgba(147, 51, 234, 0.24);
+            background: rgba(147, 51, 234, 0.26);
             border-color: var(--accent-neon);
             box-shadow: 0 0 16px rgba(168, 85, 247, 0.35);
         }
 
-        @media (max-width: 760px) {
-            .top-nav {
-                flex-direction: column;
-                padding: 10px 0;
-                gap: 10px;
-            }
-            .nav-tabs {
-                width: 100%;
-                justify-content: center;
-            }
-            .nav-tab {
-                font-size: 0.72rem;
-                padding: 7px 10px;
-            }
+        .lang-switch-wrap {
+            justify-self: end;
+            display: inline-flex;
+            background: rgba(16, 16, 26, 0.9);
+            border: 1px solid rgba(168, 85, 247, 0.35);
+            border-radius: 8px;
+            padding: 3px;
+            gap: 3px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--muted);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.74rem;
+            font-weight: 700;
+            padding: 5px 9px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--accent);
+            color: #fff;
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+        }
+
+        /* MOBILNÍ ROZHRANÍ (samostatné rozložení pro telefony <= 880px) */
+        .mobile-nav {
+            display: none;
+            padding: 10px 0 12px;
+        }
+
+        .mobile-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .mobile-grid-tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 7px;
+        }
+
+        .mobile-grid-tabs .nav-tab {
+            width: 100%;
+            text-align: center;
+            padding: 8px 6px;
+            font-size: 0.73rem;
+        }
+
+        @media (max-width: 880px) {
+            .desktop-nav { display: none; }
+            .mobile-nav { display: block; }
         }
 
         /* --- PŘEPÍNAČ STRÁNEK (VIEWS) --- */
@@ -230,19 +277,17 @@
 
         .page-view {
             display: none;
-            animation: pageFadeIn 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: pageFadeIn 0.36s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .page-view.active {
-            display: block;
-        }
+        .page-view.active { display: block; }
 
         @keyframes pageFadeIn {
             from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- KOMPAKTNÍ HERO V ÚVODNÍ ZÁLOŽCE --- */
+        /* --- HERO V ÚVODNÍ ZÁLOŽCE --- */
         .hero-compact {
             padding: 36px 0 28px;
             text-align: center;
@@ -299,7 +344,7 @@
         .subtitle {
             color: var(--muted);
             font-size: 1.05rem;
-            max-width: 640px;
+            max-width: 650px;
             margin: 0 auto 24px;
         }
 
@@ -452,7 +497,7 @@
             .featured-card { grid-template-columns: 1fr; padding: 18px; gap: 16px; }
         }
 
-        /* --- MŘÍŽKA VERTIKÁLNÍCH REELS (9:16) --- */
+        /* --- VYCENTROVANÁ MŘÍŽKA VERTIKÁLNÍCH REELS (9:16) --- */
         .reels-subhead {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.8rem;
@@ -463,14 +508,24 @@
         }
 
         .reels-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            align-items: stretch;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 22px;
         }
 
-        @media (max-width: 1050px) { .reels-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 580px) { .reels-grid { grid-template-columns: 1fr; } }
+        .reels-grid .card {
+            flex: 0 1 320px;
+            max-width: 350px;
+            width: 100%;
+        }
+
+        @media (max-width: 720px) {
+            .reels-grid .card {
+                flex: 1 1 100%;
+                max-width: 440px;
+            }
+        }
 
         .card {
             display: flex;
@@ -525,7 +580,7 @@
             color: #d1d5db;
             font-size: 1.02rem;
             margin-bottom: 26px;
-            max-width: 780px;
+            max-width: 800px;
         }
 
         .fleet-grid {
@@ -728,7 +783,6 @@
 
         textarea.form-control { resize: vertical; min-height: 90px; }
 
-        /* Přepínač Zastupuji firmu */
         .company-toggle-box {
             background: rgba(147, 51, 234, 0.08);
             border: 1px solid rgba(168, 85, 247, 0.25);
@@ -765,7 +819,6 @@
 
         .company-fields.open { display: block; }
 
-        /* Přepínač kanálu odpovědi (WhatsApp vs E-mail) */
         .channel-switch {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -773,9 +826,7 @@
             margin-bottom: 14px;
         }
 
-        .channel-option {
-            position: relative;
-        }
+        .channel-option { position: relative; }
 
         .channel-option input {
             position: absolute;
@@ -813,22 +864,11 @@
             box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
         }
 
-        .terms-check {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 18px;
-            font-size: 0.85rem;
+        .form-footnote {
+            margin-top: 12px;
+            text-align: center;
+            font-size: 0.8rem;
             color: var(--muted);
-        }
-
-        .terms-check input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            margin-top: 2px;
-            accent-color: var(--accent);
-            cursor: pointer;
-            flex-shrink: 0;
         }
 
         .terms-link {
@@ -843,7 +883,7 @@
 
         .terms-link:hover { color: #fff; }
 
-        /* --- STRÁNKA RECENZE & SMLUVNÍ PODMÍNKY --- */
+        /* --- STRÁNKA RECENZE & SMLUVNÍ PODMÍNKY + POTVRZENÍ VOP --- */
         .google-review-banner {
             display: flex;
             justify-content: space-between;
@@ -901,6 +941,7 @@
             color: #d1d5db;
             font-size: 0.94rem;
             line-height: 1.7;
+            margin-bottom: 28px;
         }
 
         .vop-full-box h4 {
@@ -914,6 +955,45 @@
         .vop-full-box h4:first-child { margin-top: 0; }
         .vop-full-box p { margin-bottom: 8px; }
         .vop-full-box strong { color: #fff; }
+
+        /* Samostatný box pro odsouhlasení VOP po domluvě zakázky */
+        .vop-accept-box {
+            background: linear-gradient(145deg, rgba(24, 18, 38, 0.95), rgba(14, 14, 22, 0.95));
+            border: 1px solid var(--accent-neon);
+            border-radius: 16px;
+            padding: 26px;
+            box-shadow: 0 12px 35px rgba(147, 51, 234, 0.25);
+        }
+
+        .vop-accept-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .vop-accept-box p {
+            color: var(--muted);
+            font-size: 0.92rem;
+            margin-bottom: 18px;
+        }
+
+        .terms-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 18px;
+            font-size: 0.92rem;
+            color: #fff;
+        }
+
+        .terms-check input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-top: 3px;
+            accent-color: var(--accent);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
 
         /* --- FOOTER & NEONOVÉ IKONY --- */
         footer {
@@ -1001,19 +1081,48 @@
     <div class="bg-grid"></div>
     <canvas id="bg-canvas"></canvas>
 
-    <!-- HORNÍ NAVIGAČNÍ LIŠTA (PŘEPÍNÁ STRÁNKY) -->
+    <!-- HORNÍ NAVIGAČNÍ LIŠTA (SAMOSTATNÉ ROZLOŽENÍ PRO PC A TELEFON) -->
     <div class="top-nav-wrap">
-        <div class="container top-nav">
-            <div class="nav-brand" onclick="switchPage('projekty')">
-                <img src="1795370722896.jpg" alt="FreeWill FPV">
-                <span>FreeWill FPV</span>
+        <div class="container">
+            <!-- DESKTOP ROZHRANÍ -->
+            <div class="desktop-nav">
+                <div class="nav-brand" onclick="switchPage('projekty')">
+                    <img src="1795370722896.jpg" alt="FreeWill FPV">
+                    <span>FreeWill FPV</span>
+                </div>
+
+                <nav class="nav-tabs-center" aria-label="Hlavní navigace PC">
+                    <button class="nav-tab active" data-target="projekty" onclick="switchPage('projekty')" data-i18n="nav_projects">01 // Projekty</button>
+                    <button class="nav-tab" data-target="technika" onclick="switchPage('technika')" data-i18n="nav_gear">02 // Technika</button>
+                    <button class="nav-tab" data-target="konzultace" onclick="switchPage('konzultace')" data-i18n="nav_consult">03 // Konzultace & Poptávka</button>
+                    <button class="nav-tab" data-target="recenze" onclick="switchPage('recenze')" data-i18n="nav_reviews">04 // Recenze & VOP</button>
+                </nav>
+
+                <div class="lang-switch-wrap">
+                    <button class="lang-btn active" data-lang="cs" onclick="setLanguage('cs')">CZ</button>
+                    <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+                </div>
             </div>
-            <nav class="nav-tabs" aria-label="Hlavní navigace">
-                <button class="nav-tab active" data-target="projekty" onclick="switchPage('projekty')">01 // Projekty</button>
-                <button class="nav-tab" data-target="technika" onclick="switchPage('technika')">02 // Technika</button>
-                <button class="nav-tab" data-target="konzultace" onclick="switchPage('konzultace')">03 // Konzultace & Poptávka</button>
-                <button class="nav-tab" data-target="recenze" onclick="switchPage('recenze')">04 // Recenze & VOP</button>
-            </nav>
+
+            <!-- MOBILNÍ ROZHRANÍ -->
+            <div class="mobile-nav">
+                <div class="mobile-top-row">
+                    <div class="nav-brand" onclick="switchPage('projekty')">
+                        <img src="1795370722896.jpg" alt="FreeWill FPV">
+                        <span>FreeWill FPV</span>
+                    </div>
+                    <div class="lang-switch-wrap">
+                        <button class="lang-btn active" data-lang="cs" onclick="setLanguage('cs')">CZ</button>
+                        <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+                    </div>
+                </div>
+                <nav class="mobile-grid-tabs" aria-label="Mobilní navigace">
+                    <button class="nav-tab active" data-target="projekty" onclick="switchPage('projekty')" data-i18n="nav_projects">01 // Projekty</button>
+                    <button class="nav-tab" data-target="technika" onclick="switchPage('technika')" data-i18n="nav_gear">02 // Technika</button>
+                    <button class="nav-tab" data-target="konzultace" onclick="switchPage('konzultace')" data-i18n="nav_consult">03 // Konzultace</button>
+                    <button class="nav-tab" data-target="recenze" onclick="switchPage('recenze')" data-i18n="nav_reviews">04 // Recenze & VOP</button>
+                </nav>
+            </div>
         </div>
     </div>
 
@@ -1028,13 +1137,13 @@
                 </div>
                 <div class="tag-pill">COMMERCIAL FPV CINEMATOGRAPHY</div>
                 <h1 class="scramble-text" data-value="FreeWill FPV">FreeWill FPV</h1>
-                <p class="subtitle">Dynamické záběry z pohledu první osoby pro firmy, reality, eventy a sociální sítě. Legální komerční provoz s registrací ÚCL (A1/A3) a pojištěním.</p>
+                <p class="subtitle" data-i18n="hero_subtitle">Dynamické záběry z pohledu první osoby pro firmy, reality, eventy a sociální sítě. Legální komerční provoz s registrací ÚCL (A1/A3) a pojištěním.</p>
                 <div class="hero-actions">
                     <button class="btn" onclick="switchPage('konzultace')">
-                        <span>Konzultace & Poptávka</span>
+                        <span data-i18n="hero_cta_1">Konzultace & Poptávka</span>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </button>
-                    <button class="btn btn-outline" onclick="switchPage('technika')">Technika & Zázemí</button>
+                    <button class="btn btn-outline" onclick="switchPage('technika')" data-i18n="hero_cta_2">Technika & Zázemí</button>
                 </div>
             </div>
 
@@ -1046,22 +1155,22 @@
                     <span>// 5" OPENPROP FREESTYLE</span>
                     <span>// DJI MINI 5 PRO</span>
                     <span>// GYROFLOW STABILIZATION</span>
-                    <span>// REGISTRACE ÚCL (A1/A3)</span>
-                    <span>// POJIŠTĚNÍ ODPOVĚDNOSTI</span>
+                    <span>// UAS A1/A3 LICENSED</span>
+                    <span>// COMMERCIAL INSURANCE</span>
                     <span>// 4K 60–120 FPS</span>
                     <span>// 10-BIT D-LOG</span>
                     <span>// CINEWHOOP INDOOR</span>
                     <span>// 5" OPENPROP FREESTYLE</span>
                     <span>// DJI MINI 5 PRO</span>
                     <span>// GYROFLOW STABILIZATION</span>
-                    <span>// REGISTRACE ÚCL (A1/A3)</span>
-                    <span>// POJIŠTĚNÍ ODPOVĚDNOSTI</span>
+                    <span>// UAS A1/A3 LICENSED</span>
+                    <span>// COMMERCIAL INSURANCE</span>
                 </div>
             </div>
 
             <section class="container section-block" style="padding-top: 10px;">
                 <div class="section-header">
-                    <h2>Vybrané projekty</h2>
+                    <h2 data-i18n="proj_heading">Vybrané projekty</h2>
                     <div class="section-line"></div>
                 </div>
 
@@ -1071,9 +1180,9 @@
                         <iframe src="https://player.vimeo.com/video/1248355295?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Záběry pro realitní kancelář" allowfullscreen></iframe>
                     </div>
                     <div class="featured-info">
-                        <div class="card-meta">// 01 — REALITY & ARCHITEKTURA (FEATURED)</div>
-                        <h3>Záběry pro realitní kancelář</h3>
-                        <p>Dynamický sestřih interiérových a exteriérových průletů nemovitostí. Spojení plynulých FPV záběrů s chráněnými vrtulemi (Cinewhoop) a precizního střihu pro moderní prezentaci realit.</p>
+                        <div class="card-meta" data-i18n="p1_meta">// 01 — REALITY & ARCHITEKTURA (FEATURED)</div>
+                        <h3 data-i18n="p1_title">Záběry pro realitní kancelář</h3>
+                        <p data-i18n="p1_desc">Dynamický sestřih interiérových a exteriérových průletů nemovitostí. Spojení plynulých FPV záběrů s chráněnými vrtulemi (Cinewhoop) a precizního střihu pro moderní prezentaci realit.</p>
                         <div class="featured-tags">
                             <span class="mini-tag">CINEWHOOP INDOOR</span>
                             <span class="mini-tag">4K / 10-BIT</span>
@@ -1082,44 +1191,54 @@
                     </div>
                 </div>
 
-                <!-- SYMETRICKÁ ŘADA VERTIKÁLNÍCH REELS (9:16) -->
+                <!-- VYCENTROVANÁ ŘADA VERTIKÁLNÍCH REELS (9:16) -->
                 <div class="reels-subhead">// VERTICAL REELS & SHORTS (9:16)</div>
 
                 <div class="reels-grid">
+                    <!-- NOVÉ VIDEO: KOLEŠOVICE - STŘEDOVĚK 2026 -->
+                    <div class="card">
+                        <div class="video-wrapper ratio-9-16">
+                            <iframe src="https://player.vimeo.com/video/1249439525?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Kolešovice - Středověk 2026" allowfullscreen></iframe>
+                        </div>
+                        <div class="card-meta" data-i18n="p2_meta">// 02 — EVENT & REPORTÁŽ</div>
+                        <h3 data-i18n="p2_title">Kolešovice — Středověk 2026</h3>
+                        <p data-i18n="p2_desc">Atmosférický sestřih ze středověké akce v domově seniorů v Kolešovicích, zachycující živé dění z jedinečné perspektivy.</p>
+                    </div>
+
                     <div class="card">
                         <div class="video-wrapper ratio-9-16">
                             <iframe src="https://player.vimeo.com/video/1249086864?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Hasičské závody SPŠD Plzeň 2026" allowfullscreen></iframe>
                         </div>
-                        <div class="card-meta">// 02 — EVENT & ACTION</div>
-                        <h3>Hasičské závody SPŠD Plzeň 2026</h3>
-                        <p>Dynamický vertikální formát navržený přímo pro maximální dosah na Instagram Reels a TikToku.</p>
+                        <div class="card-meta" data-i18n="p3_meta">// 03 — EVENT & ACTION</div>
+                        <h3 data-i18n="p3_title">Hasičské závody SPŠD Plzeň 2026</h3>
+                        <p data-i18n="p3_desc">Dynamický vertikální formát navržený přímo pro maximální dosah na Instagram Reels a TikToku.</p>
                     </div>
 
                     <div class="card">
                         <div class="video-wrapper ratio-9-16">
                             <iframe src="https://player.vimeo.com/video/1249129265?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Corvette C5 - klip bez střihu" allowfullscreen></iframe>
                         </div>
-                        <div class="card-meta">// 03 — AUTOMOTIVE ONE-TAKE</div>
-                        <h3>Corvette C5 — Klip bez střihu</h3>
-                        <p>Celistvý vertikální záběr na jeden zátah bez jediného střihu, natočený na míru pro Instagram Reels.</p>
+                        <div class="card-meta" data-i18n="p4_meta">// 04 — AUTOMOTIVE ONE-TAKE</div>
+                        <h3 data-i18n="p4_title">Corvette C5 — Klip bez střihu</h3>
+                        <p data-i18n="p4_desc">Celistvý vertikální záběr na jeden zátah bez jediného střihu, natočený na míru pro Instagram Reels.</p>
                     </div>
 
                     <div class="card">
                         <div class="video-wrapper ratio-9-16">
                             <iframe src="https://player.vimeo.com/video/1249129268?loop=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Corvette C5 - Rychlý střih krátký edit" allowfullscreen></iframe>
                         </div>
-                        <div class="card-meta">// 04 — HIGH-RETENTION 6S LOOP</div>
-                        <h3>Corvette C5 — Rychlý střih (Loop)</h3>
-                        <p>Intenzivní 6sekundový edit v nekonečné smyčce. Rychlý sled akčních záběrů pro okamžité udržení pozornosti.</p>
+                        <div class="card-meta" data-i18n="p5_meta">// 05 — HIGH-RETENTION 6S LOOP</div>
+                        <h3 data-i18n="p5_title">Corvette C5 — Rychlý střih (Loop)</h3>
+                        <p data-i18n="p5_desc">Intenzivní 6sekundový edit v nekonečné smyčce. Rychlý sled akčních záběrů pro okamžité udržení pozornosti.</p>
                     </div>
 
                     <div class="card">
                         <div class="video-wrapper ratio-9-16">
                             <iframe src="https://player.vimeo.com/video/1249129266?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Corvette C5 - cinematic slow edit" allowfullscreen></iframe>
                         </div>
-                        <div class="card-meta">// 05 — DJI MINI 5 PRO DETAIL</div>
-                        <h3>Corvette C5 — Cinematic Slow Edit</h3>
-                        <p>Maximálně stabilizovaný edit zaměřený na detaily karoserie a linií vozu zblízka pomocí DJI Mini 5 Pro.</p>
+                        <div class="card-meta" data-i18n="p6_meta">// 06 — DJI MINI 5 PRO DETAIL</div>
+                        <h3 data-i18n="p6_title">Corvette C5 — Cinematic Slow Edit</h3>
+                        <p data-i18n="p6_desc">Maximálně stabilizovaný edit zaměřený na detaily karoserie a linií vozu zblízka pomocí DJI Mini 5 Pro.</p>
                     </div>
                 </div>
             </section>
@@ -1131,11 +1250,11 @@
         <div id="page-technika" class="page-view">
             <section class="container section-block">
                 <div class="section-header">
-                    <h2>Technika a zázemí</h2>
+                    <h2 data-i18n="gear_heading">Technika a zázemí</h2>
                     <div class="section-line"></div>
                 </div>
 
-                <p class="tech-intro">Létám na zakázku jako OSVČ (Matěj Ziman, IČO: 24901547). Dodávám surový materiál (D-Log) pro vaše střihače i kompletně sestříhaná videa vyrobená přímo na míru podle vašich poznámek — včetně stabilizace (Gyroflow), color gradingu a zvukového designu.</p>
+                <p class="tech-intro" data-i18n="gear_intro">Létám na zakázku jako OSVČ (Matěj Ziman, IČO: 24901547). Dodávám surový materiál (D-Log) pro Vaše střihače i kompletně sestříhaná videa vyrobená přímo na míru podle Vašich poznámek — včetně stabilizace (Gyroflow), color gradingu a zvukového designu.</p>
 
                 <div class="fleet-grid">
                     <div class="fleet-card">
@@ -1144,7 +1263,7 @@
                         </div>
                         <div class="fleet-tag">// INDOOR & PROXIMITY</div>
                         <h3>Cinewhoop</h3>
-                        <p>Chráněné vrtule pro bezpečné průlety interiéry, kancelářemi, provozovnami a v těsné blízkosti osob.</p>
+                        <p data-i18n="g1_desc">Chráněné vrtule pro bezpečné průlety interiéry, kancelářemi, provozovnami a v těsné blízkosti osob.</p>
                         <div class="stat-label"><span>PRECISION & SAFETY</span><span>100%</span></div>
                         <div class="stat-track"><div class="stat-fill" style="width: 100%;"></div></div>
                     </div>
@@ -1155,7 +1274,7 @@
                         </div>
                         <div class="fleet-tag">// HIGH-SPEED EXTERIOR</div>
                         <h3>5" OpenProp FPV</h3>
-                        <p>Maximální akcelerace a obratnost pro sledování aut, sportovních akcí a dynamické exteriéry.</p>
+                        <p data-i18n="g2_desc">Maximální akcelerace a obratnost pro sledování aut, sportovních akcí a dynamické exteriéry.</p>
                         <div class="stat-label"><span>SPEED & AGILITY</span><span>95%</span></div>
                         <div class="stat-track"><div class="stat-fill" style="width: 95%;"></div></div>
                     </div>
@@ -1166,7 +1285,7 @@
                         </div>
                         <div class="fleet-tag">// CINEMATIC STABILIZED</div>
                         <h3>DJI Mini 5 Pro</h3>
-                        <p>Stabilizované letecké záběry, detaily zblízka i přehledové pohledy na nemovitosti a areály.</p>
+                        <p data-i18n="g3_desc">Stabilizované letecké záběry, detaily zblízka i přehledové pohledy na nemovitosti a areály.</p>
                         <div class="stat-label"><span>4K / 10-BIT D-LOG</span><span>100%</span></div>
                         <div class="stat-track"><div class="stat-fill" style="width: 100%;"></div></div>
                     </div>
@@ -1176,15 +1295,15 @@
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
                         </div>
                         <div class="fleet-tag">// LEGAL & POST-PROD</div>
-                        <h3>Licence & Grading</h3>
-                        <p>Registrace provozovatele UAS (A1/A3), pojištění odpovědnosti, 60–120 fps a Gyroflow stabilizace.</p>
+                        <h3 data-i18n="g4_title">Licence & Grading</h3>
+                        <p data-i18n="g4_desc">Registrace provozovatele UAS (A1/A3), pojištění odpovědnosti, 60–120 fps a Gyroflow stabilizace.</p>
                         <div class="stat-label"><span>COMMERCIAL READY</span><span>VERIFIED</span></div>
                         <div class="stat-track"><div class="stat-fill" style="width: 100%;"></div></div>
                     </div>
                 </div>
 
                 <div style="text-align: center; margin-top: 20px;">
-                    <button class="btn" onclick="switchPage('konzultace')">Domluvit natáčení s touto technikou</button>
+                    <button class="btn" onclick="switchPage('konzultace')" data-i18n="gear_cta">Domluvit natáčení s touto technikou</button>
                 </div>
             </section>
         </div>
@@ -1195,131 +1314,131 @@
         <div id="page-konzultace" class="page-view">
             <section class="container section-block">
                 <div class="section-header">
-                    <h2>Konzultace a poptávka</h2>
+                    <h2 data-i18n="consult_heading">Konzultace a poptávka</h2>
                     <div class="section-line"></div>
                 </div>
-                <p class="tech-intro">Vyberte si způsob, který vám vyhovuje nejvíce — buď si rovnou zarezervujte čas na hovor v kalendáři, nebo mi napište zprávu přes WhatsApp či e-mail.</p>
+                <p class="tech-intro" data-i18n="consult_intro">Vyberte si způsob, který Vám vyhovuje nejvíce — buď si rovnou zarezervujte čas na hovor v kalendáři, nebo mi napište zprávu přes WhatsApp či e-mail.</p>
 
                 <div class="consult-split">
                     <!-- LEVO: HOVOR / ONLINE KONZULTACE PŘES KALENDÁŘ -->
                     <div class="panel-box">
-                        <div class="panel-badge">// MOŽNOST 01 — HOVOR & KALENDÁŘ</div>
-                        <h3>Rezervace termínu konzultace</h3>
-                        <p class="panel-desc">Vyberte si volný den a čas pro telefonát nebo online schůzku. Kalendář je napojen na můj Google Kalendář a ukazuje reálné volné sloty.</p>
+                        <div class="panel-badge" data-i18n="cal_badge">// MOŽNOST 01 — HOVOR & KALENDÁŘ</div>
+                        <h3 data-i18n="cal_title">Rezervace termínu konzultace</h3>
+                        <p class="panel-desc" data-i18n="cal_desc">Vyberte si volný den a čas pro telefonát nebo online schůzku. Kalendář je napojen na můj Google Kalendář a ukazuje reálné volné sloty.</p>
                         
                         <div class="cal-status-bar">
                             <div><span class="cal-sync-dot"></span>GOOGLE CALENDAR SYNC</div>
-                            <div>HOVOR / ONLINE</div>
+                            <div data-i18n="cal_type">HOVOR / ONLINE</div>
                         </div>
                         
                         <div id="my-cal-inline"></div>
 
                         <div class="quick-call-row">
-                            <span>Potřebujete to probrat hned?</span>
+                            <span data-i18n="quick_call_text">Potřebujete to probrat hned?</span>
                             <a href="tel:+420607010207" class="btn btn-outline" style="padding: 9px 16px; font-size: 0.88rem;">+420 607 010 207</a>
                         </div>
                     </div>
 
                     <!-- PRAVO: PÍSEMNÁ KONZULTACE / POPTÁVKA (WHATSAPP NEBO E-MAIL) -->
                     <div class="panel-box">
-                        <div class="panel-badge">// MOŽNOST 02 — PÍSEMNĚ (WHATSAPP / E-MAIL)</div>
-                        <h3>Písemná konzultace & kalkulace</h3>
-                        <p class="panel-desc">Popište svou představu, lokalitu a rozpočet. Zprávu můžete odeslat rovnou na můj <strong>WhatsApp</strong> nebo klasicky <strong>e-mailem</strong>.</p>
+                        <div class="panel-badge" data-i18n="form_badge">// MOŽNOST 02 — PÍSEMNĚ (WHATSAPP / E-MAIL)</div>
+                        <h3 data-i18n="form_title">Písemná konzultace & kalkulace</h3>
+                        <p class="panel-desc" data-i18n="form_desc">Popište svou představu, lokalitu a rozpočet. Zprávu můžete odeslat rovnou na můj <strong>WhatsApp</strong> nebo klasicky <strong>e-mailem</strong>.</p>
 
                         <form id="fpv-form">
                             <!-- ZASTUPUJI FIRMU -->
                             <div class="company-toggle-box">
                                 <label class="check-row" for="is-company">
                                     <input type="checkbox" id="is-company" onchange="toggleCompanyFields()">
-                                    <span>Zastupuji firmu / organizaci</span>
+                                    <span data-i18n="f_is_company">Zastupuji firmu / organizaci</span>
                                 </label>
                                 <div class="company-fields" id="company-fields">
                                     <div class="form-grid" style="margin-bottom: 0;">
                                         <div class="form-group" style="margin-bottom: 0;">
-                                            <label for="company-name">Název firmy *</label>
+                                            <label for="company-name" data-i18n="f_company_name">Název firmy *</label>
                                             <input type="text" id="company-name" class="form-control" placeholder="Název společnosti s.r.o.">
                                         </div>
                                         <div class="form-group" style="margin-bottom: 0;">
-                                            <label for="company-ico">IČO <span class="label-opt">(volitelné)</span></label>
+                                            <label for="company-ico"><span data-i18n="f_company_ico">IČO</span> <span class="label-opt" data-i18n="opt_tag">(volitelné)</span></label>
                                             <input type="text" id="company-ico" class="form-control" placeholder="12345678">
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- JMÉNO (OPTIONAL) -->
+                            <!-- JMÉNO (POVINNÉ KDYŽ NENÍ FIRMA, VOLITELNÉ KDYŽ JE FIRMA) -->
                             <div class="form-group">
-                                <label for="name">Vaše jméno <span class="label-opt">(volitelné)</span></label>
-                                <input type="text" id="name" class="form-control" placeholder="Jan Novák">
+                                <label for="name" id="name-label">Vaše jméno *</label>
+                                <input type="text" id="name" class="form-control" placeholder="Jan Novák" required>
                             </div>
 
                             <!-- VÝBĚR KANÁLU ODPOVĚDI: WHATSAPP VS E-MAIL -->
                             <div class="form-group">
-                                <label>Kde si budeme psát?</label>
+                                <label data-i18n="f_channel_q">Kde si budeme psát?</label>
                                 <div class="channel-switch">
                                     <label class="channel-option">
                                         <input type="radio" name="contact-channel" value="whatsapp" checked onchange="toggleContactChannel()">
-                                        <span class="channel-label wa-style">WhatsApp (rychlejší)</span>
+                                        <span class="channel-label wa-style" data-i18n="f_ch_wa">WhatsApp (rychlejší)</span>
                                     </label>
                                     <label class="channel-option">
                                         <input type="radio" name="contact-channel" value="email" onchange="toggleContactChannel()">
-                                        <span class="channel-label mail-style">E-mail</span>
+                                        <span class="channel-label mail-style" data-i18n="f_ch_mail">E-mail</span>
                                     </label>
                                 </div>
                             </div>
 
                             <div class="form-group" id="phone-group">
-                                <label for="phone">Vaše telefonní číslo (WhatsApp) *</label>
+                                <label for="phone" data-i18n="f_phone">Vaše telefonní číslo (WhatsApp) *</label>
                                 <input type="tel" id="phone" class="form-control" placeholder="+420 777 123 456" required>
                             </div>
 
                             <div class="form-group" id="email-group" style="display: none;">
-                                <label for="email">Váš e-mail *</label>
+                                <label for="email" data-i18n="f_email">Váš e-mail *</label>
                                 <input type="email" id="email" class="form-control" placeholder="jan@firma.cz">
                             </div>
 
                             <div class="form-grid">
                                 <div class="form-group">
-                                    <label for="category">Typ natáčení</label>
+                                    <label for="category" data-i18n="f_category">Typ natáčení</label>
                                     <select id="category" class="form-control">
-                                        <option value="Reality / Interiér (Cinewhoop)">Reality / Interiér (Cinewhoop)</option>
-                                        <option value="Automotive / Auta">Automotive / Auta</option>
-                                        <option value="Event / Akce / Závody">Event / Akce / Závody</option>
-                                        <option value="Reels / TikTok balíček">Reels / TikTok balíček</option>
-                                        <option value="Jiné / Individuální projekt">Jiné / Individuální projekt</option>
+                                        <option value="Reality / Interiér (Cinewhoop)" data-i18n="opt_cat_1">Reality / Interiér (Cinewhoop)</option>
+                                        <option value="Automotive / Auta" data-i18n="opt_cat_2">Automotive / Auta</option>
+                                        <option value="Event / Akce / Závody" data-i18n="opt_cat_3">Event / Akce / Závody</option>
+                                        <option value="Reels / TikTok balíček" data-i18n="opt_cat_4">Reels / TikTok balíček</option>
+                                        <option value="Jiné / Individuální projekt" data-i18n="opt_cat_5">Jiné / Individuální projekt</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="budget">Předpokládaný rozpočet</label>
+                                    <label for="budget" data-i18n="f_budget">Předpokládaný rozpočet</label>
                                     <select id="budget" class="form-control">
-                                        <option value="Do 3 000 Kč (krátký klip / Reels)">Do 3 000 Kč (krátký klip / Reels)</option>
-                                        <option value="3 000 – 7 000 Kč (standardní projekt)" selected>3 000 – 7 000 Kč (standardní projekt)</option>
-                                        <option value="7 000 – 15 000 Kč (komplexní produkce)">7 000 – 15 000 Kč (komplexní produkce)</option>
-                                        <option value="15 000+ Kč (větší kampaň / více lokací)">15 000+ Kč (větší kampaň / více lokací)</option>
-                                        <option value="Zatím nemám představu / Dle nabídky">Zatím nemám představu / Dle nabídky</option>
+                                        <option value="Do 3 000 Kč (krátký klip / Reels)" data-i18n="opt_b_1">Do 3 000 Kč (krátký klip / Reels)</option>
+                                        <option value="3 000 – 7 000 Kč (standardní projekt)" selected data-i18n="opt_b_2">3 000 – 7 000 Kč (standardní projekt)</option>
+                                        <option value="7 000 – 15 000 Kč (komplexní produkce)" data-i18n="opt_b_3">7 000 – 15 000 Kč (komplexní produkce)</option>
+                                        <option value="15 000+ Kč (větší kampaň / více lokací)" data-i18n="opt_b_4">15 000+ Kč (větší kampaň / více lokací)</option>
+                                        <option value="Zatím nemám představu / Dle nabídky" data-i18n="opt_b_5">Zatím nemám představu / Dle nabídky</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="date">Preferovaný termín <span class="label-opt">(volitelné)</span></label>
+                                <label for="date"><span data-i18n="f_date">Preferovaný termín</span> <span class="label-opt" data-i18n="opt_tag">(volitelné)</span></label>
                                 <input type="date" id="date" class="form-control">
                             </div>
 
                             <div class="form-group">
-                                <label for="message">Zadání, poznámky k videu a lokalita *</label>
+                                <label for="message" data-i18n="f_message">Zadání, poznámky k videu a lokalita *</label>
                                 <textarea id="message" class="form-control" placeholder="Kde se bude natáčet, co má být ve videu a jaký výstup si představujete?" required></textarea>
-                            </div>
-
-                            <div class="terms-check">
-                                <input type="checkbox" id="terms-agree" required>
-                                <label for="terms-agree">Souhlasím se <button type="button" class="terms-link" onclick="switchPage('recenze')">smluvními podmínkami (VOP)</button>, včetně 50% nevratné zálohy předem.</label>
                             </div>
 
                             <button type="submit" id="submit-btn" class="btn btn-whatsapp" style="width: 100%;">
                                 <span id="submit-btn-text">Pokračovat na WhatsApp</span>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
                             </button>
+
+                            <p class="form-footnote">
+                                <span data-i18n="f_note_prefix">Odeslání poptávky je zcela nezávazné.</span>
+                                <button type="button" class="terms-link" onclick="switchPage('recenze')" data-i18n="f_note_link">Zobrazit smluvní podmínky (VOP)</button>
+                            </p>
                         </form>
                     </div>
                 </div>
@@ -1333,51 +1452,51 @@
             <section class="container section-block">
                 <!-- SEKCE GOOGLE RECENZE -->
                 <div class="section-header">
-                    <h2>Google recenze</h2>
+                    <h2 data-i18n="rev_heading">Google recenze</h2>
                     <div class="section-line"></div>
                 </div>
 
                 <div class="google-review-banner">
                     <div>
                         <div class="google-stars">★★★★★</div>
-                        <h3 style="font-size: 1.35rem; margin-bottom: 6px;">Hodnocení klientů na Googlu</h3>
-                        <p style="color: var(--muted); max-width: 580px; font-size: 0.95rem;">Profil FreeWill FPV je ověřený na Googlu. První recenze z aktuálních zakázek právě přibývají — pokud jsme spolu už natáčeli, budu moc rád za vaše hodnocení!</p>
+                        <h3 style="font-size: 1.35rem; margin-bottom: 6px;" data-i18n="rev_banner_title">Hodnocení klientů na Googlu</h3>
+                        <p style="color: var(--muted); max-width: 580px; font-size: 0.95rem;" data-i18n="rev_banner_desc">Firemní profil FreeWill FPV je ověřený na Googlu. První recenze z aktuálních zakázek právě přibývají — pokud jsme spolu už natáčeli, budu moc rád za Vaše hodnocení!</p>
                     </div>
-                    <!-- ZDE SI PAK DOPLŇ SVŮJ PŘÍMÝ ODKAZ NA GOOGLE RECENZE MÍSTO # -->
-                    <a href="https://www.google.com/search?q=FreeWill+FPV+Mat%C4%9Bj+Ziman" target="_blank" class="btn">
-                        <span>Napsat recenzi na Google</span>
+                    <a href="https://share.google/N6qhm5vAmCavTem9n" target="_blank" class="btn">
+                        <span data-i18n="rev_btn">Napsat recenzi na Google</span>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                     </a>
                 </div>
 
                 <div class="reviews-placeholder-grid">
                     <div class="review-card">
-                        <div class="r-tag">// REALITY & INTERIÉR — ČEKÁ NA HODNOCENÍ</div>
-                        <p>„Zde se brzy zobrazí ověřená Google recenze z natáčení interiérových a exteriérových průletů pro realitní kancelář.“</p>
+                        <div class="r-tag" data-i18n="rc1_tag">// REALITY & INTERIÉR — ČEKÁ NA HODNOCENÍ</div>
+                        <p data-i18n="rc1_text">„Zde se brzy zobrazí ověřená Google recenze z natáčení interiérových a exteriérových průletů pro realitní kancelář.“</p>
                     </div>
                     <div class="review-card">
-                        <div class="r-tag">// EVENT & SPORT — ČEKÁ NA HODNOCENÍ</div>
-                        <p>„Zde se brzy zobrazí hodnocení z akčního natáčení hasičských závodů SPŠD Plzeň 2026.“</p>
+                        <div class="r-tag" data-i18n="rc2_tag">// EVENT & REPORTÁŽ — ČEKÁ NA HODNOCENÍ</div>
+                        <p data-i18n="rc2_text">„Zde se brzy zobrazí hodnocení z akčního natáčení v Kolešovicích a na hasičských závodech SPŠD Plzeň.“</p>
                     </div>
                     <div class="review-card">
-                        <div class="r-tag">// BUĎTE DALŠÍ SPOKOJENÝ KLIENT</div>
-                        <p>„Máte zájem o dynamické FPV záběry? Domluvte si nezávaznou konzultaci a posuňte prezentaci svého projektu na další úroveň.“</p>
+                        <div class="r-tag" data-i18n="rc3_tag">// BUĎTE DALŠÍ SPOKOJENÝ KLIENT</div>
+                        <p data-i18n="rc3_text">„Máte zájem o dynamické FPV záběry? Domluvte si nezávaznou konzultaci a posuňte prezentaci svého projektu na další úroveň.“</p>
                     </div>
                 </div>
 
                 <!-- SEKCE SMLUVNÍ PODMÍNKY (VOP) -->
                 <div class="section-header">
-                    <h2>Smluvní podmínky (VOP)</h2>
+                    <h2 data-i18n="vop_heading">Smluvní podmínky (VOP)</h2>
                     <div class="section-line"></div>
                 </div>
 
-                <div class="vop-full-box">
+                <!-- ČESKÉ ZNĚNÍ VOP -->
+                <div class="vop-full-box" id="vop-cs">
                     <h4>1. Identifikační údaje poskytovatele</h4>
                     <p>Poskytovatelem služeb je <strong>Matěj Ziman</strong>, podnikající jako OSVČ pod obchodní značkou <strong>FreeWill FPV</strong>, IČO: <strong>24901547</strong>, e-mail: dronyziman@gmail.com, tel.: +420 607 010 207 (dále jen „Zhotovitel“). Zhotovitel není plátcem DPH.</p>
 
                     <h4>2. Předmět plnění a vznik smlouvy</h4>
                     <p>Předmětem plnění je letecké a pozemní natáčení pomocí bezpilotních systémů (FPV drony, Cinewhoop, stabilizované drony) a související postprodukční práce (střih, stabilizace, barevná korekce, zvukový design) dle individuálně odsouhlaseného zadání a poznámek Objednatele.</p>
-                    <p>Závazná rezervace termínu a zahájení zakázky vzniká odsouhlasením kalkulace a připsáním povinné zálohy dle článku 6 na účet Zhotovitele.</p>
+                    <p>Závazná rezervace termínu a zahájení zakázky vzniká odsouhlasením kalkulace, potvrzením těchto podmínek a připsáním povinné zálohy dle článku 6 na účet Zhotovitele.</p>
 
                     <h4>3. Letové podmínky, bezpečnost a legislativa ÚCL</h4>
                     <p>Zhotovitel je registrovaným provozovatelem bezpilotních systémů u Úřadu pro civilní letectví (ÚCL), disponuje oprávněním pilota (kategorie A1/A3) a zákonným pojištěním odpovědnosti za škodu způsobenou provozem dronu.</p>
@@ -1400,6 +1519,67 @@
 
                     <h4>8. Ochrana osobních údajů (GDPR)</h4>
                     <p>Osobní údaje uvedené v poptávce či rezervaci (jméno, firma, telefon, e-mail) jsou zpracovávány výhradně za účelem vyřízení objednávky, komunikace a fakturace v souladu s nařízením GDPR.</p>
+                </div>
+
+                <!-- ANGLICKÉ ZNĚNÍ VOP -->
+                <div class="vop-full-box" id="vop-en" style="display: none;">
+                    <h4>1. Service Provider Identification</h4>
+                    <p>The service provider is <strong>Matěj Ziman</strong>, operating as a sole proprietor under the brand <strong>FreeWill FPV</strong>, Business ID (IČO): <strong>24901547</strong>, e-mail: dronyziman@gmail.com, phone: +420 607 010 207 (hereinafter the "Provider"). The Provider is not a VAT payer.</p>
+
+                    <h4>2. Scope of Services & Contract Formation</h4>
+                    <p>The subject of performance is aerial and ground filming using unmanned aircraft systems (FPV drones, Cinewhoop, stabilized drones) and related post-production (editing, stabilization, color grading, sound design) according to the Client's agreed brief and notes.</p>
+                    <p>A binding date reservation and project commencement occur upon approval of the quote, acceptance of these terms, and receipt of the mandatory deposit under Section 6 into the Provider's bank account.</p>
+
+                    <h4>3. Flight Conditions, Safety & CAA Regulations</h4>
+                    <p>The Provider is a registered UAS operator with the Czech Civil Aviation Authority (ÚCL / EASA), holds a remote pilot certificate (Category A1/A3), and maintains commercial third-party liability drone insurance.</p>
+                    <p>The safety of people, animals, and property always takes precedence over capturing a shot. The Provider reserves the sole right to refuse or abort a flight if deemed unsafe or in violation of applicable aviation laws (no-fly zones, restricted areas, high winds, precipitation). The Client is responsible for securing prior permission from the property owner or event organizer to access and film on the premises.</p>
+
+                    <h4>4. Weather & Free Rescheduling</h4>
+                    <p>Outdoor filming depends on weather conditions (rain, snow, strong gusty winds, dense fog). In case of unfavorable weather, <strong>rescheduling the shoot is completely free of charge</strong>, and the paid deposit is transferred in full to the earliest mutually agreed alternative date.</p>
+
+                    <h4>5. High-Risk Flights (Indoor / Proximity / Automotive)</h4>
+                    <p>If the Client requests high-risk maneuvers (close indoor flights near fragile objects, flying through windows, chasing moving vehicles at close range), the Client acknowledges the increased risk of drone contact with obstacles. Damage to third-party property is covered by the Provider's liability insurance within policy limits. If the Provider's equipment is damaged due to the Client's failure to follow safety instructions, repair costs shall be borne by the Client.</p>
+
+                    <h4>6. Pricing & Mandatory 50% Non-Refundable Deposit</h4>
+                    <p>The project price is determined individually in advance based on filming scope, post-production complexity, and travel costs.</p>
+                    <p><strong>A mandatory advance deposit of 50% of the total agreed price is required for every project.</strong> This deposit secures the booking date and covers preparation costs and <strong>is non-refundable</strong> (if cancelled by the Client, the deposit is forfeited; the sole exception is weather-related rescheduling under Section 4, where the deposit transfers to the new date). The remaining 50% is due upon completion via invoice with a 14-day payment term.</p>
+
+                    <h4>7. Custom Post-Production, Additional Requests & Copyright</h4>
+                    <p>The final video is produced <strong>custom-made based on the Client's brief and notes</strong> submitted and approved prior to editing. Standard delivery time is 3 to 10 business days after filming. Raw footage (D-Log) is delivered only if explicitly agreed in the order.</p>
+                    <p><strong>Any additional or altered instructions, concept changes, or new requests delivered to the Provider after the video has been completed (beyond the original notes) may be billed extra by the Provider according to the scope of additional work, or the Provider reserves the full right to decline such post-completion requests</strong>, without affecting the Provider's right to full payment of the originally agreed price.</p>
+                    <p>Upon full payment, the Client receives a non-exclusive license to use the final video for commercial and non-commercial promotion without time or territorial limits. The Provider reserves the right to showcase the footage in their portfolio and showreel unless a written NDA is agreed upon.</p>
+
+                    <h4>8. Personal Data Protection (GDPR)</h4>
+                    <p>Personal data provided in inquiries or bookings (name, company, phone, e-mail) are processed solely for order fulfillment, communication, and invoicing in compliance with GDPR.</p>
+                </div>
+
+                <!-- SAMOSTATNÉ POTVRZENÍ SMLUVNÍCH PODMÍNEK PO DOMLUVĚ ZAKÁZKY -->
+                <div class="vop-accept-box">
+                    <h3 data-i18n="vop_box_title">Potvrzení smluvních podmínek pro dohodnutou zakázku</h3>
+                    <p data-i18n="vop_box_desc">Toto potvrzení vyplňte prosím až ve chvíli, kdy máme společně odsouhlasený rozsah natáčení a cenovou nabídku.</p>
+
+                    <form id="vop-confirm-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="vop-client-name" data-i18n="vop_f_name">Jméno / Název firmy *</label>
+                                <input type="text" id="vop-client-name" class="form-control" placeholder="Jan Novák / Firma s.r.o." required>
+                            </div>
+                            <div class="form-group">
+                                <label for="vop-project-ref" data-i18n="vop_f_proj">Dohodnutý projekt / termín *</label>
+                                <input type="text" id="vop-project-ref" class="form-control" placeholder="Natáčení nemovitosti / 15. 6. 2026" required>
+                            </div>
+                        </div>
+
+                        <div class="terms-check">
+                            <input type="checkbox" id="vop-final-agree" required>
+                            <label for="vop-final-agree" data-i18n="vop_f_check">Potvrzuji, že jsem si přečetl(a) smluvní podmínky (VOP) a souhlasím s nimi.</label>
+                        </div>
+
+                        <button type="submit" class="btn">
+                            <span data-i18n="vop_f_btn">Odeslat potvrzení podmínek</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+                        </button>
+                    </form>
                 </div>
             </section>
         </div>
@@ -1447,7 +1627,7 @@
             <div class="footer-bottom">
                 <span>© 2026 FREEWILL FPV — MATĚJ ZIMAN | IČO: 24901547</span>
                 <span>•</span>
-                <button type="button" class="terms-link" onclick="switchPage('recenze')">Google recenze & Smluvní podmínky (VOP)</button>
+                <button type="button" class="terms-link" onclick="switchPage('recenze')" data-i18n="footer_link">Google recenze & Smluvní podmínky (VOP)</button>
             </div>
         </div>
     </footer>
@@ -1478,32 +1658,239 @@
     </script>
 
     <script>
-        // 1. LOADING SCREEN
+        let currentLang = 'cs';
+
+        // KOMPLETNÍ PŘEKLADOVÝ SLOVNÍK (CZ / EN)
+        const translations = {
+            cs: {
+                nav_projects: "01 // Projekty",
+                nav_gear: "02 // Technika",
+                nav_consult: "03 // Konzultace & Poptávka",
+                nav_reviews: "04 // Recenze & VOP",
+                hero_subtitle: "Dynamické záběry z pohledu první osoby pro firmy, reality, eventy a sociální sítě. Legální komerční provoz s registrací ÚCL (A1/A3) a pojištěním.",
+                hero_cta_1: "Konzultace & Poptávka",
+                hero_cta_2: "Technika & Zázemí",
+                proj_heading: "Vybrané projekty",
+                p1_meta: "// 01 — REALITY & ARCHITEKTURA (FEATURED)",
+                p1_title: "Záběry pro realitní kancelář",
+                p1_desc: "Dynamický sestřih interiérových a exteriérových průletů nemovitostí. Spojení plynulých FPV záběrů s chráněnými vrtulemi (Cinewhoop) a precizního střihu pro moderní prezentaci realit.",
+                p2_meta: "// 02 — EVENT & REPORTÁŽ",
+                p2_title: "Kolešovice — Středověk 2026",
+                p2_desc: "Atmosférický sestřih ze středověké akce v domově seniorů v Kolešovicích, zachycující živé dění z jedinečné perspektivy.",
+                p3_meta: "// 03 — EVENT & ACTION",
+                p3_title: "Hasičské závody SPŠD Plzeň 2026",
+                p3_desc: "Dynamický vertikální formát navržený přímo pro maximální dosah na Instagram Reels a TikToku.",
+                p4_meta: "// 04 — AUTOMOTIVE ONE-TAKE",
+                p4_title: "Corvette C5 — Klip bez střihu",
+                p4_desc: "Celistvý vertikální záběr na jeden zátah bez jediného střihu, natočený na míru pro Instagram Reels.",
+                p5_meta: "// 05 — HIGH-RETENTION 6S LOOP",
+                p5_title: "Corvette C5 — Rychlý střih (Loop)",
+                p5_desc: "Intenzivní 6sekundový edit v nekonečné smyčce. Rychlý sled akčních záběrů pro okamžité udržení pozornosti.",
+                p6_meta: "// 06 — DJI MINI 5 PRO DETAIL",
+                p6_title: "Corvette C5 — Cinematic Slow Edit",
+                p6_desc: "Maximálně stabilizovaný edit zaměřený na detaily karoserie a linií vozu zblízka pomocí DJI Mini 5 Pro.",
+                gear_heading: "Technika a zázemí",
+                gear_intro: "Létám na zakázku jako OSVČ (Matěj Ziman, IČO: 24901547). Dodávám surový materiál (D-Log) pro Vaše střihače i kompletně sestříhaná videa vyrobená přímo na míru podle Vašich poznámek — včetně stabilizace (Gyroflow), color gradingu a zvukového designu.",
+                g1_desc: "Chráněné vrtule pro bezpečné průlety interiéry, kancelářemi, provozovnami a v těsné blízkosti osob.",
+                g2_desc: "Maximální akcelerace a obratnost pro sledování aut, sportovních akcí a dynamické exteriéry.",
+                g3_desc: "Stabilizované letecké záběry, detaily zblízka i přehledové pohledy na nemovitosti a areály.",
+                g4_title: "Licence & Grading",
+                g4_desc: "Registrace provozovatele UAS (A1/A3), pojištění odpovědnosti, 60–120 fps a Gyroflow stabilizace.",
+                gear_cta: "Domluvit natáčení s touto technikou",
+                consult_heading: "Konzultace a poptávka",
+                consult_intro: "Vyberte si způsob, který Vám vyhovuje nejvíce — buď si rovnou zarezervujte čas na hovor v kalendáři, nebo mi napište zprávu přes WhatsApp či e-mail.",
+                cal_badge: "// MOŽNOST 01 — HOVOR & KALENDÁŘ",
+                cal_title: "Rezervace termínu konzultace",
+                cal_desc: "Vyberte si volný den a čas pro telefonát nebo online schůzku. Kalendář je napojen na můj Google Kalendář a ukazuje reálné volné sloty.",
+                cal_type: "HOVOR / ONLINE",
+                quick_call_text: "Potřebujete to probrat hned?",
+                form_badge: "// MOŽNOST 02 — PÍSEMNĚ (WHATSAPP / E-MAIL)",
+                form_title: "Písemná konzultace & kalkulace",
+                form_desc: "Popište svou představu, lokalitu a rozpočet. Zprávu můžete odeslat rovnou na můj <strong>WhatsApp</strong> nebo klasicky <strong>e-mailem</strong>.",
+                f_is_company: "Zastupuji firmu / organizaci",
+                f_company_name: "Název firmy *",
+                f_company_ico: "IČO",
+                opt_tag: "(volitelné)",
+                f_channel_q: "Kde si budeme psát?",
+                f_ch_wa: "WhatsApp (rychlejší)",
+                f_ch_mail: "E-mail",
+                f_phone: "Vaše telefonní číslo (WhatsApp) *",
+                f_email: "Váš e-mail *",
+                f_category: "Typ natáčení",
+                opt_cat_1: "Reality / Interiér (Cinewhoop)",
+                opt_cat_2: "Automotive / Auta",
+                opt_cat_3: "Event / Akce / Závody",
+                opt_cat_4: "Reels / TikTok balíček",
+                opt_cat_5: "Jiné / Individuální projekt",
+                f_budget: "Předpokládaný rozpočet",
+                opt_b_1: "Do 3 000 Kč (krátký klip / Reels)",
+                opt_b_2: "3 000 – 7 000 Kč (standardní projekt)",
+                opt_b_3: "7 000 – 15 000 Kč (komplexní produkce)",
+                opt_b_4: "15 000+ Kč (větší kampaň / více lokací)",
+                opt_b_5: "Zatím nemám představu / Dle nabídky",
+                f_date: "Preferovaný termín",
+                f_message: "Zadání, poznámky k videu a lokalita *",
+                f_note_prefix: "Odeslání poptávky je zcela nezávazné.",
+                f_note_link: "Zobrazit smluvní podmínky (VOP)",
+                rev_heading: "Google recenze",
+                rev_banner_title: "Hodnocení klientů na Googlu",
+                rev_banner_desc: "Firemní profil FreeWill FPV je ověřený na Googlu. První recenze z aktuálních zakázek právě přibývají — pokud jsme spolu už natáčeli, budu moc rád za Vaše hodnocení!",
+                rev_btn: "Napsat recenzi na Google",
+                rc1_tag: "// REALITY & INTERIÉR — ČEKÁ NA HODNOCENÍ",
+                rc1_text: "„Zde se brzy zobrazí ověřená Google recenze z natáčení interiérových a exteriérových průletů pro realitní kancelář.“",
+                rc2_tag: "// EVENT & REPORTÁŽ — ČEKÁ NA HODNOCENÍ",
+                rc2_text: "„Zde se brzy zobrazí hodnocení z akčního natáčení v Kolešovicích a na hasičských závodech SPŠD Plzeň.“",
+                rc3_tag: "// BUĎTE DALŠÍ SPOKOJENÝ KLIENT",
+                rc3_text: "„Máte zájem o dynamické FPV záběry? Domluvte si nezávaznou konzultaci a posuňte prezentaci svého projektu na další úroveň.“",
+                vop_heading: "Smluvní podmínky (VOP)",
+                vop_box_title: "Potvrzení smluvních podmínek pro dohodnutou zakázku",
+                vop_box_desc: "Toto potvrzení vyplňte prosím až ve chvíli, kdy máme společně odsouhlasený rozsah natáčení a cenovou nabídku.",
+                vop_f_name: "Jméno / Název firmy *",
+                vop_f_proj: "Dohodnutý projekt / termín *",
+                vop_f_check: "Potvrzuji, že jsem si přečetl(a) smluvní podmínky (VOP) a souhlasím s nimi.",
+                vop_f_btn: "Odeslat potvrzení podmínek",
+                footer_link: "Google recenze & Smluvní podmínky (VOP)"
+            },
+            en: {
+                nav_projects: "01 // Projects",
+                nav_gear: "02 // Gear & Setup",
+                nav_consult: "03 // Consultation & Inquiry",
+                nav_reviews: "04 // Reviews & Terms",
+                hero_subtitle: "Dynamic first-person view cinematography for businesses, real estate, events, and social media. Licensed commercial UAS operator (A1/A3) with liability insurance.",
+                hero_cta_1: "Consultation & Inquiry",
+                hero_cta_2: "Gear & Setup",
+                proj_heading: "Selected Projects",
+                p1_meta: "// 01 — REAL ESTATE & ARCHITECTURE (FEATURED)",
+                p1_title: "Real Estate Agency Showcase",
+                p1_desc: "Dynamic indoor and outdoor property fly-through edit. Combining smooth ducted Cinewhoop footage with precision editing for modern real estate presentation.",
+                p2_meta: "// 02 — EVENT & COVERAGE",
+                p2_title: "Kolešovice — Medieval Event 2026",
+                p2_desc: "Atmospheric highlight reel from a medieval-themed event at a senior care home in Kolešovice, capturing live action from a unique aerial perspective.",
+                p3_meta: "// 03 — EVENT & ACTION",
+                p3_title: "Firefighter Competition SPŠD Plzeň 2026",
+                p3_desc: "Dynamic vertical format engineered for maximum retention and reach on Instagram Reels and TikTok.",
+                p4_meta: "// 04 — AUTOMOTIVE ONE-TAKE",
+                p4_title: "Corvette C5 — Uncut One-Take",
+                p4_desc: "Seamless single-take vertical chase shot with zero cuts, tailored specifically for Instagram Reels.",
+                p5_meta: "// 05 — HIGH-RETENTION 6S LOOP",
+                p5_title: "Corvette C5 — Fast Cut (Loop)",
+                p5_desc: "High-intensity 6-second seamless loop edit. Rapid-fire action cuts designed to hook viewers instantly.",
+                p6_meta: "// 06 — DJI MINI 5 PRO DETAIL",
+                p6_title: "Corvette C5 — Cinematic Slow Edit",
+                p6_desc: "Ultra-stabilized edit highlighting bodywork lines and close-up details captured with the DJI Mini 5 Pro.",
+                gear_heading: "Gear & Setup",
+                gear_intro: "Operating commercially as a registered sole proprietor (Matěj Ziman, ID: 24901547). I deliver raw 10-bit D-Log footage for your editors as well as fully edited videos custom-made to your notes — including Gyroflow stabilization, color grading, and sound design.",
+                g1_desc: "Ducted propellers for safe, smooth indoor fly-throughs in offices, venues, and close proximity to people.",
+                g2_desc: "Maximum acceleration and agility for chasing cars, sports events, and dynamic outdoor action.",
+                g3_desc: "Stabilized aerial cinematography, close-up details, and wide establishing shots of properties.",
+                g4_title: "License & Grading",
+                g4_desc: "Registered UAS operator (A1/A3), commercial liability insurance, 60–120 fps, and Gyroflow stabilization.",
+                gear_cta: "Book a Shoot With This Gear",
+                consult_heading: "Consultation & Inquiry",
+                consult_intro: "Choose the option that suits you best — either book a live call directly in my calendar or send me a written inquiry via WhatsApp or e-mail.",
+                cal_badge: "// OPTION 01 — CALL & CALENDAR",
+                cal_title: "Book a Consultation Call",
+                cal_desc: "Pick an available date and time for a phone or online call. Synced live with my Google Calendar.",
+                cal_type: "CALL / ONLINE",
+                quick_call_text: "Need to discuss it right away?",
+                form_badge: "// OPTION 02 — WRITTEN (WHATSAPP / E-MAIL)",
+                form_title: "Written Inquiry & Quote",
+                form_desc: "Describe your idea, location, and budget. Send your message directly to my <strong>WhatsApp</strong> or via <strong>e-mail</strong>.",
+                f_is_company: "I represent a company / organization",
+                f_company_name: "Company Name *",
+                f_company_ico: "Company ID (IČO)",
+                opt_tag: "(optional)",
+                f_channel_q: "Preferred messaging channel?",
+                f_ch_wa: "WhatsApp (faster)",
+                f_ch_mail: "E-mail",
+                f_phone: "Your Phone Number (WhatsApp) *",
+                f_email: "Your E-mail *",
+                f_category: "Shoot Category",
+                opt_cat_1: "Real Estate / Indoor (Cinewhoop)",
+                opt_cat_2: "Automotive / Cars",
+                opt_cat_3: "Event / Sports / Competition",
+                opt_cat_4: "Reels / TikTok Package",
+                opt_cat_5: "Other / Custom Project",
+                f_budget: "Estimated Budget",
+                opt_b_1: "Up to 3,000 CZK (short clip / Reels)",
+                opt_b_2: "3,000 – 7,000 CZK (standard project)",
+                opt_b_3: "7,000 – 15,000 CZK (full production)",
+                opt_b_4: "15,000+ CZK (campaign / multi-location)",
+                opt_b_5: "Not sure yet / Request a quote",
+                f_date: "Preferred Date",
+                f_message: "Project brief, video notes & location *",
+                f_note_prefix: "Submitting an inquiry is completely non-binding.",
+                f_note_link: "View Terms & Conditions",
+                rev_heading: "Google Reviews",
+                rev_banner_title: "Client Ratings on Google",
+                rev_banner_desc: "FreeWill FPV is verified on Google Business. First reviews from recent shoots are coming in — if we've worked together, I'd truly appreciate your review!",
+                rev_btn: "Write a Google Review",
+                rc1_tag: "// REAL ESTATE & INDOOR — AWAITING REVIEW",
+                rc1_text: "“Verified Google review from our indoor & outdoor real estate fly-through shoot will appear here soon.”",
+                rc2_tag: "// EVENT & COVERAGE — AWAITING REVIEW",
+                rc2_text: "“Client review from the Kolešovice medieval event and SPŠD Plzeň firefighter competition will appear here soon.”",
+                rc3_tag: "// BECOME OUR NEXT CLIENT",
+                rc3_text: "“Looking for dynamic FPV cinematography? Book a free consultation and elevate your brand's visual presentation.”",
+                vop_heading: "Terms & Conditions",
+                vop_box_title: "Accept Terms & Conditions for an Agreed Project",
+                vop_box_desc: "Please fill out this confirmation only after we have mutually agreed on the filming scope and price quote.",
+                vop_f_name: "Your Name / Company Name *",
+                vop_f_proj: "Agreed Project / Date *",
+                vop_f_check: "I confirm that I have read the Terms & Conditions and agree to them.",
+                vop_f_btn: "Submit Terms Confirmation",
+                footer_link: "Google Reviews & Terms & Conditions"
+            }
+        };
+
+        // PŘEPÍNÁNÍ JAZYKA (CZ / EN)
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Přepnutí znění VOP
+            document.getElementById('vop-cs').style.display = lang === 'cs' ? 'block' : 'none';
+            document.getElementById('vop-en').style.display = lang === 'en' ? 'block' : 'none';
+
+            // Aktualizace dynamických popisků ve formuláři
+            updateNameFieldRequirement();
+            toggleContactChannel();
+        }
+
+        // LOADING SCREEN
         window.addEventListener('load', () => {
             const osdText = document.getElementById('osd-text');
-            setTimeout(() => { osdText.textContent = 'LINK ESTABLISHED // 100%'; }, 600);
+            setTimeout(() => { osdText.textContent = 'LINK ESTABLISHED // 100%'; }, 580);
             setTimeout(() => {
                 document.getElementById('loader').classList.add('hidden');
                 document.querySelectorAll('.scramble-text').forEach(el => scrambleEffect(el));
-            }, 1200);
+            }, 1150);
 
-            // Podpora přímého URL hashe (#technika, #konzultace, #recenze)
             const hash = window.location.hash.replace('#', '');
             if (['projekty', 'technika', 'konzultace', 'recenze'].includes(hash)) {
                 switchPage(hash, false);
             }
         });
 
-        // 2. PŘEPÍNÁNÍ STRÁNEK (SPA ROUTER)
+        // PŘEPÍNÁNÍ STRÁNEK
         function switchPage(pageId, updateHash = true) {
             document.querySelectorAll('.page-view').forEach(p => p.classList.remove('active'));
             document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
 
             const targetPage = document.getElementById('page-' + pageId);
-            const targetTab = document.querySelector(`.nav-tab[data-target="${pageId}"]`);
-
             if (targetPage) targetPage.classList.add('active');
-            if (targetTab) targetTab.classList.add('active');
+
+            document.querySelectorAll(`.nav-tab[data-target="${pageId}"]`).forEach(t => t.classList.add('active'));
 
             if (updateHash) {
                 history.replaceState(null, '', '#' + pageId);
@@ -1511,7 +1898,25 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // 3. ZOBRAZENÍ POLÍ PRO ZÁSTUPCE FIRMY
+        // FIRMA VS OSOBA (JMÉNO JE VOLITELNÉ POUZE KDYŽ ZASTUPUJE FIRMU)
+        function updateNameFieldRequirement() {
+            const isCompany = document.getElementById('is-company').checked;
+            const nameInput = document.getElementById('name');
+            const nameLabel = document.getElementById('name-label');
+
+            if (isCompany) {
+                nameInput.removeAttribute('required');
+                nameLabel.innerHTML = currentLang === 'cs'
+                    ? 'Jméno kontaktní osoby <span class="label-opt">(volitelné)</span>'
+                    : 'Contact Person Name <span class="label-opt">(optional)</span>';
+            } else {
+                nameInput.setAttribute('required', 'required');
+                nameLabel.innerHTML = currentLang === 'cs'
+                    ? 'Vaše jméno *'
+                    : 'Your Name *';
+            }
+        }
+
         function toggleCompanyFields() {
             const isCompany = document.getElementById('is-company').checked;
             const fields = document.getElementById('company-fields');
@@ -1526,9 +1931,10 @@
                 companyInput.value = '';
                 document.getElementById('company-ico').value = '';
             }
+            updateNameFieldRequirement();
         }
 
-        // 4. PŘEPÍNÁNÍ WHATSAPP VS E-MAIL VE FORMULÁŘI
+        // PŘEPÍNÁNÍ WHATSAPP VS E-MAIL VE FORMULÁŘI
         function toggleContactChannel() {
             const channel = document.querySelector('input[name="contact-channel"]:checked').value;
             const phoneGroup = document.getElementById('phone-group');
@@ -1544,69 +1950,100 @@
                 phoneInput.setAttribute('required', 'required');
                 emailInput.removeAttribute('required');
                 submitBtn.classList.add('btn-whatsapp');
-                submitText.textContent = 'Pokračovat na WhatsApp';
+                submitText.textContent = currentLang === 'cs' ? 'Pokračovat na WhatsApp' : 'Continue to WhatsApp';
             } else {
                 phoneGroup.style.display = 'none';
                 emailGroup.style.display = 'block';
                 emailInput.setAttribute('required', 'required');
                 phoneInput.removeAttribute('required');
                 submitBtn.classList.remove('btn-whatsapp');
-                submitText.textContent = 'Odeslat poptávku e-mailem';
+                submitText.textContent = currentLang === 'cs' ? 'Odeslat poptávku e-mailem' : 'Send Inquiry via E-mail';
             }
         }
 
-        // 5. ODESLÁNÍ POPTÁVKY (WHATSAPP NEBO E-MAIL)
+        // ODESLÁNÍ NEZÁVAZNÉ POPTÁVKY (WHATSAPP NEBO E-MAIL)
         document.getElementById('fpv-form').addEventListener('submit', function(e) {
             e.preventDefault();
 
             const isCompany = document.getElementById('is-company').checked;
             const companyName = document.getElementById('company-name').value.trim();
             const companyIco = document.getElementById('company-ico').value.trim();
-            const name = document.getElementById('name').value.trim() || 'Neuvedeno';
+            const nameVal = document.getElementById('name').value.trim();
             const channel = document.querySelector('input[name="contact-channel"]:checked').value;
             const phone = document.getElementById('phone').value.trim();
             const email = document.getElementById('email').value.trim();
             const category = document.getElementById('category').value;
             const budget = document.getElementById('budget').value;
-            const date = document.getElementById('date').value || 'Dle domluvy';
+            const date = document.getElementById('date').value || (currentLang === 'cs' ? 'Dle domluvy' : 'Flexible');
             const message = document.getElementById('message').value.trim();
 
             let clientInfo = '';
             if (isCompany && companyName) {
-                clientInfo += `Firma: ${companyName}${companyIco ? ` (IČO: ${companyIco})` : ''}\n`;
-                clientInfo += `Kontaktní osoba: ${name}\n`;
+                clientInfo += currentLang === 'cs'
+                    ? `Firma: ${companyName}${companyIco ? ` (IČO: ${companyIco})` : ''}\n`
+                    : `Company: ${companyName}${companyIco ? ` (ID: ${companyIco})` : ''}\n`;
+                if (nameVal) {
+                    clientInfo += currentLang === 'cs' ? `Kontaktní osoba: ${nameVal}\n` : `Contact person: ${nameVal}\n`;
+                }
             } else {
-                clientInfo += `Jméno: ${name}\n`;
+                clientInfo += currentLang === 'cs' ? `Jméno: ${nameVal}\n` : `Name: ${nameVal}\n`;
             }
 
             if (channel === 'whatsapp') {
+                const intro = currentLang === 'cs'
+                    ? `Dobrý den, mám zájem o FPV natáčení (FreeWill FPV).\n\n`
+                    : `Hello, I'm interested in FPV filming (FreeWill FPV).\n\n`;
                 const waText = encodeURIComponent(
-                    `Dobrý den, mám zájem o FPV natáčení (FreeWill FPV).\n\n` +
+                    intro +
                     clientInfo +
-                    `Tel. kontakt: ${phone}\n` +
-                    `Typ natáčení: ${category}\n` +
-                    `Rozpočet: ${budget}\n` +
-                    `Termín: ${date}\n\n` +
-                    `Zadání a lokalita:\n${message}`
+                    `Tel.: ${phone}\n` +
+                    `${currentLang === 'cs' ? 'Typ natáčení' : 'Category'}: ${category}\n` +
+                    `${currentLang === 'cs' ? 'Rozpočet' : 'Budget'}: ${budget}\n` +
+                    `${currentLang === 'cs' ? 'Termín' : 'Date'}: ${date}\n\n` +
+                    `${currentLang === 'cs' ? 'Zadání a lokalita' : 'Brief & location'}:\n${message}`
                 );
                 window.open(`https://wa.me/420607010207?text=${waText}`, '_blank');
             } else {
-                const senderLabel = isCompany && companyName ? companyName : name;
-                const subject = encodeURIComponent(`Poptávka FPV natáčení: ${category} (${senderLabel})`);
+                const senderLabel = isCompany && companyName ? companyName : nameVal;
+                const subject = encodeURIComponent(
+                    currentLang === 'cs'
+                        ? `Poptávka FPV natáčení: ${category} (${senderLabel})`
+                        : `FPV Filming Inquiry: ${category} (${senderLabel})`
+                );
                 const body = encodeURIComponent(
-                    `Dobrý den,\n\nmám zájem o FPV natáčení (souhlasím se smluvními podmínkami VOP včetně 50% nevratné zálohy předem).\n\n` +
+                    (currentLang === 'cs' ? `Dobrý den,\n\nmám zájem o nezávaznou konzultaci / kalkulaci FPV natáčení.\n\n` : `Hello,\n\nI would like to request a quote for FPV filming.\n\n`) +
                     clientInfo +
                     `E-mail: ${email}\n` +
-                    `Typ natáčení: ${category}\n` +
-                    `Předpokládaný rozpočet: ${budget}\n` +
-                    `Preferovaný termín: ${date}\n\n` +
-                    `Zadání, poznámky a lokalita:\n${message}`
+                    `${currentLang === 'cs' ? 'Typ natáčení' : 'Category'}: ${category}\n` +
+                    `${currentLang === 'cs' ? 'Předpokládaný rozpočet' : 'Estimated budget'}: ${budget}\n` +
+                    `${currentLang === 'cs' ? 'Preferovaný termín' : 'Preferred date'}: ${date}\n\n` +
+                    `${currentLang === 'cs' ? 'Zadání, poznámky a lokalita' : 'Brief, notes & location'}:\n${message}`
                 );
                 window.location.href = `mailto:dronyziman@gmail.com?subject=${subject}&body=${body}`;
             }
         });
 
-        // 6. EFEKT DEKÓDOVÁNÍ NADPISU
+        // ODESLÁNÍ SAMOSTATNÉHO POTVRZENÍ VOP PRO DOHODNUTOU ZAKÁZKU
+        document.getElementById('vop-confirm-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const client = document.getElementById('vop-client-name').value.trim();
+            const project = document.getElementById('vop-project-ref').value.trim();
+
+            const subject = encodeURIComponent(
+                currentLang === 'cs'
+                    ? `Potvrzení VOP — ${client} (${project})`
+                    : `Terms & Conditions Acceptance — ${client} (${project})`
+            );
+            const body = encodeURIComponent(
+                currentLang === 'cs'
+                    ? `Dobrý den,\n\npotvrzuji, že jsem se seznámil(a) se všeobecnými obchodními podmínkami (VOP) FreeWill FPV a souhlasím s nimi pro dohodnutou zakázku:\n\nKlient / Firma: ${client}\nProjekt / Termín: ${project}\n\nS pozdravem,\n${client}`
+                    : `Hello,\n\nI confirm that I have read and accept the Terms & Conditions of FreeWill FPV for our agreed project:\n\nClient / Company: ${client}\nProject / Date: ${project}\n\nBest regards,\n${client}`
+            );
+
+            window.location.href = `mailto:dronyziman@gmail.com?subject=${subject}&body=${body}`;
+        });
+
+        // EFEKT DEKÓDOVÁNÍ NADPISU
         const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/#*+';
         function scrambleEffect(element) {
             const originalText = element.dataset.value;
@@ -1628,7 +2065,7 @@
             }, 26);
         }
 
-        // 7. ŽIVÉ ČÁSTICE NA POZADÍ
+        // ŽIVÉ ČÁSTICE NA POZADÍ
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
