@@ -6,21 +6,15 @@
     <title>FreeWill FPV | Matěj Ziman — Záběry z dronu</title>
     <link rel="icon" type="image/jpeg" href="1795370722896.jpg">
 
-    <!-- GOOGLE ANALYTICS 4 (nahraď G-XXXXXXXXXX svým ID měření z GA4) -->
+    <!-- ZNAČKA GOOGLE (GTM-TJVLCFPQ) -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TJVLCFPQ"></script>
     <script>
-        const GA_ID = 'G-XXXXXXXXXX';
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
-        if (GA_ID && GA_ID !== 'G-XXXXXXXXXX') {
-            const gaScript = document.createElement('script');
-            gaScript.async = true;
-            gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
-            document.head.appendChild(gaScript);
-            gtag('js', new Date());
-            gtag('config', GA_ID, { send_page_view: true });
-        }
+        gtag('js', new Date());
+
         function trackEvent(eventName, params = {}) {
-            if (typeof gtag === 'function' && GA_ID !== 'G-XXXXXXXXXX') {
+            if (typeof gtag === 'function') {
                 gtag('event', eventName, params);
             }
         }
@@ -145,8 +139,8 @@
         /* Pohodlné boční okraje na mobilu, aby se text nedotýkal stran */
         @media (max-width: 768px) {
             .container {
-                padding-left: 28px;
-                padding-right: 28px;
+                padding-left: 32px;
+                padding-right: 32px;
             }
         }
 
@@ -312,7 +306,8 @@
 
         /* --- ÚVODNÍ HERO SEKCE --- */
         .hero-section {
-            padding: 46px 0 32px;
+            padding-top: 46px;
+            padding-bottom: 32px;
             text-align: center;
         }
 
@@ -518,7 +513,10 @@
         }
 
         /* --- SEKCE & NADPISY --- */
-        .section-block { padding: 36px 0 48px; }
+        .section-block {
+            padding-top: 36px;
+            padding-bottom: 48px;
+        }
 
         .section-header {
             display: flex;
@@ -1420,7 +1418,7 @@
 
                     <div class="card">
                         <div class="video-wrapper ratio-9-16">
-                            <iframe src="https://player.vimeo.com/video/1249129268?loop=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Corvette C5 - Rychlý střih krátký edit" allowfullscreen></iframe>
+                            <iframe src="https://player.vimeo.com/video/1249129268?loop=1&autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Corvette C5 - Rychlý střih krátký edit" allowfullscreen></iframe>
                         </div>
                         <span class="badge-chip" data-i18n="p5_badge">⚡ Krátký klip</span>
                         <h3 data-i18n="p5_title">Corvette C5 — dynamický sestřih</h3>
