@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FreeWill FPV | Matěj Ziman — Záběry, které vzbudí emoce</title>
+    <title>FreeWill FPV | Matěj Ziman — Záběry z dronu</title>
     <link rel="icon" type="image/jpeg" href="1795370722896.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -281,7 +281,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- EMOTIVNÍ HERO SEKCE --- */
+        /* --- ÚVODNÍ HERO SEKCE --- */
         .hero-section {
             padding: 46px 0 32px;
             text-align: center;
@@ -343,8 +343,8 @@
 
         .subtitle {
             color: var(--text-soft);
-            font-size: 1.12rem;
-            max-width: 620px;
+            font-size: 1.1rem;
+            max-width: 600px;
             margin: 0 auto 28px;
             font-weight: 500;
         }
@@ -428,7 +428,7 @@
             box-shadow: 0 14px 30px rgba(22, 163, 74, 0.35);
         }
 
-        /* --- 4 BAREVNÉ KARTY: CO PRO VÁS NATOČÍM (BEZ ODBORNÝCH NÁZVŮ) --- */
+        /* --- 4 BAREVNÉ KARTY: CO NATÁČÍM --- */
         .offer-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -640,7 +640,7 @@
         .card h3 { margin: 8px 0 6px; font-size: 1.14rem; font-weight: 800; color: var(--text); line-height: 1.3; }
         .card p { color: var(--text-soft); font-size: 0.9rem; line-height: 1.5; }
 
-        /* --- STRÁNKA: JAK TO PROBÍHÁ & MOŽNOSTI NATÁČENÍ --- */
+        /* --- STRÁNKA: JAK TO PROBÍHÁ & ČÍM NATÁČÍM --- */
         .steps-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -1121,10 +1121,10 @@
                 </div>
 
                 <nav class="nav-tabs-center" aria-label="Hlavní navigace PC">
-                    <button class="nav-tab active" data-target="projekty" onclick="switchPage('projekty')" data-i18n="nav_projects">🎬 Ukázky práce</button>
-                    <button class="nav-tab" data-target="technika" onclick="switchPage('technika')" data-i18n="nav_gear">✨ Co umím natočit</button>
-                    <button class="nav-tab" data-target="konzultace" onclick="switchPage('konzultace')" data-i18n="nav_consult">💬 Nezávazná poptávka</button>
-                    <button class="nav-tab" data-target="recenze" onclick="switchPage('recenze')" data-i18n="nav_reviews">⭐ Recenze & Podmínky</button>
+                    <button class="nav-tab active" data-target="projekty" onclick="switchPage('projekty')" data-i18n="nav_projects">🎬 Ukázky</button>
+                    <button class="nav-tab" data-target="technika" onclick="switchPage('technika')" data-i18n="nav_gear">✨ Co natáčím</button>
+                    <button class="nav-tab" data-target="konzultace" onclick="switchPage('konzultace')" data-i18n="nav_consult">💬 Poptávka</button>
+                    <button class="nav-tab" data-target="recenze" onclick="switchPage('recenze')" data-i18n="nav_reviews">⭐ Recenze a VOP</button>
                 </nav>
 
                 <div class="lang-switch-wrap">
@@ -1146,10 +1146,10 @@
                     </div>
                 </div>
                 <nav class="mobile-grid-tabs" aria-label="Mobilní navigace">
-                    <button class="nav-tab active" data-target="projekty" onclick="switchPage('projekty')" data-i18n="nav_projects">🎬 Ukázky práce</button>
-                    <button class="nav-tab" data-target="technika" onclick="switchPage('technika')" data-i18n="nav_gear">✨ Co umím natočit</button>
+                    <button class="nav-tab active" data-target="projekty" onclick="switchPage('projekty')" data-i18n="nav_projects">🎬 Ukázky</button>
+                    <button class="nav-tab" data-target="technika" onclick="switchPage('technika')" data-i18n="nav_gear">✨ Co natáčím</button>
                     <button class="nav-tab" data-target="konzultace" onclick="switchPage('konzultace')" data-i18n="nav_consult">💬 Poptávka</button>
-                    <button class="nav-tab" data-target="recenze" onclick="switchPage('recenze')" data-i18n="nav_reviews">⭐ Recenze & VOP</button>
+                    <button class="nav-tab" data-target="recenze" onclick="switchPage('recenze')" data-i18n="nav_reviews">⭐ Recenze a VOP</button>
                 </nav>
             </div>
         </div>
@@ -1157,36 +1157,35 @@
 
     <main>
         <!-- =========================================================
-             STRÁNKA 1: EMOTIVNÍ ÚVOD & UKÁZKY PRÁCE
+             STRÁNKA 1: ÚVOD & UKÁZKY PRÁCE
         ========================================================== -->
         <div id="page-projekty" class="page-view active">
             <div class="container hero-section">
                 <div class="brand-logo-wrap">
                     <img src="1795370722896.jpg" alt="FreeWill FPV Logo" class="brand-logo">
                 </div>
-                <div class="emotion-badge" data-i18n="hero_badge">🎥 Létající kamera, která vtáhne diváka do děje</div>
-                <h1 data-i18n="hero_title">Videa, ze kterých naskakuje <span class="highlight">husí kůže</span></h1>
-                <p class="subtitle" data-i18n="hero_subtitle">Proletím Vaším prostorem, zachytím energii Vaší akce a vytvořím záběry, u kterých lidé na sítích zastaví a dokoukají je až do konce.</p>
+                <div class="emotion-badge" data-i18n="hero_badge">🎥 Letecké záběry zblízka i z výšky</div>
+                <h1 data-i18n="hero_title">Záběry z dronu, které <span class="highlight">okamžitě zaujmou</span></h1>
+                <p class="subtitle" data-i18n="hero_subtitle">Proletím interiérem, udržím krok s jedoucím autem a zachytím atmosféru vaší akce. Natočím a sestříhám video, které lidé na sítích nepřeskočí.</p>
                 
                 <div class="hero-actions">
                     <button class="btn" onclick="switchPage('konzultace')">
                         <span data-i18n="hero_cta_1">Domluvit natáčení</span>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </button>
-                    <button class="btn btn-outline" onclick="switchPage('technika')" data-i18n="hero_cta_2">Jak to funguje</button>
+                    <button class="btn btn-outline" onclick="switchPage('technika')" data-i18n="hero_cta_2">Jak to probíhá</button>
                 </div>
 
                 <div class="trust-pills">
-                    <span class="trust-pill" data-i18n="pill_1">✅ Bezpečné průlety i uvnitř budov</span>
-                    <span class="trust-pill" data-i18n="pill_2">🎬 Hotové video připravené rovnou na sítě</span>
-                    <span class="trust-pill" data-i18n="pill_3">🛡️ Oficiální licence a pojištění</span>
+                    <span class="trust-pill" data-i18n="pill_1">✅ Bezpečné průlety i v interiéru</span>
+                    <span class="trust-pill" data-i18n="pill_2">🎬 Střih hotový rovnou na sítě</span>
+                    <span class="trust-pill" data-i18n="pill_3">🛡️ Licence ÚCL a pojištění</span>
                 </div>
             </div>
 
-            <!-- 4 BAREVNÉ VIZUÁLNÍ KARTY: OKAMŽITĚ JASNÁ NABÍDKA -->
+            <!-- 4 BAREVNÉ KARTY: CO NATÁČÍM -->
             <section class="container" style="padding-top: 6px;">
                 <div class="offer-grid">
-                    <!-- KARTA 1: REALITY A PROSTORY -->
                     <div class="offer-card">
                         <div class="offer-art art-purple">
                             <svg width="140" height="90" viewBox="0 0 140 90" fill="none">
@@ -1197,11 +1196,10 @@
                                 <circle cx="130" cy="34" r="5" fill="#f97316"/>
                             </svg>
                         </div>
-                        <h3 data-i18n="o1_title">🏠 Reality a prostory</h3>
-                        <p data-i18n="o1_desc">Plynulý průlet celým domem, hotelem nebo firmou na jeden záběr. Divák má pocit, že tam stojí s Vámi.</p>
+                        <h3 data-i18n="o1_title">🏠 Reality a interiéry</h3>
+                        <p data-i18n="o1_desc">Plynulý průlet domem, hotelem nebo provozovnou na jeden záběr. Divák hned vidí, jak na sebe prostory navazují.</p>
                     </div>
 
-                    <!-- KARTA 2: AUTA A POHYB -->
                     <div class="offer-card">
                         <div class="offer-art art-warm">
                             <svg width="140" height="90" viewBox="0 0 140 90" fill="none">
@@ -1214,11 +1212,10 @@
                                 <circle cx="116" cy="20" r="5" fill="#7c3aed"/>
                             </svg>
                         </div>
-                        <h3 data-i18n="o2_title">🚗 Auta a rychlost</h3>
-                        <p data-i18n="o2_desc">Dynamické záběry v těsné blízkosti jedoucího vozu nebo motorky. Energie a adrenalin v každé vteřině.</p>
+                        <h3 data-i18n="o2_title">🚗 Auta a motorky</h3>
+                        <p data-i18n="o2_desc">Záběry těsně u jedoucího auta nebo motorky. Rychlost a pohyb, které ze země nenatočíte.</p>
                     </div>
 
-                    <!-- KARTA 3: AKCE A UDÁLOSTI -->
                     <div class="offer-card">
                         <div class="offer-art art-pink">
                             <svg width="140" height="90" viewBox="0 0 140 90" fill="none">
@@ -1230,11 +1227,10 @@
                                 <circle cx="114" cy="64" r="5" fill="#7c3aed"/>
                             </svg>
                         </div>
-                        <h3 data-i18n="o3_title">🎉 Akce a události</h3>
-                        <p data-i18n="o3_desc">Závody, festivaly, slavnosti i firemní dny. Zachyťte atmosféru tak živě, že ji diváci prožijí znovu.</p>
+                        <h3 data-i18n="o3_title">🎉 Akce a závody</h3>
+                        <p data-i18n="o3_desc">Festivaly, sportovní závody i firemní akce z ptačí perspektivy i přímo z centra dění.</p>
                     </div>
 
-                    <!-- KARTA 4: VIDEA NA SÍTĚ -->
                     <div class="offer-card">
                         <div class="offer-art art-sky">
                             <svg width="140" height="90" viewBox="0 0 140 90" fill="none">
@@ -1244,18 +1240,18 @@
                                 <path d="M104 34C104 34 99 30.5 99 28C99 26.5 100.2 25.5 101.5 25.5C102.5 25.5 103.5 26.2 104 27C104.5 26.2 105.5 25.5 106.5 25.5C107.8 25.5 109 26.5 109 28C109 30.5 104 34 104 34Z" fill="#db2777"/>
                             </svg>
                         </div>
-                        <h3 data-i18n="o4_title">📱 Krátká videa na sítě</h3>
-                        <p data-i18n="o4_desc">Reels a TikTok klipy střižené do hudby, které okamžitě přitáhnou pozornost nových zákazníků.</p>
+                        <h3 data-i18n="o4_title">📱 Videa na sítě</h3>
+                        <p data-i18n="o4_desc">Krátká videa na výšku pro Instagram a TikTok, sestříhaná do hudby a připravená k vydání.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- UKÁZKY PRÁCE -->
+            <!-- UKÁZKY Z NATÁČENÍ -->
             <section class="container section-block" style="padding-top: 0;">
                 <div class="section-header">
                     <div>
-                        <h2 data-i18n="proj_heading">Podívejte se, jak to vypadá v praxi</h2>
-                        <p class="section-sub" data-i18n="proj_sub">Reálné záběry z nemovitostí, akcí i automobilového světa.</p>
+                        <h2 data-i18n="proj_heading">Ukázky z natáčení</h2>
+                        <p class="section-sub" data-i18n="proj_sub">Reálné zakázky z nemovitostí, akcí a motorsportu.</p>
                     </div>
                 </div>
 
@@ -1265,18 +1261,18 @@
                         <iframe src="https://player.vimeo.com/video/1248355295?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Záběry pro realitní kancelář" allowfullscreen></iframe>
                     </div>
                     <div class="featured-info">
-                        <span class="badge-chip" data-i18n="p1_badge">🏠 Reality & Interiéry</span>
-                        <h3 data-i18n="p1_title">Prohlídka nemovitosti, na kterou se nezapomíná</h3>
-                        <p data-i18n="p1_desc">Místo obyčejných fotek plynulý průlet zvenku rovnou do místností. Zájemci okamžitě nasají atmosféru prostoru a nemovitost si zamilují dřív, než přijdou na prohlídku.</p>
+                        <span class="badge-chip" data-i18n="p1_badge">🏠 Reality</span>
+                        <h3 data-i18n="p1_title">Prohlídka nemovitosti na jeden záběr</h3>
+                        <p data-i18n="p1_desc">Průlet zvenku přímo do jednotlivých místností. Zájemce si udělá jasnou představu o dispozici dřív, než přijde na osobní prohlídku.</p>
                         <div class="featured-tags">
-                            <span class="mini-tag" data-i18n="p1_t1">✨ Průlet interiérem i exteriérem</span>
+                            <span class="mini-tag" data-i18n="p1_t1">✨ Exteriér i interiér v kuse</span>
                             <span class="mini-tag" data-i18n="p1_t2">🎵 Střih na míru</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- VERTIKÁLNÍ VIDEA NA SÍTĚ (9:16) -->
-                <div class="reels-subhead" data-i18n="reels_heading">📱 Krátká videa na výšku (Instagram Reels & TikTok)</div>
+                <div class="reels-subhead" data-i18n="reels_heading">📱 Krátká videa na výšku (Reels a TikTok)</div>
 
                 <div class="reels-grid">
                     <!-- KOLEŠOVICE - STŘEDOVĚK 2026 -->
@@ -1284,120 +1280,120 @@
                         <div class="video-wrapper ratio-9-16">
                             <iframe src="https://player.vimeo.com/video/1249439525?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Kolešovice - Středověk 2026" allowfullscreen></iframe>
                         </div>
-                        <span class="badge-chip badge-pink" data-i18n="p2_badge">🎉 Atmosféra akce</span>
+                        <span class="badge-chip badge-pink" data-i18n="p2_badge">🎉 Společenská akce</span>
                         <h3 data-i18n="p2_title">Kolešovice — Středověk 2026</h3>
-                        <p data-i18n="p2_desc">Živé emoce, radost a dění přímo mezi lidmi. Záběry z pohledu, ze kterého akci běžný návštěvník nikdy neuvidí.</p>
+                        <p data-i18n="p2_desc">Atmosféra slavnosti z výšky i zblízka mezi lidmi. Pohledy, které běžný kameraman ze země nezachytí.</p>
                     </div>
 
                     <div class="card">
                         <div class="video-wrapper ratio-9-16">
                             <iframe src="https://player.vimeo.com/video/1249086864?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Hasičské závody SPŠD Plzeň 2026" allowfullscreen></iframe>
                         </div>
-                        <span class="badge-chip badge-warm" data-i18n="p3_badge">🔥 Sport & Akce</span>
+                        <span class="badge-chip badge-warm" data-i18n="p3_badge">🔥 Sport</span>
                         <h3 data-i18n="p3_title">Hasičské závody Plzeň 2026</h3>
-                        <p data-i18n="p3_desc">Rychlé tempo, napětí a energie celého závodu v krátkém videu dělaném přímo pro sociální sítě.</p>
+                        <p data-i18n="p3_desc">Průběh závodu v rychlém tempu. Krátký sestřih připravený rovnou pro sociální sítě.</p>
                     </div>
 
                     <div class="card">
                         <div class="video-wrapper ratio-9-16">
                             <iframe src="https://player.vimeo.com/video/1249129265?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Corvette C5 - klip bez střihu" allowfullscreen></iframe>
                         </div>
-                        <span class="badge-chip badge-warm" data-i18n="p4_badge">🚗 Jeden plynulý záběr</span>
-                        <h3 data-i18n="p4_title">Corvette C5 — Bez jediného střihu</h3>
-                        <p data-i18n="p4_desc">Kamera letí těsně kolem vozu na jeden zátah. Čistá dynamika, která okamžitě upoutá oči diváka.</p>
+                        <span class="badge-chip badge-warm" data-i18n="p4_badge">🚗 Jeden záběr</span>
+                        <h3 data-i18n="p4_title">Corvette C5 — bez střihu</h3>
+                        <p data-i18n="p4_desc">Průlet těsně kolem jedoucího vozu na jeden zátah bez jediného přerušení.</p>
                     </div>
 
                     <div class="card">
                         <div class="video-wrapper ratio-9-16">
                             <iframe src="https://player.vimeo.com/video/1249129268?loop=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Corvette C5 - Rychlý střih krátký edit" allowfullscreen></iframe>
                         </div>
-                        <span class="badge-chip" data-i18n="p5_badge">⚡ Rychlý úderný klip</span>
-                        <h3 data-i18n="p5_title">Corvette C5 — Úderný krátký edit</h3>
-                        <p data-i18n="p5_desc">Krátký, energický sestřih plný akce, který se přehrává stále dokola a drží pozornost od první vteřiny.</p>
+                        <span class="badge-chip" data-i18n="p5_badge">⚡ Krátký klip</span>
+                        <h3 data-i18n="p5_title">Corvette C5 — dynamický sestřih</h3>
+                        <p data-i18n="p5_desc">Rychlý klip střižený do rytmu hudby, který udrží pozornost od první vteřiny.</p>
                     </div>
 
                     <div class="card">
                         <div class="video-wrapper ratio-9-16">
                             <iframe src="https://player.vimeo.com/video/1249129266?autopause=0&amp;player_id=0&amp;app_id=58479" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Corvette C5 - cinematic slow edit" allowfullscreen></iframe>
                         </div>
-                        <span class="badge-chip badge-sky" data-i18n="p6_badge">✨ Plynulé detaily</span>
-                        <h3 data-i18n="p6_title">Corvette C5 — Filmové zpomalení</h3>
-                        <p data-i18n="p6_desc">Klidné, dokonale hladké záběry, které nechají vyniknout každou linii a detail vozu zblízka.</p>
+                        <span class="badge-chip badge-sky" data-i18n="p6_badge">✨ Zpomalené záběry</span>
+                        <h3 data-i18n="p6_title">Corvette C5 — detaily v pohybu</h3>
+                        <p data-i18n="p6_desc">Klidné zpomalené záběry, ve kterých vyniknou tvary a detaily auta.</p>
                     </div>
                 </div>
             </section>
         </div>
 
         <!-- =========================================================
-             STRÁNKA 2: JAK TO FUNGUJE & CO UMÍM NATOČIT (JEDNODUŠE)
+             STRÁNKA 2: JAK TO PROBÍHÁ & ČÍM NATÁČÍM
         ========================================================== -->
         <div id="page-technika" class="page-view">
             <section class="container section-block">
                 <div class="section-header">
                     <div>
-                        <h2 data-i18n="how_heading">Od nápadu k hotovému videu</h2>
-                        <p class="section-sub" data-i18n="how_sub">Nemusíte řešit žádnou techniku ani povolení — o vše se postarám od A do Z.</p>
+                        <h2 data-i18n="how_heading">Jak probíhá spolupráce</h2>
+                        <p class="section-sub" data-i18n="how_sub">Techniku ani povolení řešit nemusíte. Vše zařídím sám.</p>
                     </div>
                 </div>
 
-                <!-- 3 JEDNODUCHÉ KROKY SPOLUPRÁCE -->
+                <!-- 3 KROKY SPOLUPRÁCE -->
                 <div class="steps-grid">
                     <div class="step-card">
                         <div class="step-num">1</div>
-                        <h3 data-i18n="s1_title">Řeknete mi svou představu</h3>
-                        <p data-i18n="s1_desc">Krátce si napíšeme nebo zavoláme. Společně vymyslíme, jaký styl videa udělá na Vaše zákazníky nejlepší dojem.</p>
+                        <h3 data-i18n="s1_title">Probereme vaši představu</h3>
+                        <p data-i18n="s1_desc">Napíšeme si nebo zavoláme. Řeknete mi, co potřebujete ukázat, a společně navrhneme styl videa.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-num">2</div>
-                        <h3 data-i18n="s2_title">Přijedu a bezpečně natočím</h3>
-                        <p data-i18n="s2_desc">Vyberu ideální kameru pro dané místo — ať už jde o těsný průlet uvnitř budovy, rychlé auto nebo přehled z výšky.</p>
+                        <h3 data-i18n="s2_title">Přijedu a natočím</h3>
+                        <p data-i18n="s2_desc">Na místo přivezu dron podle typu zakázky — do interiéru, za rychlým autem nebo pro záběry z výšky.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-num">3</div>
-                        <h3 data-i18n="s3_title">Dostanete hotové video na klíč</h3>
-                        <p data-i18n="s3_desc">Video sestříhám podle Vašich poznámek, doladím barvy i hudbu a pošlu připravené ke sdílení na web či sociální sítě.</p>
+                        <h3 data-i18n="s3_title">Dodám hotové video</h3>
+                        <p data-i18n="s3_desc">Záběry sestříhám podle domluvy, upravím barvy a hudbu a pošlu hotové video ke zveřejnění.</p>
                     </div>
                 </div>
 
                 <div class="section-header">
                     <div>
-                        <h2 data-i18n="gear_heading">Čím natáčím (jednoduše a bez složitostí)</h2>
-                        <p class="section-sub" data-i18n="gear_sub">Pro každou situaci mám připravený ten pravý stroj.</p>
+                        <h2 data-i18n="gear_heading">Čím natáčím</h2>
+                        <p class="section-sub" data-i18n="gear_sub">Na každou situaci používám jiný typ dronu.</p>
                     </div>
                 </div>
 
                 <div class="fleet-grid">
                     <div class="fleet-card">
                         <div class="fleet-emoji">🏠</div>
-                        <span class="badge-chip" data-i18n="g1_tag">Uvnitř budov a blízko lidí</span>
-                        <h3 data-i18n="g1_title">Malý chráněný dron do interiéru</h3>
-                        <p data-i18n="g1_desc">Má měkce chráněné vrtule, takže bezpečně proletí kanceláří, kavárnou, halou i kolem lidí bez jakéhokoliv rizika.</p>
+                        <span class="badge-chip" data-i18n="g1_tag">Interiéry a blízkost lidí</span>
+                        <h3 data-i18n="g1_title">Malý dron s chráněnými vrtulemi</h3>
+                        <p data-i18n="g1_desc">Díky krytým vrtulím bezpečně proletí kanceláří, kavárnou, halou i blízko lidí bez rizika poškození.</p>
                     </div>
 
                     <div class="fleet-card">
                         <div class="fleet-emoji">⚡</div>
-                        <span class="badge-chip badge-warm" data-i18n="g2_tag">Rychlost a akce venku</span>
+                        <span class="badge-chip badge-warm" data-i18n="g2_tag">Rychlost a pohyb</span>
                         <h3 data-i18n="g2_title">Rychlý akční dron</h3>
-                        <p data-i18n="g2_desc">Dokáže držet krok se sportovním autem, motorkou nebo zachytit strhující záběry ze sportovních a venkovních akcí.</p>
+                        <p data-i18n="g2_desc">Udrží krok s autem nebo motorkou a zvládne dynamické průlety na venkovních akcích.</p>
                     </div>
 
                     <div class="fleet-card">
                         <div class="fleet-emoji">🌅</div>
-                        <span class="badge-chip badge-sky" data-i18n="g3_tag">Klidné pohledy z ptačí perspektivy</span>
-                        <h3 data-i18n="g3_title">Filmový vyhlídkový dron</h3>
-                        <p data-i18n="g3_desc">Ideální pro krásné, dokonale klidné záběry celých nemovitostí, areálů, krajiny a detailů zblízka.</p>
+                        <span class="badge-chip badge-sky" data-i18n="g3_tag">Pohledy z výšky</span>
+                        <h3 data-i18n="g3_title">Klasický kamerový dron</h3>
+                        <p data-i18n="g3_desc">Vhodný pro klidné záběry celých nemovitostí, areálů a krajiny z ptačí perspektivy.</p>
                     </div>
 
                     <div class="fleet-card">
                         <div class="fleet-emoji">🛡️</div>
-                        <span class="badge-chip badge-pink" data-i18n="g4_tag">100% legálně a bez starostí</span>
-                        <h3 data-i18n="g4_title">Licence, pojištění a střih na míru</h3>
-                        <p data-i18n="g4_desc">Podnikám oficiálně jako OSVČ, mám pilotní oprávnění i pojištění. Pokud máte vlastního střihače, mohu dodat i čisté záběry.</p>
+                        <span class="badge-chip badge-pink" data-i18n="g4_tag">Legálně a pojištěně</span>
+                        <h3 data-i18n="g4_title">Licence, pojištění a střih</h3>
+                        <p data-i18n="g4_desc">Létám oficiálně jako OSVČ s pilotním průkazem a pojištěním odpovědnosti. Pokud máte vlastního střihače, dodám i hrubé záběry.</p>
                     </div>
                 </div>
 
                 <div style="text-align: center; margin-top: 12px;">
-                    <button class="btn" onclick="switchPage('konzultace')" data-i18n="gear_cta">Chci natočit video pro svůj projekt</button>
+                    <button class="btn" onclick="switchPage('konzultace')" data-i18n="gear_cta">Poptat natáčení</button>
                 </div>
             </section>
         </div>
@@ -1409,8 +1405,8 @@
             <section class="container section-block">
                 <div class="section-header">
                     <div>
-                        <h2 data-i18n="consult_heading">Pojďme vymyslet Vaše video</h2>
-                        <p class="section-sub" data-i18n="consult_intro">Vyberte si, co je pro Vás pohodlnější — krátký hovor v kalendáři, nebo rychlá zpráva na WhatsApp či e-mail.</p>
+                        <h2 data-i18n="consult_heading">Domluvme se na natáčení</h2>
+                        <p class="section-sub" data-i18n="consult_intro">Vyberte si termín krátkého hovoru v kalendáři, nebo mi napište rovnou přes WhatsApp či e-mail.</p>
                     </div>
                 </div>
 
@@ -1418,34 +1414,34 @@
                     <!-- LEVO: HOVOR / ONLINE KONZULTACE PŘES KALENDÁŘ -->
                     <div class="panel-box">
                         <span class="badge-chip" data-i18n="cal_badge">📞 Možnost 1 — Krátký hovor</span>
-                        <h3 data-i18n="cal_title">Vyberte si čas, kdy Vám zavolám</h3>
-                        <p class="panel-desc" data-i18n="cal_desc">Klikněte na den a hodinu, která se Vám hodí. Probereme Vaši představu a hned Vám řeknu, co všechno dokážeme natočit.</p>
+                        <h3 data-i18n="cal_title">Rezervujte si čas, kdy zavolám</h3>
+                        <p class="panel-desc" data-i18n="cal_desc">Vyberte si den a hodinu. Během pár minut probereme vaše zadání a možnosti natáčení.</p>
                         
                         <div class="cal-status-bar">
-                            <div><span class="cal-sync-dot"></span><span data-i18n="cal_sync">Aktuálně volné termíny</span></div>
-                            <div data-i18n="cal_type">Hovor / Online</div>
+                            <div><span class="cal-sync-dot"></span><span data-i18n="cal_sync">Volné termíny</span></div>
+                            <div data-i18n="cal_type">Telefon / Online</div>
                         </div>
                         
                         <div id="my-cal-inline"></div>
 
                         <div class="quick-call-row">
-                            <span data-i18n="quick_call_text">Spěcháte na to? Zavolejte rovnou:</span>
+                            <span data-i18n="quick_call_text">Spěcháte? Zavolejte hned:</span>
                             <a href="tel:+420607010207" class="btn btn-outline" style="padding: 9px 16px; font-size: 0.9rem;">+420 607 010 207</a>
                         </div>
                     </div>
 
                     <!-- PRAVO: PÍSEMNÁ POPTÁVKA (WHATSAPP NEBO E-MAIL) -->
                     <div class="panel-box">
-                        <span class="badge-chip badge-warm" data-i18n="form_badge">💬 Možnost 2 — Napište mi zprávu</span>
+                        <span class="badge-chip badge-warm" data-i18n="form_badge">💬 Možnost 2 — Zpráva</span>
                         <h3 data-i18n="form_title">Nezávazná poptávka</h3>
-                        <p class="panel-desc" data-i18n="form_desc">Napište mi pár vět o tom, co byste rádi natočili. Můžeme si psát rovnou přes <strong>WhatsApp</strong> nebo <strong>e-mailem</strong>.</p>
+                        <p class="panel-desc" data-i18n="form_desc">Napište mi ve zkratce, co chcete natočit. Ozvu se vám přes <strong>WhatsApp</strong> nebo <strong>e-mail</strong>.</p>
 
                         <form id="fpv-form">
                             <!-- ZASTUPUJI FIRMU -->
                             <div class="company-toggle-box">
                                 <label class="check-row" for="is-company">
                                     <input type="checkbox" id="is-company" onchange="toggleCompanyFields()">
-                                    <span data-i18n="f_is_company">Zastupuji firmu / organizaci</span>
+                                    <span data-i18n="f_is_company">Poptávám za firmu / organizaci</span>
                                 </label>
                                 <div class="company-fields" id="company-fields">
                                     <div class="form-grid" style="margin-bottom: 0;">
@@ -1469,7 +1465,7 @@
 
                             <!-- VÝBĚR KANÁLU ODPOVĚDI: WHATSAPP VS E-MAIL -->
                             <div class="form-group">
-                                <label data-i18n="f_channel_q">Kde si budeme psát?</label>
+                                <label data-i18n="f_channel_q">Jak se vám mám ozvat?</label>
                                 <div class="channel-switch">
                                     <label class="channel-option">
                                         <input type="radio" name="contact-channel" value="whatsapp" checked onchange="toggleContactChannel()">
@@ -1483,12 +1479,12 @@
                             </div>
 
                             <div class="form-group" id="phone-group">
-                                <label for="phone" data-i18n="f_phone">Vaše telefonní číslo (WhatsApp) *</label>
+                                <label for="phone" data-i18n="f_phone">Telefonní číslo (WhatsApp) *</label>
                                 <input type="tel" id="phone" class="form-control" placeholder="+420 777 123 456" required>
                             </div>
 
                             <div class="form-group" id="email-group" style="display: none;">
-                                <label for="email" data-i18n="f_email">Váš e-mail *</label>
+                                <label for="email" data-i18n="f_email">E-mail *</label>
                                 <input type="email" id="email" class="form-control" placeholder="jan@firma.cz">
                             </div>
 
@@ -1496,33 +1492,33 @@
                                 <div class="form-group">
                                     <label for="category" data-i18n="f_category">Co budeme natáčet?</label>
                                     <select id="category" class="form-control">
-                                        <option value="Reality / Interiér budovy" data-i18n="opt_cat_1">🏠 Reality / Interiér budovy</option>
-                                        <option value="Auta / Motorky / Pohyb" data-i18n="opt_cat_2">🚗 Auta / Motorky / Pohyb</option>
-                                        <option value="Akce / Závody / Událost" data-i18n="opt_cat_3">🎉 Akce / Závody / Událost</option>
-                                        <option value="Krátká videa na sítě (Reels / TikTok)" data-i18n="opt_cat_4">📱 Krátká videa na sítě</option>
-                                        <option value="Jiné / Vlastní nápad" data-i18n="opt_cat_5">✨ Jiné / Vlastní nápad</option>
+                                        <option value="Reality / Interiér" data-i18n="opt_cat_1">🏠 Reality / Interiér</option>
+                                        <option value="Auta / Motorky" data-i18n="opt_cat_2">🚗 Auta / Motorky</option>
+                                        <option value="Akce / Závody" data-i18n="opt_cat_3">🎉 Akce / Závody</option>
+                                        <option value="Krátká videa na sítě" data-i18n="opt_cat_4">📱 Krátká videa na sítě</option>
+                                        <option value="Jiný projekt" data-i18n="opt_cat_5">✨ Jiný projekt</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="budget" data-i18n="f_budget">Představa o rozpočtu</label>
+                                    <label for="budget" data-i18n="f_budget">Orientační rozpočet</label>
                                     <select id="budget" class="form-control">
-                                        <option value="Do 3 000 Kč (krátký klip na sítě)" data-i18n="opt_b_1">Do 3 000 Kč (krátký klip)</option>
+                                        <option value="Do 3 000 Kč (krátký klip)" data-i18n="opt_b_1">Do 3 000 Kč (krátký klip)</option>
                                         <option value="3 000 – 7 000 Kč (standardní video)" selected data-i18n="opt_b_2">3 000 – 7 000 Kč (standardní video)</option>
                                         <option value="7 000 – 15 000 Kč (větší natáčení)" data-i18n="opt_b_3">7 000 – 15 000 Kč (větší natáčení)</option>
                                         <option value="15 000+ Kč (více dnů / lokací)" data-i18n="opt_b_4">15 000+ Kč (více dnů / lokací)</option>
-                                        <option value="Zatím nevím / Nechám si poradit" data-i18n="opt_b_5">Zatím nevím / Nechám si poradit</option>
+                                        <option value="Zatím nevím / nechám si poradit" data-i18n="opt_b_5">Zatím nevím / nechám si poradit</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="date"><span data-i18n="f_date">Kdy by se Vám to hodilo?</span> <span class="label-opt" data-i18n="opt_tag">(volitelné)</span></label>
+                                <label for="date"><span data-i18n="f_date">Preferovaný termín</span> <span class="label-opt" data-i18n="opt_tag">(volitelné)</span></label>
                                 <input type="date" id="date" class="form-control">
                             </div>
 
                             <div class="form-group">
-                                <label for="message" data-i18n="f_message">Vaše představa a místo natáčení *</label>
-                                <textarea id="message" class="form-control" placeholder="Kde budeme natáčet a jak by mělo video působit?" required></textarea>
+                                <label for="message" data-i18n="f_message">Kde a co budeme natáčet? *</label>
+                                <textarea id="message" class="form-control" placeholder="Stručně popište místo, představu o videu nebo účel použití..." required></textarea>
                             </div>
 
                             <button type="submit" id="submit-btn" class="btn btn-whatsapp" style="width: 100%;">
@@ -1531,8 +1527,8 @@
                             </button>
 
                             <p class="form-footnote">
-                                <span data-i18n="f_note_prefix">Odeslání poptávky je zcela nezávazné.</span>
-                                <button type="button" class="terms-link" onclick="switchPage('recenze')" data-i18n="f_note_link">Zobrazit smluvní podmínky (VOP)</button>
+                                <span data-i18n="f_note_prefix">Odeslání poptávky je nezávazné.</span>
+                                <button type="button" class="terms-link" onclick="switchPage('recenze')" data-i18n="f_note_link">Smluvní podmínky (VOP)</button>
                             </p>
                         </form>
                     </div>
@@ -1547,8 +1543,8 @@
             <section class="container section-block">
                 <div class="section-header">
                     <div>
-                        <h2 data-i18n="rev_heading">Co říkají klienti</h2>
-                        <p class="section-sub" data-i18n="rev_sub">Spokojenost a skvělý pocit z výsledného videa jsou pro mě na prvním místě.</p>
+                        <h2 data-i18n="rev_heading">Recenze klientů</h2>
+                        <p class="section-sub" data-i18n="rev_sub">Zpětná vazba z dokončených zakázek.</p>
                     </div>
                 </div>
 
@@ -1556,7 +1552,7 @@
                     <div>
                         <div class="google-stars">★★★★★</div>
                         <h3 style="font-size: 1.35rem; font-weight: 800; margin-bottom: 6px;" data-i18n="rev_banner_title">Hodnocení FreeWill FPV na Googlu</h3>
-                        <p style="color: var(--text-soft); max-width: 580px; font-size: 0.95rem;" data-i18n="rev_banner_desc">Můj firemní profil na Googlu je aktivní a první recenze z nedávných natáčení právě přibývají. Pokud jsme spolu už spolupracovali, budu moc rád za Vaše hodnocení!</p>
+                        <p style="color: var(--text-soft); max-width: 580px; font-size: 0.95rem;" data-i18n="rev_banner_desc">Firemní profil na Googlu je aktivní a postupně na něj přibývají recenze z natáčení. Pokud jsme spolu už spolupracovali, budu rád za vaše hodnocení.</p>
                     </div>
                     <a href="https://share.google/N6qhm5vAmCavTem9n" target="_blank" class="btn">
                         <span data-i18n="rev_btn">Napsat recenzi na Google</span>
@@ -1566,16 +1562,16 @@
 
                 <div class="reviews-placeholder-grid">
                     <div class="review-card">
-                        <span class="badge-chip" data-i18n="rc1_tag">🏠 Reality & Prostory</span>
-                        <p data-i18n="rc1_text">„Zde se brzy zobrazí ověřená Google recenze z natáčení průletů nemovitostí pro realitní kancelář.“</p>
+                        <span class="badge-chip" data-i18n="rc1_tag">🏠 Reality a prostory</span>
+                        <p data-i18n="rc1_text">„Brzy zde přibude ověřená Google recenze z natáčení průletů nemovitostí pro realitní kancelář.“</p>
                     </div>
                     <div class="review-card">
-                        <span class="badge-chip badge-pink" data-i18n="rc2_tag">🎉 Akce & Slavnosti</span>
-                        <p data-i18n="rc2_text">„Zde se brzy zobrazí hodnocení z natáčení středověké akce v Kolešovicích a hasičských závodů v Plzni.“</p>
+                        <span class="badge-chip badge-pink" data-i18n="rc2_tag">🎉 Akce a závody</span>
+                        <p data-i18n="rc2_text">„Brzy zde přibude hodnocení z natáčení středověké slavnosti v Kolešovicích a hasičských závodů v Plzni.“</p>
                     </div>
                     <div class="review-card">
-                        <span class="badge-chip badge-warm" data-i18n="rc3_tag">⭐ Buďte další spokojený klient</span>
-                        <p data-i18n="rc3_text">„Chcete video, které Vaše zákazníky nadchne na první pohled? Ozvěte se a společně ho vymyslíme.“</p>
+                        <span class="badge-chip badge-warm" data-i18n="rc3_tag">⭐ Další spolupráce</span>
+                        <p data-i18n="rc3_text">„Hledáte záběry, které zaujmou na první pohled? Napište mi a domluvíme se na termínu.“</p>
                     </div>
                 </div>
 
@@ -1583,7 +1579,7 @@
                 <div class="section-header">
                     <div>
                         <h2 data-i18n="vop_heading">Smluvní podmínky (VOP)</h2>
-                        <p class="section-sub" data-i18n="vop_sub">Férová a jasná pravidla spolupráce.</p>
+                        <p class="section-sub" data-i18n="vop_sub">Základní pravidla naší spolupráce.</p>
                     </div>
                 </div>
 
@@ -1653,8 +1649,8 @@
 
                 <!-- POTVRZENÍ SMLUVNÍCH PODMÍNEK PO DOMLUVĚ ZAKÁZKY -->
                 <div class="vop-accept-box">
-                    <h3 data-i18n="vop_box_title">Potvrzení smluvních podmínek pro dohodnutou zakázku</h3>
-                    <p data-i18n="vop_box_desc">Toto potvrzení vyplňte prosím až ve chvíli, kdy máme společně odsouhlasený rozsah natáčení a cenovou nabídku.</p>
+                    <h3 data-i18n="vop_box_title">Potvrzení podmínek pro domluvenou zakázku</h3>
+                    <p data-i18n="vop_box_desc">Vyplňte prosím až po vzájemném odsouhlasení rozsahu natáčení a ceny.</p>
 
                     <form id="vop-confirm-form">
                         <div class="form-grid">
@@ -1663,7 +1659,7 @@
                                 <input type="text" id="vop-client-name" class="form-control" placeholder="Jan Novák / Firma s.r.o." required>
                             </div>
                             <div class="form-group">
-                                <label for="vop-project-ref" data-i18n="vop_f_proj">Dohodnutý projekt / termín *</label>
+                                <label for="vop-project-ref" data-i18n="vop_f_proj">Domluvený projekt / termín *</label>
                                 <input type="text" id="vop-project-ref" class="form-control" placeholder="Natáčení nemovitosti / 15. 6. 2026" required>
                             </div>
                         </div>
@@ -1674,7 +1670,7 @@
                         </div>
 
                         <button type="submit" class="btn">
-                            <span data-i18n="vop_f_btn">Odeslat potvrzení podmínek</span>
+                            <span data-i18n="vop_f_btn">Odeslat potvrzení</span>
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
                         </button>
                     </form>
@@ -1725,7 +1721,7 @@
             <div class="footer-bottom">
                 <span>© 2026 FreeWill FPV — Matěj Ziman | IČO: 24901547</span>
                 <span>•</span>
-                <button type="button" class="terms-link" onclick="switchPage('recenze')" data-i18n="footer_link">Recenze & Smluvní podmínky (VOP)</button>
+                <button type="button" class="terms-link" onclick="switchPage('recenze')" data-i18n="footer_link">Recenze a smluvní podmínky (VOP)</button>
             </div>
         </div>
     </footer>
@@ -1760,251 +1756,251 @@
 
         const translations = {
             cs: {
-                nav_projects: "🎬 Ukázky práce",
-                nav_gear: "✨ Co umím natočit",
-                nav_consult: "💬 Nezávazná poptávka",
-                nav_reviews: "⭐ Recenze & Podmínky",
-                hero_badge: "🎥 Létající kamera, která vtáhne diváka do děje",
-                hero_title: 'Videa, ze kterých naskakuje <span class="highlight">husí kůže</span>',
-                hero_subtitle: "Proletím Vaším prostorem, zachytím energii Vaší akce a vytvořím záběry, u kterých lidé na sítích zastaví a dokoukají je až do konce.",
+                nav_projects: "🎬 Ukázky",
+                nav_gear: "✨ Co natáčím",
+                nav_consult: "💬 Poptávka",
+                nav_reviews: "⭐ Recenze a VOP",
+                hero_badge: "🎥 Letecké záběry zblízka i z výšky",
+                hero_title: 'Záběry z dronu, které <span class="highlight">okamžitě zaujmou</span>',
+                hero_subtitle: "Proletím interiérem, udržím krok s jedoucím autem a zachytím atmosféru vaší akce. Natočím a sestříhám video, které lidé na sítích nepřeskočí.",
                 hero_cta_1: "Domluvit natáčení",
-                hero_cta_2: "Jak to funguje",
-                pill_1: "✅ Bezpečné průlety i uvnitř budov",
-                pill_2: "🎬 Hotové video připravené rovnou na sítě",
-                pill_3: "🛡️ Oficiální licence a pojištění",
-                o1_title: "🏠 Reality a prostory",
-                o1_desc: "Plynulý průlet celým domem, hotelem nebo firmou na jeden záběr. Divák má pocit, že tam stojí s Vámi.",
-                o2_title: "🚗 Auta a rychlost",
-                o2_desc: "Dynamické záběry v těsné blízkosti jedoucího vozu nebo motorky. Energie a adrenalin v každé vteřině.",
-                o3_title: "🎉 Akce a události",
-                o3_desc: "Závody, festivaly, slavnosti i firemní dny. Zachyťte atmosféru tak živě, že ji diváci prožijí znovu.",
-                o4_title: "📱 Krátká videa na sítě",
-                o4_desc: "Reels a TikTok klipy střižené do hudby, které okamžitě přitáhnou pozornost nových zákazníků.",
-                proj_heading: "Podívejte se, jak to vypadá v praxi",
-                proj_sub: "Reálné záběry z nemovitostí, akcí i automobilového světa.",
-                p1_badge: "🏠 Reality & Interiéry",
-                p1_title: "Prohlídka nemovitosti, na kterou se nezapomíná",
-                p1_desc: "Místo obyčejných fotek plynulý průlet zvenku rovnou do místností. Zájemci okamžitě nasají atmosféru prostoru a nemovitost si zamilují dřív, než přijdou na prohlídku.",
-                p1_t1: "✨ Průlet interiérem i exteriérem",
+                hero_cta_2: "Jak to probíhá",
+                pill_1: "✅ Bezpečné průlety i v interiéru",
+                pill_2: "🎬 Střih hotový rovnou na sítě",
+                pill_3: "🛡️ Licence ÚCL a pojištění",
+                o1_title: "🏠 Reality a interiéry",
+                o1_desc: "Plynulý průlet domem, hotelem nebo provozovnou na jeden záběr. Divák hned vidí, jak na sebe prostory navazují.",
+                o2_title: "🚗 Auta a motorky",
+                o2_desc: "Záběry těsně u jedoucího auta nebo motorky. Rychlost a pohyb, které ze země nenatočíte.",
+                o3_title: "🎉 Akce a závody",
+                o3_desc: "Festivaly, sportovní závody i firemní akce z ptačí perspektivy i přímo z centra dění.",
+                o4_title: "📱 Videa na sítě",
+                o4_desc: "Krátká videa na výšku pro Instagram a TikTok, sestříhaná do hudby a připravená k vydání.",
+                proj_heading: "Ukázky z natáčení",
+                proj_sub: "Reálné zakázky z nemovitostí, akcí a motorsportu.",
+                p1_badge: "🏠 Reality",
+                p1_title: "Prohlídka nemovitosti na jeden záběr",
+                p1_desc: "Průlet zvenku přímo do jednotlivých místností. Zájemce si udělá jasnou představu o dispozici dřív, než přijde na osobní prohlídku.",
+                p1_t1: "✨ Exteriér i interiér v kuse",
                 p1_t2: "🎵 Střih na míru",
-                reels_heading: "📱 Krátká videa na výšku (Instagram Reels & TikTok)",
-                p2_badge: "🎉 Atmosféra akce",
+                reels_heading: "📱 Krátká videa na výšku (Reels a TikTok)",
+                p2_badge: "🎉 Společenská akce",
                 p2_title: "Kolešovice — Středověk 2026",
-                p2_desc: "Živé emoce, radost a dění přímo mezi lidmi. Záběry z pohledu, ze kterého akci běžný návštěvník nikdy neuvidí.",
-                p3_badge: "🔥 Sport & Akce",
+                p2_desc: "Atmosféra slavnosti z výšky i zblízka mezi lidmi. Pohledy, které běžný kameraman ze země nezachytí.",
+                p3_badge: "🔥 Sport",
                 p3_title: "Hasičské závody Plzeň 2026",
-                p3_desc: "Rychlé tempo, napětí a energie celého závodu v krátkém videu dělaném přímo pro sociální sítě.",
-                p4_badge: "🚗 Jeden plynulý záběr",
-                p4_title: "Corvette C5 — Bez jediného střihu",
-                p4_desc: "Kamera letí těsně kolem vozu na jeden zátah. Čistá dynamika, která okamžitě upoutá oči diváka.",
-                p5_badge: "⚡ Rychlý úderný klip",
-                p5_title: "Corvette C5 — Úderný krátký edit",
-                p5_desc: "Krátký, energický sestřih plný akce, který se přehrává stále dokola a drží pozornost od první vteřiny.",
-                p6_badge: "✨ Plynulé detaily",
-                p6_title: "Corvette C5 — Filmové zpomalení",
-                p6_desc: "Klidné, dokonale hladké záběry, které nechají vyniknout každou linii a detail vozu zblízka.",
-                how_heading: "Od nápadu k hotovému videu",
-                how_sub: "Nemusíte řešit žádnou techniku ani povolení — o vše se postarám od A do Z.",
-                s1_title: "Řeknete mi svou představu",
-                s1_desc: "Krátce si napíšeme nebo zavoláme. Společně vymyslíme, jaký styl videa udělá na Vaše zákazníky nejlepší dojem.",
-                s2_title: "Přijedu a bezpečně natočím",
-                s2_desc: "Vyberu ideální kameru pro dané místo — ať už jde o těsný průlet uvnitř budovy, rychlé auto nebo přehled z výšky.",
-                s3_title: "Dostanete hotové video na klíč",
-                s3_desc: "Video sestříhám podle Vašich poznámek, doladím barvy i hudbu a pošlu připravené ke sdílení na web či sociální sítě.",
-                gear_heading: "Čím natáčím (jednoduše a bez složitostí)",
-                gear_sub: "Pro každou situaci mám připravený ten pravý stroj.",
-                g1_tag: "Uvnitř budov a blízko lidí",
-                g1_title: "Malý chráněný dron do interiéru",
-                g1_desc: "Má měkce chráněné vrtule, takže bezpečně proletí kanceláří, kavárnou, halou i kolem lidí bez jakéhokoliv rizika.",
-                g2_tag: "Rychlost a akce venku",
+                p3_desc: "Průběh závodu v rychlém tempu. Krátký sestřih připravený rovnou pro sociální sítě.",
+                p4_badge: "🚗 Jeden záběr",
+                p4_title: "Corvette C5 — bez střihu",
+                p4_desc: "Průlet těsně kolem jedoucího vozu na jeden zátah bez jediného přerušení.",
+                p5_badge: "⚡ Krátký klip",
+                p5_title: "Corvette C5 — dynamický sestřih",
+                p5_desc: "Rychlý klip střižený do rytmu hudby, který udrží pozornost od první vteřiny.",
+                p6_badge: "✨ Zpomalené záběry",
+                p6_title: "Corvette C5 — detaily v pohybu",
+                p6_desc: "Klidné zpomalené záběry, ve kterých vyniknou tvary a detaily auta.",
+                how_heading: "Jak probíhá spolupráce",
+                how_sub: "Techniku ani povolení řešit nemusíte. Vše zařídím sám.",
+                s1_title: "Probereme vaši představu",
+                s1_desc: "Napíšeme si nebo zavoláme. Řeknete mi, co potřebujete ukázat, a společně navrhneme styl videa.",
+                s2_title: "Přijedu a natočím",
+                s2_desc: "Na místo přivezu dron podle typu zakázky — do interiéru, za rychlým autem nebo pro záběry z výšky.",
+                s3_title: "Dodám hotové video",
+                s3_desc: "Záběry sestříhám podle domluvy, upravím barvy a hudbu a pošlu hotové video ke zveřejnění.",
+                gear_heading: "Čím natáčím",
+                gear_sub: "Na každou situaci používám jiný typ dronu.",
+                g1_tag: "Interiéry a blízkost lidí",
+                g1_title: "Malý dron s chráněnými vrtulemi",
+                g1_desc: "Díky krytým vrtulím bezpečně proletí kanceláří, kavárnou, halou i blízko lidí bez rizika poškození.",
+                g2_tag: "Rychlost a pohyb",
                 g2_title: "Rychlý akční dron",
-                g2_desc: "Dokáže držet krok se sportovním autem, motorkou nebo zachytit strhující záběry ze sportovních a venkovních akcí.",
-                g3_tag: "Klidné pohledy z ptačí perspektivy",
-                g3_title: "Filmový vyhlídkový dron",
-                g3_desc: "Ideální pro krásné, dokonale klidné záběry celých nemovitostí, areálů, krajiny a detailů zblízka.",
-                g4_tag: "100% legálně a bez starostí",
-                g4_title: "Licence, pojištění a střih na míru",
-                g4_desc: "Podnikám oficiálně jako OSVČ, mám pilotní oprávnění i pojištění. Pokud máte vlastního střihače, mohu dodat i čisté záběry.",
-                gear_cta: "Chci natočit video pro svůj projekt",
-                consult_heading: "Pojďme vymyslet Vaše video",
-                consult_intro: "Vyberte si, co je pro Vás pohodlnější — krátký hovor v kalendáři, nebo rychlá zpráva na WhatsApp či e-mail.",
+                g2_desc: "Udrží krok s autem nebo motorkou a zvládne dynamické průlety na venkovních akcích.",
+                g3_tag: "Pohledy z výšky",
+                g3_title: "Klasický kamerový dron",
+                g3_desc: "Vhodný pro klidné záběry celých nemovitostí, areálů a krajiny z ptačí perspektivy.",
+                g4_tag: "Legálně a pojištěně",
+                g4_title: "Licence, pojištění a střih",
+                g4_desc: "Létám oficiálně jako OSVČ s pilotním průkazem a pojištěním odpovědnosti. Pokud máte vlastního střihače, dodám i hrubé záběry.",
+                gear_cta: "Poptat natáčení",
+                consult_heading: "Domluvme se na natáčení",
+                consult_intro: "Vyberte si termín krátkého hovoru v kalendáři, nebo mi napište rovnou přes WhatsApp či e-mail.",
                 cal_badge: "📞 Možnost 1 — Krátký hovor",
-                cal_title: "Vyberte si čas, kdy Vám zavolám",
-                cal_desc: "Klikněte na den a hodinu, která se Vám hodí. Probereme Vaši představu a hned Vám řeknu, co všechno dokážeme natočit.",
-                cal_sync: "Aktuálně volné termíny",
-                cal_type: "Hovor / Online",
-                quick_call_text: "Spěcháte na to? Zavolejte rovnou:",
-                form_badge: "💬 Možnost 2 — Napište mi zprávu",
+                cal_title: "Rezervujte si čas, kdy zavolám",
+                cal_desc: "Vyberte si den a hodinu. Během pár minut probereme vaše zadání a možnosti natáčení.",
+                cal_sync: "Volné termíny",
+                cal_type: "Telefon / Online",
+                quick_call_text: "Spěcháte? Zavolejte hned:",
+                form_badge: "💬 Možnost 2 — Zpráva",
                 form_title: "Nezávazná poptávka",
-                form_desc: "Napište mi pár vět o tom, co byste rádi natočili. Můžeme si psát rovnou přes <strong>WhatsApp</strong> nebo <strong>e-mailem</strong>.",
-                f_is_company: "Zastupuji firmu / organizaci",
+                form_desc: "Napište mi ve zkratce, co chcete natočit. Ozvu se vám přes <strong>WhatsApp</strong> nebo <strong>e-mail</strong>.",
+                f_is_company: "Poptávám za firmu / organizaci",
                 f_company_name: "Název firmy *",
                 f_company_ico: "IČO",
                 opt_tag: "(volitelné)",
-                f_channel_q: "Kde si budeme psát?",
+                f_channel_q: "Jak se vám mám ozvat?",
                 f_ch_wa: "WhatsApp (rychlejší)",
                 f_ch_mail: "E-mail",
-                f_phone: "Vaše telefonní číslo (WhatsApp) *",
-                f_email: "Váš e-mail *",
+                f_phone: "Telefonní číslo (WhatsApp) *",
+                f_email: "E-mail *",
                 f_category: "Co budeme natáčet?",
-                opt_cat_1: "🏠 Reality / Interiér budovy",
-                opt_cat_2: "🚗 Auta / Motorky / Pohyb",
-                opt_cat_3: "🎉 Akce / Závody / Událost",
+                opt_cat_1: "🏠 Reality / Interiér",
+                opt_cat_2: "🚗 Auta / Motorky",
+                opt_cat_3: "🎉 Akce / Závody",
                 opt_cat_4: "📱 Krátká videa na sítě",
-                opt_cat_5: "✨ Jiné / Vlastní nápad",
-                f_budget: "Představa o rozpočtu",
+                opt_cat_5: "✨ Jiný projekt",
+                f_budget: "Orientační rozpočet",
                 opt_b_1: "Do 3 000 Kč (krátký klip)",
                 opt_b_2: "3 000 – 7 000 Kč (standardní video)",
                 opt_b_3: "7 000 – 15 000 Kč (větší natáčení)",
                 opt_b_4: "15 000+ Kč (více dnů / lokací)",
-                opt_b_5: "Zatím nevím / Nechám si poradit",
-                f_date: "Kdy by se Vám to hodilo?",
-                f_message: "Vaše představa a místo natáčení *",
-                f_note_prefix: "Odeslání poptávky je zcela nezávazné.",
-                f_note_link: "Zobrazit smluvní podmínky (VOP)",
-                rev_heading: "Co říkají klienti",
-                rev_sub: "Spokojenost a skvělý pocit z výsledného videa jsou pro mě na prvním místě.",
+                opt_b_5: "Zatím nevím / nechám si poradit",
+                f_date: "Preferovaný termín",
+                f_message: "Kde a co budeme natáčet? *",
+                f_note_prefix: "Odeslání poptávky je nezávazné.",
+                f_note_link: "Smluvní podmínky (VOP)",
+                rev_heading: "Recenze klientů",
+                rev_sub: "Zpětná vazba z dokončených zakázek.",
                 rev_banner_title: "Hodnocení FreeWill FPV na Googlu",
-                rev_banner_desc: "Můj firemní profil na Googlu je aktivní a první recenze z nedávných natáčení právě přibývají. Pokud jsme spolu už spolupracovali, budu moc rád za Vaše hodnocení!",
+                rev_banner_desc: "Firemní profil na Googlu je aktivní a postupně na něj přibývají recenze z natáčení. Pokud jsme spolu už spolupracovali, budu rád za vaše hodnocení.",
                 rev_btn: "Napsat recenzi na Google",
-                rc1_tag: "🏠 Reality & Prostory",
-                rc1_text: "„Zde se brzy zobrazí ověřená Google recenze z natáčení průletů nemovitostí pro realitní kancelář.“",
-                rc2_tag: "🎉 Akce & Slavnosti",
-                rc2_text: "„Zde se brzy zobrazí hodnocení z natáčení středověké akce v Kolešovicích a hasičských závodů v Plzni.“",
-                rc3_tag: "⭐ Buďte další spokojený klient",
-                rc3_text: "„Chcete video, které Vaše zákazníky nadchne na první pohled? Ozvěte se a společně ho vymyslíme.“",
+                rc1_tag: "🏠 Reality a prostory",
+                rc1_text: "„Brzy zde přibude ověřená Google recenze z natáčení průletů nemovitostí pro realitní kancelář.“",
+                rc2_tag: "🎉 Akce a závody",
+                rc2_text: "„Brzy zde přibude hodnocení z natáčení středověké slavnosti v Kolešovicích a hasičských závodů v Plzni.“",
+                rc3_tag: "⭐ Další spolupráce",
+                rc3_text: "„Hledáte záběry, které zaujmou na první pohled? Napište mi a domluvíme se na termínu.“",
                 vop_heading: "Smluvní podmínky (VOP)",
-                vop_sub: "Férová a jasná pravidla spolupráce.",
-                vop_box_title: "Potvrzení smluvních podmínek pro dohodnutou zakázku",
-                vop_box_desc: "Toto potvrzení vyplňte prosím až ve chvíli, kdy máme společně odsouhlasený rozsah natáčení a cenovou nabídku.",
+                vop_sub: "Základní pravidla naší spolupráce.",
+                vop_box_title: "Potvrzení podmínek pro domluvenou zakázku",
+                vop_box_desc: "Vyplňte prosím až po vzájemném odsouhlasení rozsahu natáčení a ceny.",
                 vop_f_name: "Jméno / Název firmy *",
-                vop_f_proj: "Dohodnutý projekt / termín *",
+                vop_f_proj: "Domluvený projekt / termín *",
                 vop_f_check: "Potvrzuji, že jsem si přečetl(a) smluvní podmínky (VOP) a souhlasím s nimi.",
-                vop_f_btn: "Odeslat potvrzení podmínek",
-                footer_link: "Recenze & Smluvní podmínky (VOP)"
+                vop_f_btn: "Odeslat potvrzení",
+                footer_link: "Recenze a smluvní podmínky (VOP)"
             },
             en: {
-                nav_projects: "🎬 Our Work",
-                nav_gear: "✨ What I Film",
+                nav_projects: "🎬 Work",
+                nav_gear: "✨ Services",
                 nav_consult: "💬 Get a Quote",
                 nav_reviews: "⭐ Reviews & Terms",
-                hero_badge: "🎥 Flying cameras that pull viewers straight into the story",
-                hero_title: 'Videos that give your audience <span class="highlight">goosebumps</span>',
-                hero_subtitle: "I fly smoothly through your spaces, capture the raw energy of your events, and create videos that make people stop scrolling and watch until the end.",
+                hero_badge: "🎥 Close-range & aerial drone filming",
+                hero_title: 'Drone footage that <span class="highlight">grabs attention</span>',
+                hero_subtitle: "I fly smoothly through interiors, keep pace with moving cars, and capture the real energy of your event. Filmed and edited so people don't scroll past.",
                 hero_cta_1: "Book a Shoot",
                 hero_cta_2: "How It Works",
-                pill_1: "✅ Safe fly-throughs even indoors",
-                pill_2: "🎬 Edited & ready to post on social media",
-                pill_3: "🛡️ Licensed & commercially insured",
+                pill_1: "✅ Safe indoor fly-throughs",
+                pill_2: "🎬 Edited & ready for social media",
+                pill_3: "🛡️ Licensed & insured operator",
                 o1_title: "🏠 Real Estate & Spaces",
-                o1_desc: "One seamless fly-through from outside straight into every room. Viewers feel like they're walking there in person.",
-                o2_title: "🚗 Cars & Speed",
-                o2_desc: "Close-range, high-energy tracking shots next to moving cars or bikes. Pure adrenaline in every frame.",
-                o3_title: "🎉 Events & Festivals",
-                o3_desc: "Races, festivals, and company events captured so vividly that viewers relive the excitement all over again.",
+                o1_desc: "One continuous fly-through of your house, hotel, or venue. Viewers immediately see how the spaces connect.",
+                o2_title: "🚗 Cars & Motorcycles",
+                o2_desc: "Close tracking shots alongside moving vehicles. Speed and angles you simply can't get from the ground.",
+                o3_title: "🎉 Events & Races",
+                o3_desc: "Festivals, races, and company events filmed both from above and right in the middle of the action.",
                 o4_title: "📱 Social Media Clips",
-                o4_desc: "Reels and TikTok videos cut to the beat of the music, built to grab attention and win new customers.",
-                proj_heading: "See What It Looks Like in Action",
-                proj_sub: "Real footage from properties, live events, and automotive shoots.",
-                p1_badge: "🏠 Real Estate & Interiors",
-                p1_title: "A Property Tour Nobody Forgets",
-                p1_desc: "Instead of static photos, a smooth continuous flight from outdoors right through the rooms. Buyers fall in love with the space before even visiting.",
-                p1_t1: "✨ Indoor & outdoor fly-through",
-                p1_t2: "🎵 Custom music edit",
-                reels_heading: "📱 Vertical Videos for Social Media (Reels & TikTok)",
-                p2_badge: "🎉 Event Atmosphere",
+                o4_desc: "Vertical videos for Instagram Reels and TikTok, cut to music and ready to publish.",
+                proj_heading: "Recent Shoots",
+                proj_sub: "Real projects from real estate, live events, and motorsport.",
+                p1_badge: "🏠 Real Estate",
+                p1_title: "Single-Take Property Walkthrough",
+                p1_desc: "A smooth flight from outside straight through every room. Buyers get a clear feel for the layout before booking a viewing.",
+                p1_t1: "✨ Outdoor & indoor in one take",
+                p1_t2: "🎵 Custom edit",
+                reels_heading: "📱 Vertical Videos (Reels & TikTok)",
+                p2_badge: "🎉 Live Event",
                 p2_title: "Kolešovice — Medieval Event 2026",
-                p2_desc: "Genuine smiles, joy, and live action right among the crowd — filmed from an angle visitors never get to see.",
-                p3_badge: "🔥 Sports & Action",
+                p2_desc: "Event atmosphere from above and up close among the crowd — angles a ground camera can't reach.",
+                p3_badge: "🔥 Sports",
                 p3_title: "Firefighter Competition Plzeň 2026",
-                p3_desc: "Fast pace, tension, and team energy packed into a punchy vertical video made for social media.",
-                p4_badge: "🚗 One Continuous Shot",
-                p4_title: "Corvette C5 — Zero Cuts",
-                p4_desc: "The camera glides right alongside the car in one unbroken take. Pure motion that locks in viewer attention.",
-                p5_badge: "⚡ High-Energy Short Clip",
-                p5_title: "Corvette C5 — Punchy Short Edit",
-                p5_desc: "A fast, rhythmic loop edit packed with action that hooks viewers from the very first second.",
-                p6_badge: "✨ Smooth Details",
-                p6_title: "Corvette C5 — Cinematic Slow Motion",
-                p6_desc: "Calm, silky-smooth aerial shots letting every curve and detail of the car shine up close.",
-                how_heading: "From Idea to Finished Video",
-                how_sub: "You don't have to worry about gear or permits — I handle everything from start to finish.",
-                s1_title: "Tell me your idea",
-                s1_desc: "We have a quick chat or call. Together we decide what style of video will make the strongest impression on your audience.",
-                s2_title: "I arrive and film safely",
-                s2_desc: "I bring the right flying camera for your location — whether it's an indoor tour, a fast car, or wide scenic views.",
-                s3_title: "You get a ready-to-post video",
-                s3_desc: "I edit the video according to your notes, polish the colors and music, and deliver it ready for your website or social channels.",
-                gear_heading: "How I Film (Simple & Stress-Free)",
-                gear_sub: "The right flying camera for every location and mood.",
+                p3_desc: "Fast-paced race highlights cut into a short vertical clip built for social media.",
+                p4_badge: "🚗 One Continuous Take",
+                p4_title: "Corvette C5 — Uncut Tracking Shot",
+                p4_desc: "Flying close alongside a moving car in a single unbroken shot.",
+                p5_badge: "⚡ Short Clip",
+                p5_title: "Corvette C5 — Fast-Paced Edit",
+                p5_desc: "A tight, rhythmic edit cut to the beat to hold attention right from the start.",
+                p6_badge: "✨ Slow Motion",
+                p6_title: "Corvette C5 — Rolling Details",
+                p6_desc: "Steady slow-motion passes highlighting the car's lines and details in motion.",
+                how_heading: "How We Work Together",
+                how_sub: "You don't need to worry about equipment or flight permits — I handle everything.",
+                s1_title: "Quick Intro Call",
+                s1_desc: "We message or jump on a short call. You tell me what you want to show, and we agree on the video style.",
+                s2_title: "On-Site Filming",
+                s2_desc: "I bring the right drone for your location — whether it's an indoor walkthrough, a fast car, or high-altitude views.",
+                s3_title: "Final Video Delivery",
+                s3_desc: "I edit the footage according to your notes, grade the colors, add music, and send the finished video ready to post.",
+                gear_heading: "What I Film With",
+                gear_sub: "Different drones matched to each location and shot.",
                 g1_tag: "Indoors & close to people",
-                g1_title: "Compact Protected Indoor Drone",
-                g1_desc: "Softly guarded propellers let it glide safely through offices, cafés, halls, and near guests without any risk.",
+                g1_title: "Compact Prop-Guarded Drone",
+                g1_desc: "Fully guarded propellers let it fly safely through offices, cafés, halls, and near guests without risk.",
                 g2_tag: "Speed & outdoor action",
                 g2_title: "High-Speed Action Drone",
-                g2_desc: "Keeps pace with sports cars, motorcycles, and captures thrilling angles at outdoor races and events.",
-                g3_tag: "Calm bird's-eye views",
-                g3_title: "Smooth Scenic Aerial Drone",
-                g3_desc: "Ideal for steady, breathtaking views of entire properties, landscapes, and crisp close-up details.",
-                g4_tag: "100% legal & worry-free",
-                g4_title: "Licensed, Insured & Custom Edited",
+                g2_desc: "Keeps up with cars and motorcycles and handles dynamic outdoor tracking shots.",
+                g3_tag: "High-altitude views",
+                g3_title: "Standard Camera Drone",
+                g3_desc: "Best for steady wide shots of entire properties, industrial sites, and landscapes.",
+                g4_tag: "Licensed & insured",
+                g4_title: "Permits, Insurance & Editing",
                 g4_desc: "Registered sole proprietor with pilot certification and commercial liability insurance. Raw footage is also available if you have your own editor.",
-                gear_cta: "Let's Film Your Project",
-                consult_heading: "Let's Plan Your Video",
-                consult_intro: "Pick whatever feels easiest — schedule a quick call in my calendar or message me directly on WhatsApp or e-mail.",
+                gear_cta: "Request a Shoot",
+                consult_heading: "Let's Plan Your Shoot",
+                consult_intro: "Pick a time for a quick call in the calendar, or message me directly on WhatsApp or e-mail.",
                 cal_badge: "📞 Option 1 — Quick Call",
-                cal_title: "Pick a Time for Me to Call You",
-                cal_desc: "Choose a day and time that works for you. We'll talk through your idea and see how we can bring it to life.",
-                cal_sync: "Live available slots",
-                cal_type: "Phone / Online Call",
-                quick_call_text: "In a hurry? Call me directly:",
-                form_badge: "💬 Option 2 — Send a Message",
+                cal_title: "Pick a Time for Me to Call",
+                cal_desc: "Choose a day and time that suits you. We'll go over your idea and filming options in a few minutes.",
+                cal_sync: "Available slots",
+                cal_type: "Phone / Online",
+                quick_call_text: "In a hurry? Call directly:",
+                form_badge: "💬 Option 2 — Message",
                 form_title: "Non-Binding Inquiry",
-                form_desc: "Tell me a few lines about what you'd like to film. We can chat right away on <strong>WhatsApp</strong> or via <strong>e-mail</strong>.",
-                f_is_company: "I represent a company / organization",
+                form_desc: "Briefly describe what you'd like to film. I'll reply via <strong>WhatsApp</strong> or <strong>e-mail</strong>.",
+                f_is_company: "Inquiring on behalf of a company / organization",
                 f_company_name: "Company Name *",
                 f_company_ico: "Company ID (IČO)",
                 opt_tag: "(optional)",
-                f_channel_q: "Where should we chat?",
+                f_channel_q: "Preferred reply channel",
                 f_ch_wa: "WhatsApp (faster)",
                 f_ch_mail: "E-mail",
-                f_phone: "Your Phone Number (WhatsApp) *",
-                f_email: "Your E-mail *",
+                f_phone: "Phone Number (WhatsApp) *",
+                f_email: "E-mail Address *",
                 f_category: "What are we filming?",
-                opt_cat_1: "🏠 Real Estate / Building Interior",
-                opt_cat_2: "🚗 Cars / Bikes / Action",
-                opt_cat_3: "🎉 Event / Race / Festival",
+                opt_cat_1: "🏠 Real Estate / Interior",
+                opt_cat_2: "🚗 Cars / Motorcycles",
+                opt_cat_3: "🎉 Event / Race",
                 opt_cat_4: "📱 Short Social Media Videos",
-                opt_cat_5: "✨ Other / Custom Idea",
+                opt_cat_5: "✨ Other Project",
                 f_budget: "Estimated Budget",
                 opt_b_1: "Up to 3,000 CZK (short clip)",
                 opt_b_2: "3,000 – 7,000 CZK (standard video)",
                 opt_b_3: "7,000 – 15,000 CZK (larger shoot)",
                 opt_b_4: "15,000+ CZK (multi-day / multi-location)",
-                opt_b_5: "Not sure yet / Need advice",
-                f_date: "When would you like to film?",
-                f_message: "Your idea and filming location *",
-                f_note_prefix: "Sending an inquiry is completely non-binding.",
-                f_note_link: "View Terms & Conditions",
-                rev_heading: "What Clients Say",
-                rev_sub: "Your satisfaction and excitement about the final video always come first.",
-                rev_banner_title: "FreeWill FPV Ratings on Google",
-                rev_banner_desc: "My Google Business profile is live and the first reviews from recent shoots are coming in. If we've worked together, I'd love to hear your feedback!",
-                rev_btn: "Write a Google Review",
+                opt_b_5: "Not sure yet / need advice",
+                f_date: "Preferred Date",
+                f_message: "Where and what are we filming? *",
+                f_note_prefix: "Submitting an inquiry is non-binding.",
+                f_note_link: "Terms & Conditions",
+                rev_heading: "Client Reviews",
+                rev_sub: "Feedback from completed shoots.",
+                rev_banner_title: "FreeWill FPV on Google",
+                rev_banner_desc: "My Google Business profile is live and reviews from recent shoots are being added. If we've worked together, I'd appreciate your feedback.",
+                rev_btn: "Leave a Google Review",
                 rc1_tag: "🏠 Real Estate & Spaces",
-                rc1_text: "“Verified Google review from our indoor & outdoor real estate fly-through shoot will appear here soon.”",
-                rc2_tag: "🎉 Events & Festivals",
-                rc2_text: "“Client review from the Kolešovice medieval event and Plzeň firefighter competition will appear here soon.”",
-                rc3_tag: "⭐ Become Our Next Happy Client",
-                rc3_text: "“Want a video that excites your customers at first glance? Get in touch and let's create it together.”",
+                rc1_text: "“A verified Google review from our indoor & outdoor real estate shoot will be displayed here soon.”",
+                rc2_tag: "🎉 Events & Races",
+                rc2_text: "“Client feedback from the Kolešovice medieval event and Plzeň firefighter competition will appear here soon.”",
+                rc3_tag: "⭐ Work With Me",
+                rc3_text: "“Looking for drone shots that stand out? Send a message and let's set a date.”",
                 vop_heading: "Terms & Conditions",
-                vop_sub: "Clear and fair cooperation rules.",
-                vop_box_title: "Accept Terms & Conditions for an Agreed Project",
-                vop_box_desc: "Please fill out this confirmation only after we have mutually agreed on the filming scope and price quote.",
-                vop_f_name: "Your Name / Company Name *",
+                vop_sub: "Basic rules of our cooperation.",
+                vop_box_title: "Confirm Terms for an Agreed Project",
+                vop_box_desc: "Please fill this out only after we have agreed on the filming scope and price.",
+                vop_f_name: "Name / Company Name *",
                 vop_f_proj: "Agreed Project / Date *",
-                vop_f_check: "I confirm that I have read the Terms & Conditions and agree to them.",
-                vop_f_btn: "Submit Terms Confirmation",
+                vop_f_check: "I confirm that I have read and accept the Terms & Conditions.",
+                vop_f_btn: "Send Confirmation",
                 footer_link: "Reviews & Terms & Conditions"
             }
         };
